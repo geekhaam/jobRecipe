@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="60" key="HistoryTableProvider.SVNHistoryPage.Author"/>
+	<item value="31" key="HistoryTableProvider.SVNHistoryPage.Revision"/>
+	<item value="146" key="HistoryTableProvider.SVNHistoryPage.Comment"/>
+	<item value="" key="DirectorySelectionPage.lastParent_https://508-036:1234/svn/SpringProject_JopRecipe"/>
+	<item value="77" key="HistoryTableProvider.SVNHistoryPage.Date"/>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="https://508-036:1234/svn/SpringProject_JobRecipe/"/>
+			<item value="https://508-036:1234/svn/SpringProject_JopRecipe/"/>
+			<item value=""/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,100 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,
+pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,
+form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,
+canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,
+ruby,section,summary,time,mark,audio,video,input
+{
+
+	margin: 0;
+
+	padding: 0;
+
+	border: 0;
+
+	font-size: 100%;
+
+	font: inherit;
+
+	vertical-align: baseline;
+	/* 사용가능한 태그들의 기본 셋팅을 초기화 하였음. 마진 패딩...등 */
+}
+
+/* HTML5 display-role reset for older browsers */
+
+input{
+	background-color: inherit;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,
+nav,section 
+{
+
+	display: block;
+
+}
+
+div {
+	min-height: inherit;
+}
+
+body {
+
+	line-height: 1;
+
+}
+
+ol,
+ul {
+
+	list-style: none;
+	/* 기본 채워진 원형식인 장식을 쓰지않는다. 필요시는 스타일로 사용해주세 */
+}
+
+blockquote,
+q {
+
+	quotes: none;
+	/* 자동 들여쓰기가 되는 태그에서 사용되는 따옴표등의 사용자 정의 기호를 초기*/
+}
+
+blockquote:before,
+blockquote:after,
+
+q:before,
+q:after {
+
+	content: '';
+
+	content: none;
+
+}
+/* 인용문 사용에 관련되는 꾸미기? 속성같은것 글앞에 회색 바를 세운다던가...등 */
+
+html 
+{
+		box-sizing: border-box;
+}
+
+table {
+	
+	border-collapse: collapse;
+	/* 테이블외곽의 줄과 내부의 속성들의 줄의 간격을 없에고 겹치면 한줄로 표 */
+	border-spacing: 0;
+	/* 각셀의 붙은 간격을 조정 0으로 딱 붙어있도록 초기화  */
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid;
+	text-align: center;
+
+}
+
+/* table 기본 셋팅 조원에게 문 */
+
+tr,td,th{
+	min-height: inherit;
+	border: 1px solid;
+	text-align: left;
+}
+
+

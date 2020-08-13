@@ -1,0 +1,7 @@
+package com.jobrecipe.user.service;
+
+public interface UserService {
+	/*
+	 * 로그인 및 비밀번호 찾기 관련 서비스
+	 */
+}

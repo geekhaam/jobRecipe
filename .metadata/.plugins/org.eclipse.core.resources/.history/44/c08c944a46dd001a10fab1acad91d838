@@ -1,0 +1,47 @@
+package com.jobrecipe.user.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class UserController {
+	
+	/*
+	 * 로그인 및 비밀번호 찾기
+	 */
+	
+	//로그인 페이지로 이동
+	@RequestMapping(value = "sign_in.do")
+	public String signinForm() {
+		return "users/sign_in";
+	}
+	
+	/* 
+	 * 로그인 버튼 눌렀을시 아이디, 비밀번호 체크
+	 * 성공시 main.do로 이동, 실패시 js로 실패 이유를 메시지로 안내
+	 */
+	@RequestMapping(value = "signinCheck.do")
+	public String signinCheck() {
+		return "main";
+	}
+	
+	//비밀번호 찾기 페이지로 이동
+	@RequestMapping(value = "findPw.do")
+	public String newPwForm() {
+		return "password/new";
+	}
+	
+	/*
+	 * 비밀번호 찾기 페이지에서 이메일 입력 후 비밀번호 찾기 버튼 눌렀을시
+	 * 성공하면 메일을 보낸 후 로그인 페이지로 이동, 실패하면 js로 실패 메시지 안내
+	 */
+	@RequestMapping(value = "")
+	public String sendNewPwMail() {
+		return "users/sign_in";
+	}
+	
+	/*
+	 * 회원가입
+	 */
+	
+}
