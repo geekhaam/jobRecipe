@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 정구/준범 -->
+	<div class="question_wrap">
+		<div class="question_head">
+			<div class="head_title_group">
+				<p class="head_title1">설문을 완료하시면 서비스 이용이 가능합니다.</p>
+				<p class="head_desc">* 입력된 정보는 외부에 노출되지 않고, 보다 나은 서비스 제공을 위한 통계자료로만 활용됩니다.</p>
+			</div>
+		</div>
+		<div class="question_body">
+			<form action="insertProfile.do" method="post">
+				
+			</form>
+		</div>
+	</div>
 </body>
 </html>

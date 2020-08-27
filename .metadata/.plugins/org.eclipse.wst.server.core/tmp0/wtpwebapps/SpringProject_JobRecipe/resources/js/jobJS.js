@@ -93,3 +93,29 @@
 				}
 			});
 		}
+		
+		function users_changeCkboxVal(id) { //체크박스 체크시 DB로 전달할 값(0 혹은 1) 변경
+			var ckboxVal = $("#"+id).val();
+			if(ckboxVal == 0) {
+				$("#"+id).val("1");
+			} else {
+				$("#"+id).val("0");
+			}
+		}
+		
+		function users_agreeAll() { //전체동의 체크시 DB로 전달할 값(0 혹은 1) 일괄 변경
+			var agreeAllVal = $("#agree_all").val();
+			var ckboxVals = new Array("tou_service", "tou_privacy", "tou_privacy_optional", "user_subscribe_news");
+			if(agreeAllVal == 0) {
+				$("#agree_all").val("1");
+				for(var i=0; i<ckboxVals.length; i++) {
+					$("#"+ckboxVals[i]).val("1");
+					//$(ckboxVals[i]).val("1");
+				}
+			} else {
+				$("#agree_all").val("0");
+				for(var i=0; i<ckboxVals.length; i++) {
+					$("#"+ckboxVals[i]).val("0");
+				}
+			}
+		}

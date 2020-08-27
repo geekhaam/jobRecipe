@@ -12,7 +12,7 @@
 		<div style="width:5%;" class="header-menu"><a href="#">채용</a></div>
 		<div style="width:5%;" class="header-menu"><a href="#">기업</a></div>
 		<div style="width:77%; text-align: end;" class="header-menu">
-			<a style="margin: 10px;" href="#">로그인</a><a style="margin: 10px;" href="#">로그아웃</a>
+			<a style="margin: 10px;" href="sign_up.do">회원가입</a><a style="margin: 10px;" href="#">로그인</a><a style="margin: 10px;" href="#">로그아웃</a>
 		</div>
 		
 	</div>

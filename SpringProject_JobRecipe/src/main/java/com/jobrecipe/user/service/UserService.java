@@ -1,8 +1,7 @@
 package com.jobrecipe.user.service;
 
-import org.springframework.stereotype.Service;
+import com.jobrecipe.user.vo.UserVO;
 
-@Service("userService")
 public interface UserService {
 	/*
 	 *** 로그인 및 비밀번호 찾기 관련 서비스 ***
@@ -16,7 +15,7 @@ public interface UserService {
 	/*
 	 *** 회원가입 관련 서비스 ***
 	 */
-	public void signupMember();
+	public void signupMember(UserVO userVO);
 	
 	public void searchAllCompany();
 	

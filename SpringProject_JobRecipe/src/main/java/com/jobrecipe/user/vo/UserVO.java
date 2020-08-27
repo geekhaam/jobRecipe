@@ -1,6 +1,8 @@
 package com.jobrecipe.user.vo;
 
-public class UserVO {
+import java.io.Serializable;
+
+public class UserVO implements Serializable {
 	private int u_no;			//회원번호
 	private String u_email;		//이메일
 	private String u_pw;		//비밀번호
@@ -69,6 +71,11 @@ public class UserVO {
 	public void setU_emailAuth(int u_emailAuth) {
 		this.u_emailAuth = u_emailAuth;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "UserVO [u_no=" + u_no + ", u_email=" + u_email + ", u_pw=" + u_pw + ", u_privateInfo=" + u_privateInfo
+				+ ", u_newsLetter=" + u_newsLetter + ", u_emailAuth=" + u_emailAuth + "]";
+	}
 	
 }

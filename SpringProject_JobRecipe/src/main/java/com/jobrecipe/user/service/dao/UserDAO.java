@@ -2,7 +2,10 @@ package com.jobrecipe.user.service.dao;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class UserDAO {
+import com.jobrecipe.user.vo.UserVO;
 
+@Repository
+public interface UserDAO {
+	
+	public void insertMember(UserVO userVO);
 }

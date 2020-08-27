@@ -151,3 +151,15 @@ tr,td,th{
 	margin: 5px;
 	padding: 3px;
 }
+
+.txt_gra
+{
+	color: blue;
+	font-weight: bold;
+}
+
+.txt_gre
+{
+	color: gray;
+	font-weight: bold;
+}

@@ -1,5 +1,0 @@
-package com.jobrecipe.service;
-
-public interface UserService {
-
-}

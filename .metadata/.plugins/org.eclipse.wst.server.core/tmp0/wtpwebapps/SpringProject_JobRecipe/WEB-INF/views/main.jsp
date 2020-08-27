@@ -21,7 +21,6 @@
 		
 			<div style="width: 20%; background-color: #e6ecff; margin-left: 5%;">
 				여기는 제일왼쪽...사용자 정보등?
-				<a href="editPw.do">EDIT</a>
 			</div>
 			
 			<div style="width: 50%; flex-direction: column; justify-content: flex-end;">
