@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>회원 가입</title>
+<title>잡레시피</title>
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>

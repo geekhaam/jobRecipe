@@ -1,0 +1,15 @@
+package com.jobrecipe.profile.service;
+
+import org.springframework.stereotype.Service;
+
+import com.jobrecipe.profile.vo.ProfileVO;
+
+@Service("profileService")
+public class ProfileServiceImpl implements ProfileService {
+
+	@Override
+	public void insertProfile(ProfileVO profileVO) {
+		System.out.println("insertProfile-service call");
+	}
+
+}

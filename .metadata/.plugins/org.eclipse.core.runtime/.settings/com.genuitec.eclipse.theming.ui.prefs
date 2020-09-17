@@ -1,11 +1,12 @@
 applyBackground=false
-approved.defs.file.last.changed.time=1594835793000
+approved.defs.file.last.changed.time=1599254320000
 codemix.dont.show.upsell.until=1599801536563
 configurationInstallLocation=/C\:/Users/geekh/eclipse/jee-photon/eclipse/
 eclipse.preferences.version=1
+elearning.dont.show.until=1600925793826
 iconcolormode=primary
-last.download.attempt.time=1598509801257
-lastConfiguration=1598509788762
+last.download.attempt.time=1600331337724
+lastConfiguration=1600331319883
 newinstall=false
 showWelcomeDialog=false
 workbench.theme=Dark Gray

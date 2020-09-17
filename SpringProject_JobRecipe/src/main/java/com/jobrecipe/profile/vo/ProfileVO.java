@@ -6,7 +6,7 @@ public class ProfileVO {
 	private int pro_no;			//프로필 번호
 	private int u_no;			//회원 번호
 	private int pro_gender;		//성별
-	private Date pro_birth;		//생년월일
+	private int pro_birthYear;		//생년월일
 	private int pro_career;		//경력
 	private String pro_occu;	//직종
 	private String pro_subOccu; //하위 직종
@@ -21,14 +21,14 @@ public class ProfileVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProfileVO(int pro_no, int u_no, int pro_gender, Date pro_birth, int pro_career, String pro_occu,
+	public ProfileVO(int pro_no, int u_no, int pro_gender, int pro_birthYear, int pro_career, String pro_occu,
 			String pro_skill, String pro_subOccu, String pro_name, String pro_email, String pro_tel, String pro_imgPath,
 			String pro_aboutMe) {
 		super();
 		this.pro_no = pro_no;
 		this.u_no = u_no;
 		this.pro_gender = pro_gender;
-		this.pro_birth = pro_birth;
+		this.pro_birthYear = pro_birthYear;
 		this.pro_career = pro_career;
 		this.pro_occu = pro_occu;
 		this.pro_skill = pro_skill;
@@ -64,12 +64,12 @@ public class ProfileVO {
 		this.pro_gender = pro_gender;
 	}
 
-	public Date getPro_birth() {
-		return pro_birth;
+	public int getPro_birthYear() {
+		return pro_birthYear;
 	}
 
-	public void setPro_birth(Date pro_birth) {
-		this.pro_birth = pro_birth;
+	public void setPro_birthYear(int pro_birthYear) {
+		this.pro_birthYear = pro_birthYear;
 	}
 
 	public int getPro_career() {
@@ -142,6 +142,14 @@ public class ProfileVO {
 
 	public void setPro_aboutMe(String pro_aboutMe) {
 		this.pro_aboutMe = pro_aboutMe;
+	}
+
+	@Override
+	public String toString() {
+		return "ProfileVO [pro_no=" + pro_no + ", u_no=" + u_no + ", pro_gender=" + pro_gender + ", pro_birthYear="
+				+ pro_birthYear + ", pro_career=" + pro_career + ", pro_occu=" + pro_occu + ", pro_subOccu=" + pro_subOccu
+				+ ", pro_skill=" + pro_skill + ", pro_name=" + pro_name + ", pro_email=" + pro_email + ", pro_tel="
+				+ pro_tel + ", pro_imgPath=" + pro_imgPath + ", pro_aboutMe=" + pro_aboutMe + "]";
 	}
 	
 	

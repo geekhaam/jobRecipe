@@ -1,0 +1,5 @@
+package com.jobrecipe.profile.service.dao;
+
+public interface ProfileDAO {
+
+}

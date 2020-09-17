@@ -86,7 +86,7 @@ public class UserController {
 	@RequestMapping(value = "/signupMember.do")
 	public String signupMember(UserVO userVO, Model model) {
 		userService.signupMember(userVO);
-		model.addAttribute("userVO", userVO);
+		model.addAttribute("u_no", userVO.getU_no());
 		return "wizard/signup_questionnaire";
 	}
 	
