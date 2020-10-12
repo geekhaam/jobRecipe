@@ -1,23 +1,44 @@
 package com.jobrecipe.profile.controller;
 
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jobrecipe.profile.service.ProfileServiceImpl;
 import com.jobrecipe.profile.vo.ProfileVO;
+import com.jobrecipe.user.service.UserServiceImpl;
+import com.jobrecipe.user.vo.UserVO;
 
 @Controller
 public class ProfileController {
-	
-	@Resource(name = "profileService")
+
+	@Resource(name = "ProfileService")
 	private ProfileServiceImpl profileService;
+
+	@Resource(name = "UserService")
+	private UserServiceImpl userService;
+	
+	/*
+	 * ¸¶ÀÌÆäÀÌÁö ¸µÅ©
+	 */
+	@RequestMapping(value = "/settings.do")
+	public String settingForm(UserVO userVO) {
+		return "profile/settings";
+	}
+	
+	/*
+	 * ¸¶ÀÌÆäÀÌÁö ¸µÅ©
+	 */
+	@RequestMapping(value = "/resumes.do")
+	public String resumesForm(ProfileVO prfofileVO) {
+		//DB¿¡¼­ ±âÁ¸ ÇÁ·ÎÇÊ ¹Ş¾Æ¿Í profileVO¿¡ ´ã´Â ÀÛ¾÷ ÇÊ¿ä
+		return "profile/resumes";
+	}
 	
 	/* 
-	 * ì„¤ë¬¸ì¡°ì‚¬ í˜ì´ì§€ì—ì„œ ë‹¤ìŒì„ ëˆ„ë¥´ë©´ íŒ”ë¡œì‰ ê¸°ì—… ì²´í¬ í˜ì´ì§€ë¡œ ì´ë™í•˜ë©°,
-	 * rec_profile í…Œì´ë¸”ì— íšŒì› ê¸°ë³¸ ì •ë³´ ì €ì¥
+	 * ¼³¹®Á¶»ç ÆäÀÌÁö¿¡¼­ ´ÙÀ½À» ´©¸£¸é ÆÈ·ÎÀ× ±â¾÷ Ã¼Å© ÆäÀÌÁö·Î ÀÌµ¿ÇÏ¸ç,
+	 * rec_profile Å×ÀÌºí¿¡ È¸¿ø ±âº» Á¤º¸ ÀúÀå
 	 */
 	@RequestMapping(value = "insertProfile.do")
 	public String insertProfile(ProfileVO profileVO, Model model) {
@@ -25,4 +46,15 @@ public class ProfileController {
 		model.addAttribute("u_no", profileVO.getU_no());
 		return "wizard/signup_follow";
 	}
-}	
+	
+	/*
+	 * @RequestMapping(value = "/change_password") public String
+	 * change_password(UserVO vo1) { return "profile/password"; }
+	 */
+	
+	/*
+	 * @RequestMapping(value = "/newsletter.do") public String newsletter(UserVO vo)
+	 * { return "profile/newsletter"; }
+	 */
+
+}

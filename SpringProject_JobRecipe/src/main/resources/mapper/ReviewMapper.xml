@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobrecipe.review.service.dao.ReviewDAO">
+	
+	<select id="getAllReview" resultType="reviewVO">
+	select c_rev_no, c_name, u_no, c_rev_title, c_rev_content, c_rev_cnt, c_rev_star, c_rev_date
+	from rec_review
+	
+	</select>
+	
+	<insert id="insertReview">
+	insert into rec_review values (#{c_rev_no}, #{c_name}, #{u_no}, #{c_rev_title}, #{c_rev_content}, #{c_rev_cnt}, #{c_rev_star}, #{c_rev_date})
+	
+	
+	</insert>
+	
+	
+	<select id="getReview" resultType="ReviewVO">
+	select c_rev_no, c_name, u_no, c_rev_title, c_rev_content, c_rev_cnt, c_rev_star, c_rev_date
+	from rec_review where u_no =#{u_no}
+	
+	
+	</select>
+	
+</mapper>

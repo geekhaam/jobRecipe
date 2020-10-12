@@ -19,6 +19,9 @@
 				
 			</div>
 		</div>
+		<div class="btn_complete">
+			<button type="button" onclick="location.href='main.do'">완료</button>
+		</div>
 	</div>
 </body>
 </html>

@@ -10,9 +10,12 @@
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 </head>
 <body>
-
+	<!--test용 버튼  -->
+	<button onclick="location.href='admin/insertCompanyForm.do'">bbbb</button>
+	<!--test용 버튼  -->
 	<header>
 		<jsp:include page="./include/header.jsp"></jsp:include>
+		<a href="../profile/hire/Search_Job.do">검색</a>
 	</header>
 	
 	<section>
@@ -21,6 +24,7 @@
 		
 			<div style="width: 20%; background-color: #e6ecff; margin-left: 5%;">
 				여기는 제일왼쪽...사용자 정보등?
+				<a href="editPw.do">EDIT</a>
 			</div>
 			
 			<div style="width: 50%; flex-direction: column; justify-content: flex-end;">
@@ -133,7 +137,6 @@
 			</div>
 		</div>
 	</section>
-	
 	<footer>
 		<jsp:include page="./include/footer.jsp"></jsp:include>
 	</footer>

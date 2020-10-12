@@ -1,10 +1,26 @@
 package com.jobrecipe.user.controller;
 
-import javax.annotation.Resource;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.Random;
 
+import javax.annotation.Resource;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jobrecipe.user.service.UserServiceImpl;
 import com.jobrecipe.user.vo.UserVO;
@@ -12,102 +28,300 @@ import com.jobrecipe.user.vo.UserVO;
 @Controller
 public class UserController {
 	
-	@Resource(name = "userService")
+	@Autowired
+	private JavaMailSender mailSender;
+
+	@Resource(name = "UserService")
 	private UserServiceImpl userService;
 	
 	/*
-	 *** ë¡œê·¸ì¸ ë° ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ***
+	 *** È¸¿ø°¡ÀÔ ***
 	 */
 	
-	//ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™
-	@RequestMapping(value = "/sign_in.do")
-	public String signinForm() {
-		return "users/sign_in";
-	}
-	
-	/* 
-	 * ë¡œê·¸ì¸ ë²„íŠ¼ ëˆŒë €ì„ì‹œ ì•„ì´ë””, ë¹„ë°€ë²ˆí˜¸ ì²´í¬
-	 * ì„±ê³µì‹œ main.doë¡œ ì´ë™, ì‹¤íŒ¨ì‹œ jsë¡œ ì‹¤íŒ¨ ì´ìœ ë¥¼ ë©”ì‹œì§€ë¡œ ì•ˆë‚´
-	 */
-	@RequestMapping(value = "/signinCheck.do")
-	public String signinCheck() {
-		return "main";
-	}
-	
-	//ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° í˜ì´ì§€ë¡œ ì´ë™
-	@RequestMapping(value = "/findPw.do")
-	public String newPwForm() {
-		return "users/password/new";
-	}
-	
-	/*
-	 * ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° í˜ì´ì§€ì—ì„œ ì´ë©”ì¼ ì…ë ¥ í›„ ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ë²„íŠ¼ ëˆŒë €ì„ì‹œ
-	 * ì„±ê³µí•˜ë©´ ë©”ì¼ì„ ë³´ë‚¸ í›„ ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™, ì‹¤íŒ¨í•˜ë©´ jsë¡œ ì‹¤íŒ¨ ë©”ì‹œì§€ ì•ˆë‚´
-	 */
-	@RequestMapping(value = "/sendNewPwMail.do")
-	public String sendNewPwMail() {
-		return "users/sign_in";
-	}
-	
-	/* 
-	 * íšŒì›ì˜ ì´ë©”ì¼ë¡œ ë³´ë‚´ì§„ ìƒˆ ë¹„ë°€ë²ˆí˜¸ ì„¤ì • í˜ì´ì§€ì˜ ë§í¬ë¥¼ ëˆŒë €ì„ì‹œ ì•„ë˜ ë©”ì†Œë“œë¥¼ í†µí•´ ì´ë™
-	 * ìœ ì € êµ¬ë¶„ì„ ìœ„í•´ í† í° í•„ìš”
-	 */
-	@RequestMapping(value = "/editPw.do")
-	public String editPwForm() {
-		return "users/password/edit";
-	}
-	
-	/*
-	 * ìƒˆ ë¹„ë°€ë²ˆí˜¸ ì„¤ì • í˜ì´ì§€ì—ì„œ ì„±ê³µí–ˆì„ì‹œ ì„±ê³µí•˜ë©´ ë¡œê·¸ì¸ëœ ìƒíƒœë¡œ ë©”ì¸í˜ì´ì§€ë¡œ ë„˜ì–´ê°„ë‹¤.
-	 * ì‹¤íŒ¨ì‹œ jsë¡œ ì‹¤íŒ¨ ë©”ì‹œì§€ ì•ˆë‚´
-	 */
-	@RequestMapping(value = "/setNewPw.do")
-	public String setNewPw() {
-		return "main";
-	}
-	
-	
-	/*
-	 *** íšŒì›ê°€ì… ***
-	 */
-	
-	//íšŒì›ê°€ì… ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ íšŒì›ê°€ì… í˜ì´ì§€ë¡œ ì´ë™
+	//È¸¿ø°¡ÀÔ ¹öÆ°À» ´©¸£¸é È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î ÀÌµ¿
 	@RequestMapping(value = "/sign_up.do")
 	public String signUpForm() {
 		return "users/sign_up";
 	}
 	
 	/* 
-	 * íšŒì›ê°€ì… ë©”ì¸ì—ì„œ ë‹¤ìŒì„ ëˆ„ë¥´ë©´ ì„¤ë¬¸ì¡°ì‚¬ í˜ì´ì§€ë¡œ ì´ë™í•˜ë©°,
-	 * red_users í…Œì´ë¸”ì— íšŒì› ì •ë³´ ì €ì¥
-	 * ë‹¤ìŒ í”„ë¡œí•„ ì •ë³´ ì…ë ¥ ê´€ë ¨ í˜ì´ì§€ëŠ” ProfileControllerì—ì„œ ì²˜ë¦¬
+	 * È¸¿ø°¡ÀÔ ¸ŞÀÎ¿¡¼­ ´ÙÀ½À» ´©¸£¸é ¼³¹®Á¶»ç ÆäÀÌÁö·Î ÀÌµ¿ÇÏ¸ç,
+	 * red_users Å×ÀÌºí¿¡ È¸¿ø Á¤º¸ ÀúÀå
+	 * ´ÙÀ½ ÇÁ·ÎÇÊ Á¤º¸ ÀÔ·Â °ü·Ã ÆäÀÌÁö´Â ProfileController¿¡¼­ Ã³¸®
 	 */
 	@RequestMapping(value = "/signupMember.do")
 	public String signupMember(UserVO userVO, Model model) {
 		userService.signupMember(userVO);
 		model.addAttribute("u_no", userVO.getU_no());
+		//model.addAttribute("userVO", userVO);
 		return "wizard/signup_questionnaire";
 	}
 	
-	/*
-	 * íšŒì›ê°€ì… ì™„ë£Œ ë²„íŠ¼ ëˆ„ë¥´ë©´, UserServiceì—ì„œ sendSignupMail()ë¥¼ í†µí•´ íšŒì›ì˜ ì´ë©”ì¼ë¡œ
-	 * ì¸ì¦ ë©”ì¼ì„ ë³´ë‚´ë©°, ë©”ì¼ ë³´ë‚´ê¸° ì„±ê³µì‹œ ë©”ì¸ í˜ì´ì§€ë¡œ ì´ë™
-	 */
-	@RequestMapping(value = "/completeSignup.do")
-	public String completeSignup() {
-		return "main";
-	}
-	
-	//
 
 	/*
-	 * ì´ë©”ì¼ ì¸ì¦ì— ì„±ê³µí•˜ë©´ ë¡œê·¸ì¸ì´ ëœ ìƒíƒœë¡œ ë©”ì¸ í˜ì´ì§€ë¡œ ë„˜ì–´ê°„ë‹¤.
-	 * ì‹¤íŒ¨ì‹œ jsë¡œ ì‹¤íŒ¨ ë©”ì‹œì§€ ì•ˆë‚´
-	 * ìœ ì € êµ¬ë¶„ì„ ìœ„í•´ í† í° í•„ìš”
+	 * ÀÌ¸ŞÀÏ ÀÎÁõ¿¡ ¼º°øÇÏ¸é ·Î±×ÀÎÀÌ µÈ »óÅÂ·Î ¸ŞÀÎ ÆäÀÌÁö·Î ³Ñ¾î°£´Ù.
+	 * ½ÇÆĞ½Ã js·Î ½ÇÆĞ ¸Ş½ÃÁö ¾È³»
+	 * À¯Àú ±¸ºĞÀ» À§ÇØ ÅäÅ« ÇÊ¿ä
 	 */
 	@RequestMapping(value = "/authEmail.do")
 	public String authEmail() {
 		return "main";
 	}
+	
+	// ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿
+	@RequestMapping(value = "/sign_in.do")
+	public String signinForm() {
+		return "users/sign_in";
+	}
+
+	// ·Î±×ÀÎ
+	@RequestMapping(value = "/signinCheck.do")
+	public String login(UserVO vo, HttpServletRequest request, RedirectAttributes rttr, HttpSession session)
+			throws Exception {
+
+		session = request.getSession();
+
+		UserVO login = userService.signinCheck(vo);
+
+		if (login == null) {
+			session.setAttribute("login", null);
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/sign_in.do";
+		} else {
+			session.setAttribute("login", login);
+			session.setAttribute("u_email", login.getU_email());
+			return "redirect:/";
+		}
+	}
+
+	// ·Î±×¾Æ¿ô
+	@RequestMapping("logout.do")
+	public ModelAndView logout(HttpSession session) throws ClassNotFoundException, SQLException {
+		userService.logout(session);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("main");
+		mav.addObject("msg", "logout");
+		return mav;
+	}
+
+	// ºñ¹Ğ¹øÈ£ Ã£±â ÆäÀÌÁö·Î ÀÌµ¿
+	@RequestMapping(value = "/findPw.do")
+	public String newPwForm(UserVO vo1) {
+		return "users/password/new";
+	}
+
+	/*
+	 * ºñ¹Ğ¹øÈ£ Ã£±â ÆäÀÌÁö¿¡¼­ ÀÌ¸ŞÀÏ ÀÔ·Â ÈÄ ºñ¹Ğ¹øÈ£ Ã£±â ¹öÆ° ´­·¶À»½Ã ¼º°øÇÏ¸é ¸ŞÀÏÀ» º¸³½ ÈÄ ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿, ½ÇÆĞÇÏ¸é js·Î ½ÇÆĞ
+	 * ¸Ş½ÃÁö ¾È³»
+	 */
+	@RequestMapping(value = "sendNewPwMail.do")
+	public String sendNewPwMail() {
+		return "users/sign_in";
+	}
+
+	// È¸¿øÀÇ ÀÌ¸ŞÀÏ·Î º¸³»Áø »õ ºñ¹Ğ¹øÈ£ ¼³Á¤ ÆäÀÌÁöÀÇ ¸µÅ©¸¦ ´­·¶À»½Ã ¾Æ·¡ ¸Ş¼Òµå¸¦ ÅëÇØ ÀÌµ¿
+	@RequestMapping(value = "editPw.do")
+	public String editPwForm() {
+		return "users/password/edit";
+	}
+
+	//ºñ¹Ğ¹øÈ£ Ã£±â Ã³¸® (1) ÀÌ¸ŞÀÏ ¹ß¼Û
+    @RequestMapping(value = "find_pass.do", method = RequestMethod.POST)
+    public ModelAndView find_pass(HttpServletRequest request, String u_email,
+            HttpServletResponse response_email) throws IOException{
+        
+        //·£´ıÇÑ ³­¼ö (ÀÎÁõ¹øÈ£)¸¦ »ı¼ºÇØ¼­ ÀÌ¸ŞÀÏ·Î º¸³»°í ±× ÀÎÁõ¹øÈ£¸¦ ÀÔ·ÂÇÏ¸é ºñ¹Ğ¹øÈ£¸¦ º¯°æÇÒ ¼ö ÀÖ´Â ÆäÀÌÁö·Î ÀÌµ¿½ÃÅ´
+    	response_email.setContentType("text/html; charset=UTF-8");
+		PrintWriter out_email = response_email.getWriter();
+		ModelAndView mv = new ModelAndView();    //ModelAndView·Î º¸³¾ ÆäÀÌÁö¸¦ ÁöÁ¤ÇÏ°í, º¸³¾ °ªÀ» ÁöÁ¤ÇÑ´Ù.
+		
+    	String tomail = request.getParameter("u_email");    //¹Ş´Â »ç¶÷ÀÇ ÀÌ¸ŞÀÏ
+        int checkNum = userService.findEmail(tomail);
+    	
+    	if(checkNum == 1) {
+    		Random r = new Random();
+    		int dice = r.nextInt(157211)+48271;
+    		
+    		String setfrom = "wjdrndkel@gmail.com";
+    		String title = "ºñ¹Ğ¹øÈ£ Ã£±â ÀÎÁõ ÀÌ¸ŞÀÏ ÀÔ´Ï´Ù.";    //Á¦¸ñ
+    		String content =
+    				
+    				System.getProperty("line.separator")+
+    				
+    				System.getProperty("line.separator")+
+    				
+    				"¾È³çÇÏ¼¼¿ä È¸¿ø´Ô ÀúÈñ È¨ÆäÀÌÁö¸¦ Ã£¾ÆÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù"
+    				
+                +System.getProperty("line.separator")+
+                
+                System.getProperty("line.separator")+
+                
+                "ºñ¹Ğ¹øÈ£ Ã£±â ÀÎÁõ¹øÈ£´Â " +dice+ " ÀÔ´Ï´Ù. "
+                
+                +System.getProperty("line.separator")+
+                
+                System.getProperty("line.separator")+
+                
+                "¹ŞÀ¸½Å ÀÎÁõ¹øÈ£¸¦ È¨ÆäÀÌÁö¿¡ ÀÔ·ÂÇØ ÁÖ½Ã¸é ´ÙÀ½À¸·Î ³Ñ¾î°©´Ï´Ù."; // ³»¿ë
+    		
+    		try {
+    			MimeMessage message = mailSender.createMimeMessage();
+    			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+    			
+    			messageHelper.setFrom(setfrom); // º¸³»´Â»ç¶÷ »ı·«ÇÏ¸é Á¤»óÀÛµ¿À» ¾ÈÇÔ
+    			messageHelper.setTo(tomail); // ¹Ş´Â»ç¶÷ ÀÌ¸ŞÀÏ
+    			messageHelper.setSubject(title); // ¸ŞÀÏÁ¦¸ñÀº »ı·«ÀÌ °¡´ÉÇÏ´Ù
+    			messageHelper.setText(content); // ¸ŞÀÏ ³»¿ë
+    			
+    			mailSender.send(message);
+    			
+    		} catch (Exception e) {
+    			System.out.println(e);
+    		}
+    		
+    		mv.setViewName("/users/pass_email");     //ºäÀÇÀÌ¸§
+    		mv.addObject("dice", dice);
+    		mv.addObject("u_email", u_email);
+    		
+    		System.out.println("mv : "+mv);
+    		
+    		out_email.println("<script>alert('ÀÌ¸ŞÀÏÀÌ ¹ß¼ÛµÇ¾ú½À´Ï´Ù. ÀÎÁõ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.');</script>");
+    		out_email.flush();
+    			
+    		return mv;
+    		
+    	} else {
+    		mv.setViewName("/users/password/new");
+    		
+    		out_email.println("<script>alert('µî·ÏµÇÁö ¾ÊÀº ÀÌ¸ŞÀÏÀÔ´Ï´Ù. ÀÌ¸ŞÀÏÀ» ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.');</script>");
+    		out_email.flush();
+    		
+    		return mv;
+    	}
+    }
+
+    //ÀÎÁõ¹øÈ£¸¦ ÀÔ·ÂÇÑ ÈÄ¿¡ È®ÀÎ ¹öÆ°À» ´©¸£¸é ÀÚ·á°¡ ³Ñ¾î¿À´Â ÄÁÆ®·Ñ·¯
+    @RequestMapping(value = "pass_injeung.do{dice},{u_email}", method = RequestMethod.POST)
+        public ModelAndView pass_injeung(String pass_injeung, @PathVariable String dice, @PathVariable String u_email, 
+                HttpServletResponse response_equals) throws IOException{
+        
+        System.out.println("¸¶Áö¸· : pass_injeung : "+pass_injeung);
+        
+        System.out.println("¸¶Áö¸· : dice : "+dice);
+        
+        ModelAndView mv = new ModelAndView();
+      
+        mv.setViewName("/users/pass_change");
+        
+        mv.addObject("u_email",u_email);
+        
+        if (pass_injeung.equals(dice)) {
+            
+            //ÀÎÁõ¹øÈ£°¡ ÀÏÄ¡ÇÒ °æ¿ì ÀÎÁõ¹øÈ£°¡ ¸Â´Ù´Â Ã¢À» Ãâ·ÂÇÏ°í ºñ¹Ğ¹øÈ£ º¯°æÃ¢À¸·Î ÀÌµ¿½ÃÅ²´Ù
+        
+            mv.setViewName("users/pass_change");
+            
+            mv.addObject("u_email",u_email);
+            
+            //¸¸¾à ÀÎÁõ¹øÈ£°¡ °°´Ù¸é ÀÌ¸ŞÀÏÀ» ºñ¹Ğ¹øÈ£ º¯°æ ÆäÀÌÁö·Î ³Ñ±â°í, È°¿ëÇÒ ¼ö ÀÖµµ·Ï ÇÑ´Ù.
+            
+            response_equals.setContentType("text/html; charset=UTF-8");
+            PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('ÀÎÁõ¹øÈ£°¡ ÀÏÄ¡ÇÏ¿´½À´Ï´Ù. ºñ¹Ğ¹øÈ£ º¯°æÃ¢À¸·Î ÀÌµ¿ÇÕ´Ï´Ù.');</script>");
+            out_equals.flush();
+    
+            return mv;
+  
+        }else if (pass_injeung != dice) {
+
+            ModelAndView mv2 = new ModelAndView(); 
+            
+            mv2.setViewName("users/pass_email");
+            
+            response_equals.setContentType("text/html; charset=UTF-8");
+            PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('ÀÎÁõ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö¾Ê½À´Ï´Ù. ÀÎÁõ¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.'); history.go(-1);</script>");
+            out_equals.flush();
+
+            return mv2;
+        }    
+        return mv;  
+    }
+    
+    //º¯°æÇÒ ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÑ ÈÄ¿¡ È®ÀÎ ¹öÆ°À» ´©¸£¸é ³Ñ¾î¿À´Â ÄÁÆ®·Ñ·¯
+    @RequestMapping(value = "pass_change.do{u_email}", method = RequestMethod.POST)
+    public ModelAndView pass_change(UserVO vo, HttpServletResponse pass) throws Exception{
+    	
+    System.out.println(vo);
+
+    userService.pass_change(vo);
+    
+    ModelAndView mv = new ModelAndView();
+    
+    mv.setViewName("users/sign_in");
+    
+    return mv;
+                
+    }
+    
+	// È¸¿ø Å»Åğ get
+	@RequestMapping(value="/memberDelete.do", method = RequestMethod.GET)
+	public String memberDeleteView() throws Exception{
+		return "/users/memberDeleteView";
+	}
+    
+    //È¸¿øÅ»Åğ
+	@RequestMapping(value = "/memberDelete.do")
+	public String memberDelete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		UserVO user = (UserVO) session.getAttribute("login");
+		
+		String sessionPw = user.getU_pw();
+		
+		String voPw = vo.getU_pw();
+		
+		if(!(sessionPw.equals(voPw))) {
+			rttr.addFlashAttribute("msg",false);
+			return "/users/memberDelteView";
+		}
+		userService.memberDelete(vo);
+		session.invalidate(); 
+		return "main";
+	}
+	
+	//¸¶ÀÌÆäÀÌÁö¿¡¼­ ºñ¹Ğ¹øÈ£ º¯°æ
+    @RequestMapping(value="/change_password.do", method= {RequestMethod.POST, RequestMethod.GET})
+    public String changePasswd(UserVO vo, HttpSession session,HttpServletRequest request) throws Exception {
+    	String u_email = request.getParameter("u_email");
+        String u_pw = request.getParameter("u_pw");
+ 
+        UserVO user = new UserVO();
+        user.setU_email(u_email);
+        user.setU_pw(u_pw);
+       
+        userService.pass_change(user);
+        
+        return "/profile/password";
+    }
+    
+	@RequestMapping(value = "/newsletter.do")
+	public String newsletter(UserVO vo, HttpSession session, HttpServletRequest request) throws Exception {
+		try {
+			 UserVO user = new UserVO();
+			 int cnt = Integer.parseInt(request.getParameter("cnt"));
+			 
+			 if(Integer.parseInt(request.getParameter("notice"))==1) {
+				 user.setU_newsLetter(cnt);
+				 userService.newsCheck(user);
+			 }else {
+				 user.setU_newsLetter(cnt);
+				 userService.newsCheck(user);
+			 }
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return "/profile/settings";
+	}
+	
 }

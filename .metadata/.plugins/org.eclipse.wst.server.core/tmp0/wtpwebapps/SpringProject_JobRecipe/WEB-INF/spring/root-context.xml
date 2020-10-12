@@ -40,6 +40,24 @@
 		<!-- 이 패키지 아래 모든 interface가 mapper interface로 인식 -->
 	</bean>
 	
+		<!-- 공고 mapper -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.jobrecipe.advertisement.service.dao" />
+		<!-- 이 패키지 아래 모든 interface가 mapper interface로 인식 -->
+	</bean>
+	
+	<!-- 회사 mapper -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.jobrecipe.company.service.dao" />
+		<!-- 이 패키지 아래 모든 interface가 mapper interface로 인식 -->
+	</bean>
+	
+	<!-- 리뷰 mapper -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.jobrecipe.review.service.dao" />
+		<!-- 이 패키지 아래 모든 interface가 mapper interface로 인식 -->
+	</bean>
+	
 	
 	<!-- DataSourceTransectionManager : 주로 jdbc나 mybatis로 db에 접근시 사용-->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -47,5 +65,22 @@
 	</bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- email 인증 : gmail -->   
+   <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="username" value="wjdrndkel@gmail.com" />
+        <property name="password" value="gwtdkgod1851108@" />
+       
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+            </props>
+        </property>
+        
+    </bean>
 	
 </beans>

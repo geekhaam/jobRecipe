@@ -1,6 +1,9 @@
 /* javascript쓰는 곳 */
 
-		function admin_company_search() {
+
+/* 유진 */
+		function admin_company_search() { //회사 검색
+
 			var name = $("#c_name").val();
 			if(name == null || name == "") {
 				$("#company_search").hide();
@@ -12,8 +15,9 @@
 					data: {c_name : name},
 					dataType: "html",
 					success: function(result) {
-						console.log(result);
+						
 						$("#company_search").show();
+						
 						var search_result = $("#company_search").html(result).find(".company_search_table");
 						$("#company_search").html(search_result);
 					}
@@ -21,7 +25,7 @@
 			}
 		}
 		
-		function admin_company_add() {
+		function admin_company_add() { //회사 추가
 			var name = $("#name").val();
 			var loc = $("#loc").val();
 			var addr = $("#addr").val();
@@ -55,7 +59,7 @@
 			}
 		}
 		
-		function admin_company_update() {
+		function admin_company_update() { //회사 수정
 			var name = $("#name1").val();
 			var loc = $("#loc1").val();
 			var addr = $("#addr1").val();
@@ -80,7 +84,7 @@
 			}
 		}
 		
-		function admin_company_del() {
+		function admin_company_del() { //회사 삭제
 			var name = $("#name1").val();
 			$.ajax({
 				type: "post",
@@ -92,7 +96,62 @@
 					$("#company_search").hide();
 				}
 			});
+
 		}
+
+		
+		var adminLienCount = 2;
+		var adminDealCount = 2;
+		var adminCpCount = 2;
+		var adminEctCount = 2;
+		
+		function admin_job_check() { //직무 선택
+			var job = $('input[name="job"]:checked').val();
+			$("#checkJob").val(job);
+		}
+		
+		function admin_addLien() { //자격요건 행 추가
+			$("#lienDiv").append('<input type="text" name="lien'+adminLienCount+'"> <br>');
+			adminLienCount++;
+			if(adminLienCount==6)
+				$("#lienBtn").hide();
+		}
+		
+		function admin_addDeal() { //우대사항 행 추가
+			$("#dealDiv").append('<input type="text" name="deal'+adminDealCount+'"> <br>');
+			adminDealCount++;
+			if(adminDealCount==6)
+				$("#dealBtn").hide();
+		}
+		
+		function admin_addCp() { //복리후생 행 추가
+			$("#cpDiv").append('<input type="text" name="cp'+adminCpCount+'"> <br>');
+			adminCpCount++;
+			if(adminCpCount==6)
+				$("#cpBtn").hide();
+		}
+		
+		function admin_addEct() { //기타 행 추가
+			$("#ectDiv").append('<input type="text" name="ect'+adminEctCount+'"> <br>');
+			adminEctCount++;
+			if(adminEctCount==6)
+				$("#ectBtn").hide();
+		}
+		
+		function admin_addAdvertise() { //경력, 고용형태 체크 요망
+			if($('input:checkbox[name="ad_carrBae"]').is(':checked') == false) {
+				alert("경력을 체크하세요.");
+				return false;
+			}
+			if($('input:radio[name="ad_emp"]').is(':checked') == false) {
+				alert("고용형태를 체크하세요.")
+				return false;
+			}
+			return true;
+		}
+/* 유진 끝 */
+		
+		/* 준범 회원가입 페이지 js 작업 */
 		
 		function users_changeCkboxVal(id) { //체크박스 체크시 DB로 전달할 값(0 혹은 1) 변경
 			var ckboxVal = $("#"+id).val();
@@ -119,3 +178,6 @@
 				}
 			}
 		}
+		
+		
+		

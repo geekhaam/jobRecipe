@@ -6,10 +6,11 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="setting"/>
+			<item value="docbase"/>
 			<item value="checkbox"/>
 			<item value="h2"/>
 			<item value="path"/>
-			<item value="docbase"/>
 			<item value="core"/>
 		</list>
 		<list key="replacehistory">

@@ -17,7 +17,7 @@ ruby,section,summary,time,mark,audio,video,input
 	font: inherit;
 
 	vertical-align: baseline;
-	/* »ç¿ë°¡´ÉÇÑ ÅÂ±×µéÀÇ ±âº» ¼ÂÆÃÀ» ÃÊ±âÈ­ ÇÏ¿´À½. ¸¶Áø ÆÐµù...µî */
+	
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -44,19 +44,27 @@ ol,
 ul {
 
 	list-style: none;
-	/* ±âº» Ã¤¿öÁø ¿øÇü½ÄÀÎ Àå½ÄÀ» ¾²Áö¾Ê´Â´Ù. ÇÊ¿ä½Ã´Â ½ºÅ¸ÀÏ·Î »ç¿ëÇØÁÖ¼¼ */
+	/* ï¿½âº» Ã¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½ï¿½Ê´Â´ï¿½. ï¿½Ê¿ï¿½Ã´ï¿? ï¿½ï¿½Å¸ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿? */
 }
 
 a
 {
 	text-decoration: none;
 }
+a:active
+{
+	color: #0099ff;
+}
+a:link
+{
+	color: #0099ff;
+}
 
 blockquote,
 q {
 
 	quotes: none;
-	/* ÀÚµ¿ µé¿©¾²±â°¡ µÇ´Â ÅÂ±×¿¡¼­ »ç¿ëµÇ´Â µû¿ÈÇ¥µîÀÇ »ç¿ëÀÚ Á¤ÀÇ ±âÈ£¸¦ ÃÊ±â*/
+	/* ï¿½Úµï¿½ ï¿½é¿©ï¿½ï¿½ï¿½â°¡ ï¿½Ç´ï¿½ ï¿½Â±×¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ê±ï¿½*/
 }
 
 blockquote:before,
@@ -70,7 +78,7 @@ q:after {
 	content: none;
 
 }
-/* ÀÎ¿ë¹® »ç¿ë¿¡ °ü·ÃµÇ´Â ²Ù¹Ì±â? ¼Ó¼º°°Àº°Í ±Û¾Õ¿¡ È¸»ö ¹Ù¸¦ ¼¼¿î´Ù´ø°¡...µî */
+/* ï¿½Î¿ë¹® ï¿½ï¿½ë¿? ï¿½ï¿½ï¿½ÃµÇ´ï¿½ ï¿½Ù¹Ì±ï¿½? ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾Õ¿ï¿½ È¸ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ï¿½ï¿?...ï¿½ï¿½ */
 
 header, footer
 {
@@ -92,9 +100,9 @@ html
 table {
 	
 	border-collapse: collapse;
-	/* Å×ÀÌºí¿Ü°ûÀÇ ÁÙ°ú ³»ºÎÀÇ ¼Ó¼ºµéÀÇ ÁÙÀÇ °£°ÝÀ» ¾ø¿¡°í °ãÄ¡¸é ÇÑÁÙ·Î Ç¥ */
+	/* ï¿½ï¿½ï¿½Ìºï¿½Ü°ï¿½ï¿½ï¿? ï¿½Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ù·ï¿½ Ç¥ */
 	border-spacing: 0;
-	/* °¢¼¿ÀÇ ºÙÀº °£°ÝÀ» Á¶Á¤ 0À¸·Î µü ºÙ¾îÀÖµµ·Ï ÃÊ±âÈ­  */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Öµï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­  */
 	margin-left: auto;
 	margin-right: auto;
 	border: 2px solid;
@@ -102,12 +110,18 @@ table {
 
 }
 
-/* table ±âº» ¼ÂÆÃ Á¶¿ø¿¡°Ô ¹® */
+/* table ï¿½âº» ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ */
 
 tr,td,th{
 	min-height: inherit;
 	border: 1px solid;
 	text-align: left;
+}
+
+hr
+{
+	margin-top:1%;
+	margin-bottom: 1%;
 }
 
 .flex-container
@@ -135,10 +149,10 @@ tr,td,th{
 }
 .search-input
 {
-	width: 45%; 
+	width: 55%; 
 	font-size: 15pt;
 	border: 1px solid;
-	border-color: grey;
+	border-color: #faf2ff;
 	margin: 5px;
 	padding: 3px;
 }
@@ -150,16 +164,49 @@ tr,td,th{
 	background-color: #e6f2ff;
 	margin: 5px;
 	padding: 3px;
+
 }
 
-.txt_gra
+.insert_divtext
 {
-	color: blue;
-	font-weight: bold;
+	width: 15%;
+	font-size: 15pt;
+	background-color: #e6f2ff;
+	margin: 5px;
+	padding: 3px;
+	padding-top: 7px;;
 }
 
-.txt_gre
-{
-	color: gray;
+/* font */
+.text-h1{
+	font-size: 20pt;
 	font-weight: bold;
+	padding-bottom: 3%;
 }
+.text-h2{
+	font-size: 15pt;
+	font-weight: bold;
+	padding-bottom: 1%;
+}
+.text-content{
+	font-size: 10pt;
+	
+}
+
+/* insert company */
+
+
+
+.adminEmpDiv {
+	display: none;
+}
+.adminEmpDiv label {
+	cursor: pointer;
+	border: solid 1px lightskyblue;
+	background: white;
+}
+.adminEmpDiv input:checked+label {
+	color: lightskyblue;
+}
+
+

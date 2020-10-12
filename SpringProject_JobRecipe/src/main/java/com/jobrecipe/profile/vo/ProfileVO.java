@@ -6,7 +6,7 @@ public class ProfileVO {
 	private int pro_no;			//프로필 번호
 	private int u_no;			//회원 번호
 	private int pro_gender;		//성별
-	private int pro_birthYear;		//생년월일
+	private int pro_birthYear;	//생년월일
 	private int pro_career;		//경력
 	private String pro_occu;	//직종
 	private String pro_subOccu; //하위 직종

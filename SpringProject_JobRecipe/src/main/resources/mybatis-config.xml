@@ -13,8 +13,12 @@
 	</settings>
 	
 	<typeAliases>
+		<typeAlias type="com.jobrecipe.user.vo.UserVO" alias="userVO" />
 		<typeAlias type="com.jobrecipe.profile.vo.ProfileVO" alias="profileVO" />
 		<typeAlias type="com.jobrecipe.admin.vo.CompanyVO" alias="companyVO" />
+		<typeAlias type="com.jobrecipe.admin.vo.AdvertiseVO" alias="advertiseVO "/>
+		<typeAlias type="com.jobrecipe.advertisement.vo.AdvertisementVO" alias="advertisementVO"></typeAlias>
+		<typeAlias type="com.jobrecipe.review.vo.ReviewVO" alias="reviewVO"></typeAlias>
 	</typeAliases>
 	
 	<!-- <environments default="development">
