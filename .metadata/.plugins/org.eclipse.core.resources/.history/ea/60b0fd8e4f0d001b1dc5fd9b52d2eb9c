@@ -1,0 +1,31 @@
+package com.jobrecipe.profile.service.dao;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Repository;
+
+import com.jobrecipe.profile.vo.ActAwardVO;
+import com.jobrecipe.profile.vo.CareerVO;
+import com.jobrecipe.profile.vo.CertiOtherVO;
+import com.jobrecipe.profile.vo.EducationVO;
+import com.jobrecipe.profile.vo.PortfolioVO;
+import com.jobrecipe.profile.vo.ProfileVO;
+import com.jobrecipe.user.vo.UserVO;
+
+@Repository
+public interface ProfileDAO {
+	
+	public void insertProfile(ProfileVO profileVO);
+	
+	public ProfileVO getProfile(int u_no);
+	
+	public EducationVO getEducation(UserVO userVO);
+	
+	public CareerVO getCareer(int u_no);
+	
+	public ActAwardVO getActAward(int u_no);
+	
+	public CertiOtherVO getCertiOther(int u_no);
+	
+	public PortfolioVO getPortfolio(int u_no);
+}

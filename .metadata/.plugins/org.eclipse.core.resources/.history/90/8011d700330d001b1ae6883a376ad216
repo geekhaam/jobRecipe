@@ -1,0 +1,5 @@
+package com.jobrecipe.profile.vo;
+
+public class CareerVO {
+
+}

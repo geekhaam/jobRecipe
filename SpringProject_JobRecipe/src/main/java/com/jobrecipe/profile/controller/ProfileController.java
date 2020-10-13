@@ -1,11 +1,16 @@
 package com.jobrecipe.profile.controller;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jobrecipe.profile.service.ProfileServiceImpl;
+import com.jobrecipe.profile.vo.EducationVO;
 import com.jobrecipe.profile.vo.ProfileVO;
 import com.jobrecipe.user.service.UserServiceImpl;
 import com.jobrecipe.user.vo.UserVO;
@@ -31,8 +36,13 @@ public class ProfileController {
 	 * 마이페이지 링크
 	 */
 	@RequestMapping(value = "/resumes.do")
-	public String resumesForm(ProfileVO prfofileVO) {
-		//DB에서 기존 프로필 받아와 profileVO에 담는 작업 필요
+	public String resumesForm(HttpSession session, Model model) {
+		UserVO loginInfo = (UserVO) session.getAttribute("login");
+		int u_no = loginInfo.getU_no();
+		ProfileVO pVO = profileService.getProfile(u_no);
+		EducationVO eVO = profileService.getEducation(u_no);
+		System.out.println(pVO);
+		System.out.println(eVO);
 		return "profile/resumes";
 	}
 	

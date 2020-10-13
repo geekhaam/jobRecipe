@@ -1,0 +1,7 @@
+package com.jobrecipe.profile.service;
+
+public class Snippet {
+	public static void main(String[] args) {
+		com.jobrecipe.profile.vo.EducationVO	}
+}
+

@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div id="rsm_contents_wrap">
-			<form action="#" method="post">x
+			<form action="#" method="post">
 				<div id="rsm_contents">
 					<!-- 기본 정보 섹션 -->
 					<div class="section_wrap"> <!-- 각 입력 내용 섹션 분류용 래퍼 -->
@@ -183,7 +183,7 @@
 								<div class="group_check">
 									<label class="btn_check">
 										<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
-										<input name="e_attendcheck" type="checkbox" value="0" onclick="">
+										<input name="e_attendcheck" type="checkbox" value="${edu.e_attendcheck}" onclick="">
 										<!-- <span class="check_icon"></span> -->
 										<span class="check_txt">재학중</span>
 									</label>
@@ -191,14 +191,14 @@
 							</div>
 							<div class="right_resume_flexible">
 								<div class="sname">
-									<input placeholder="학교명" type="text" name="e_sname">
+									<input placeholder="학교명" type="text" name="e_sname" value="${edu.e_sname}">
 								</div>
 								<div class="majordegree">
-									<input placeholder="전공 및 학위" type="text" name="e_majordegree">
+									<input placeholder="전공 및 학위" type="text" name="e_majordegree" value="${edu.e_majordegree}">
 								</div>
 								<div class="flexible_textarea">
 									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
+									<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${edu.description}</textarea>
 								</div>
 							</div>
 						</div>
