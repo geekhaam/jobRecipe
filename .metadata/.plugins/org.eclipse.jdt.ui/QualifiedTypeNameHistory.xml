@@ -18,20 +18,20 @@
 <fullyQualifiedTypeName name="com.jobrecipe.user.service.UserServiceImpl"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
-<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.CareerVO"/>
-<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.ActAwardVO"/>
-<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.CertiOtherVO"/>
-<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.PortfolioVO"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.jobrecipe.profile.service.ProfileService"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.EducationVO"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 <fullyQualifiedTypeName name="com.jobrecipe.user.vo.UserVO"/>
 <fullyQualifiedTypeName name="com.jobrecipe.profile.vo.ProfileVO"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.EducationVO"/>
+<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.CareerVO"/>
+<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.ActAwardVO"/>
+<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.CertiOtherVO"/>
+<fullyQualifiedTypeName name="com.jobrecipe.profile.vo.PortfolioVO"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

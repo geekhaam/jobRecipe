@@ -1,12 +1,11 @@
 package com.jobrecipe.profile.vo;
 
-import java.util.Date;
 
 public class CareerVO {
 	private int car_no;
 	private int u_no;
-	private Date car_edate;
-	private Date car_rdate;
+	private String car_edate;
+	private String car_rdate;
 	private int car_inoffice;
 	private String car_cname;
 	private String car_department;
@@ -14,7 +13,11 @@ public class CareerVO {
 	private String car_duty;
 	private String car_workexp;
 	
-	public CareerVO(int car_no, int u_no, Date car_edate, Date car_rdate, int car_inoffice, String car_cname,
+	public CareerVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public CareerVO(int car_no, int u_no, String car_edate, String car_rdate, int car_inoffice, String car_cname,
 			String car_department, String car_position, String car_duty, String car_workexp) {
 		super();
 		this.car_no = car_no;
@@ -45,19 +48,19 @@ public class CareerVO {
 		this.u_no = u_no;
 	}
 
-	public Date getCar_edate() {
+	public String getCar_edate() {
 		return car_edate;
 	}
 
-	public void setCar_edate(Date car_edate) {
+	public void setCar_edate(String car_edate) {
 		this.car_edate = car_edate;
 	}
 
-	public Date getCar_rdate() {
+	public String getCar_rdate() {
 		return car_rdate;
 	}
 
-	public void setCar_rdate(Date car_rdate) {
+	public void setCar_rdate(String car_rdate) {
 		this.car_rdate = car_rdate;
 	}
 

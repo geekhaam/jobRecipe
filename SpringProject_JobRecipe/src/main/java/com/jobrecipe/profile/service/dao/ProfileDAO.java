@@ -1,5 +1,7 @@
 package com.jobrecipe.profile.service.dao;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Repository;
 
 import com.jobrecipe.profile.vo.ActAwardVO;
@@ -16,13 +18,13 @@ public interface ProfileDAO {
 	
 	public ProfileVO getProfile(int u_no);
 	
-	public EducationVO getEducation(int u_no);
+	public ArrayList<EducationVO> getEducation(int u_no);
 	
-	public CareerVO getCareer(int u_no);
+	public ArrayList<CareerVO> getCareer(int u_no);
 	
-	public ActAwardVO getActAward(int u_no);
+	public ArrayList<ActAwardVO> getActAward(int u_no);
 	
-	public CertiOtherVO getCertiOther(int u_no);
+	public ArrayList<CertiOtherVO> getCertiOther(int u_no);
 	
-	public PortfolioVO getPortfolio(int u_no);
+	public ArrayList<PortfolioVO> getPortfolio(int u_no);
 }

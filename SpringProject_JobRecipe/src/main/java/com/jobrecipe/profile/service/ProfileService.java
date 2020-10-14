@@ -19,19 +19,19 @@ public interface ProfileService {
 	public ProfileVO getProfile(int u_no);
 	
 	//기존의 학력 사항 정보를 가지고 옴
-	public EducationVO getEducation(int u_no);
+	public ArrayList<EducationVO> getEducation(int u_no);
 	
 	//기존의 경력 사항 정보를 가지고 옴
-	public CareerVO getCareer(int u_no);
+	public ArrayList<CareerVO> getCareer(int u_no);
 	
 	//기존의 활동 및 수상내역 정보를 가지고 온다.
-	public ActAwardVO getActAward(int u_no);
+	public ArrayList<ActAwardVO> getActAward(int u_no);
 	
 	//기존의 자격증 및 기타내역 정보를 가지고 온다.
-	public CertiOtherVO getCertiOther(int u_no);
+	public ArrayList<CertiOtherVO> getCertiOther(int u_no);
 	
 	//기존의 포트폴리오 정보를 가지고 온다.
-	public PortfolioVO getPortfolio(int u_no);
+	public ArrayList<PortfolioVO> getPortfolio(int u_no);
 	
 	
 }

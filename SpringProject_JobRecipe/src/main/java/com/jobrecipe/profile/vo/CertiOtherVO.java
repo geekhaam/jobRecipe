@@ -7,6 +7,10 @@ public class CertiOtherVO {
 	private String cer_item;
 	private String cer_description;
 	
+	public CertiOtherVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public CertiOtherVO(int cer_no, int u_no, String cer_item, String cer_description) {
 		super();
 		this.cer_no = cer_no;

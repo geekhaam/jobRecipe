@@ -6,6 +6,10 @@ public class PortfolioVO {
 	private int u_no;
 	private String por_filepath;
 	
+	public PortfolioVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public PortfolioVO(int por_no, int u_no, String por_filepath) {
 		super();
 		this.por_no = por_no;

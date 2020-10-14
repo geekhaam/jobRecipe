@@ -33,31 +33,31 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 
 	@Override
-	public EducationVO getEducation(int u_no) {
+	public ArrayList<EducationVO> getEducation(int u_no) {
 		System.out.println("getEducation-service call");
 		return profileDAO.getEducation(u_no);
 	}
 
 	@Override
-	public CareerVO getCareer(int u_no) {
+	public ArrayList<CareerVO> getCareer(int u_no) {
 		System.out.println("getCareer-service call");
 		return profileDAO.getCareer(u_no);
 	}
 
 	@Override
-	public ActAwardVO getActAward(int u_no) {
+	public ArrayList<ActAwardVO> getActAward(int u_no) {
 		System.out.println("getActAward-service call");
 		return profileDAO.getActAward(u_no);
 	}
 
 	@Override
-	public CertiOtherVO getCertiOther(int u_no) {
+	public ArrayList<CertiOtherVO> getCertiOther(int u_no) {
 		System.out.println("getCertiOther-service call");
 		return profileDAO.getCertiOther(u_no);
 	}
 
 	@Override
-	public PortfolioVO getPortfolio(int u_no) {
+	public ArrayList<PortfolioVO> getPortfolio(int u_no) {
 		System.out.println("getPortfolio-service call");
 		return profileDAO.getPortfolio(u_no);
 	}

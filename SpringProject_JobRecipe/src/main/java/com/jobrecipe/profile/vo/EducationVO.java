@@ -1,18 +1,22 @@
 package com.jobrecipe.profile.vo;
 
-import java.sql.Date;
 
 public class EducationVO {
+	
 	private int e_no;
 	private int u_no;
-	private Date e_edate;
-	private Date e_gdate;
+	private String e_edate;
+	private String e_gdate;
 	private int e_attendcheck;
 	private String e_sname;
 	private String e_majordegree;
 	private String e_description;
 	
-	public EducationVO(int e_no, int u_no, Date e_edate, Date e_gdate, int e_attendcheck, String e_sname,
+	public EducationVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public EducationVO(int e_no, int u_no, String e_edate, String e_gdate, int e_attendcheck, String e_sname,
 			String e_majordegree, String e_description) {
 		super();
 		this.e_no = e_no;
@@ -37,16 +41,16 @@ public class EducationVO {
 	public void setU_no(int u_no) {
 		this.u_no = u_no;
 	}
-	public Date getE_edate() {
+	public String getE_edate() {
 		return e_edate;
 	}
-	public void setE_edate(Date e_edate) {
+	public void setE_edate(String e_edate) {
 		this.e_edate = e_edate;
 	}
-	public Date getE_gdate() {
+	public String getE_gdate() {
 		return e_gdate;
 	}
-	public void setE_gdate(Date e_gdate) {
+	public void setE_gdate(String e_gdate) {
 		this.e_gdate = e_gdate;
 	}
 	public int getE_attendcheck() {

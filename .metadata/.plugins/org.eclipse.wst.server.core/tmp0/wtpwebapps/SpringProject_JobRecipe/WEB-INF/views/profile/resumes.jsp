@@ -42,11 +42,11 @@
 								<h3>성별</h3>
 							</div>
 							<label class="btn_radio" for="gender_man">
-								<input type="radio" name="pro_gender" id="gender_man" value="1">
+								<input type="radio" name="pro_gender" id="gender_man" value="1" ${profileVO.pro_gender eq 1 ? "checked" : ""}>
 								<span class="radio_txt">남자</span>
 							</label>
 							<label class="btn_radio" for="gender_woman">
-								<input type="radio" name="pro_gender" id="gender_woman" value="2">
+								<input type="radio" name="pro_gender" id="gender_woman" value="2"${profileVO.pro_gender eq 2 ? "checked" : ""}>
 								<span class="radio_txt">여자</span>
 							</label>
 						</div>
@@ -57,23 +57,23 @@
 							<div class="birthYear_select">
 								<select id="birth_year" name="pro_birthYear">
 									<option value="none">선택해주세요.</option>
-									<option value="2006">2006년</option>
-									<option value="2005">2005년</option>
-									<option value="2004">2004년</option>
-									<option value="2003">2003년</option>
-									<option value="2002">2002년</option>
-									<option value="2001">2001년</option>
-									<option value="2000">2000년</option>
-									<option value="1999">1999년</option>
-									<option value="1998">1998년</option>
-									<option value="1997">1997년</option>
-									<option value="1996">1996년</option>
-									<option value="1995">1995년</option>
-									<option value="1994">1994년</option>
-									<option value="1993">1993년</option>
-									<option value="1992">1992년</option>
-									<option value="1991">1991년</option>
-									<option value="1990">1990년</option>
+									<option value="2006" ${profileVO.pro_birthYear eq 2006 ? "selected" : ""}>2006년</option>
+									<option value="2005" ${profileVO.pro_birthYear eq 2005 ? "selected" : ""}${profileVO.pro_gender eq 2006 ? "selected" : ""}>2005년</option>
+									<option value="2004" ${profileVO.pro_birthYear eq 2004 ? "selected" : ""}>2004년</option>
+									<option value="2003" ${profileVO.pro_birthYear eq 2003 ? "selected" : ""}>2003년</option>
+									<option value="2002" ${profileVO.pro_birthYear eq 2002 ? "selected" : ""}>2002년</option>
+									<option value="2001" ${profileVO.pro_birthYear eq 2001 ? "selected" : ""}>2001년</option>
+									<option value="2000" ${profileVO.pro_birthYear eq 2000 ? "selected" : ""}>2000년</option>
+									<option value="1999" ${profileVO.pro_birthYear eq 1999 ? "selected" : ""}>1999년</option>
+									<option value="1998" ${profileVO.pro_birthYear eq 1998 ? "selected" : ""}>1998년</option>
+									<option value="1997" ${profileVO.pro_birthYear eq 1997 ? "selected" : ""}>1997년</option>
+									<option value="1996" ${profileVO.pro_birthYear eq 1996 ? "selected" : ""}>1996년</option>
+									<option value="1995" ${profileVO.pro_birthYear eq 1995 ? "selected" : ""}>1995년</option>
+									<option value="1994" ${profileVO.pro_birthYear eq 1994 ? "selected" : ""}>1994년</option>
+									<option value="1993" ${profileVO.pro_birthYear eq 1993 ? "selected" : ""}>1993년</option>
+									<option value="1992" ${profileVO.pro_birthYear eq 1992 ? "selected" : ""}>1992년</option>
+									<option value="1991" ${profileVO.pro_birthYear eq 1991 ? "selected" : ""}>1991년</option>
+									<option value="1990" ${profileVO.pro_birthYear eq 1990 ? "selected" : ""}>1990년</option>
 								</select>
 							</div>
 						</div>
@@ -104,18 +104,17 @@
 							<div class="career_select">
 								<select id="career" name="pro_career">
 									<option value="none">선택해주세요.</option>
-									<option value="0">0</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-									<option value="10+">10+</option>
+									<option value="0" ${profileVO.pro_career eq 0 ? "selected" : ""}>0</option>
+									<option value="1" ${profileVO.pro_career eq 1 ? "selected" : ""}>1</option>
+									<option value="2" ${profileVO.pro_career eq 2 ? "selected" : ""}>2</option>
+									<option value="3" ${profileVO.pro_career eq 3 ? "selected" : ""}>3</option>
+									<option value="4" ${profileVO.pro_career eq 4 ? "selected" : ""}>4</option>
+									<option value="5" ${profileVO.pro_career eq 5 ? "selected" : ""}>5</option>
+									<option value="6" ${profileVO.pro_career eq 6 ? "selected" : ""}>6</option>
+									<option value="7" ${profileVO.pro_career eq 7 ? "selected" : ""}>7</option>
+									<option value="8" ${profileVO.pro_career eq 8 ? "selected" : ""}>8</option>
+									<option value="9" ${profileVO.pro_career eq 9 ? "selected" : ""}>9</option>
+									<option value="10" ${profileVO.pro_career eq 10 ? "selected" : ""}>10</option>
 								</select>
 							</div>
 						</div>
@@ -169,21 +168,22 @@
 						<div class="education_header">
 							<h3>학력사항</h3>
 						</div>
+						<c:forEach var="educationVO" items="${eduVOList}">
 						<div class="flexible_resume">
 							<div class="left_resume_flexible">
 								<div class="group_date">
 									<!-- <div class="month_picker"> -->
-										<input type="text" name="e_edate"placeholder="년/월">
+										<input type="text" name="e_edate" placeholder="년/월" value="${educationVO.e_edate}">
 									<!-- </div> -->
 									<span class="resume_etc">~</span>
 									<!-- <div class="month_picker"> -->
-										<input type="text" name="e_gdate" placeholder="년/월">
+										<input type="text" name="e_gdate" placeholder="년/월" value="${educationVO.e_gdate}">
 									<!-- </div> -->
 								</div>
 								<div class="group_check">
 									<label class="btn_check">
 										<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
-										<input name="e_attendcheck" type="checkbox" value="${edu.e_attendcheck}" onclick="">
+										<input name="e_attendcheck" type="checkbox" onclick="" ${educationVO.e_attendcheck eq 1 ? "checked" : ""}>
 										<!-- <span class="check_icon"></span> -->
 										<span class="check_txt">재학중</span>
 									</label>
@@ -191,17 +191,18 @@
 							</div>
 							<div class="right_resume_flexible">
 								<div class="sname">
-									<input placeholder="학교명" type="text" name="e_sname" value="${edu.e_sname}">
+									<input placeholder="학교명" type="text" name="e_sname" value="${educationVO.e_sname}">
 								</div>
 								<div class="majordegree">
-									<input placeholder="전공 및 학위" type="text" name="e_majordegree" value="${edu.e_majordegree}">
+									<input placeholder="전공 및 학위" type="text" name="e_majordegree" value="${educationVO.e_majordegree}">
 								</div>
 								<div class="flexible_textarea">
 									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${edu.description}</textarea>
+									<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${educationVO.e_description}</textarea>
 								</div>
 							</div>
 						</div>
+						</c:forEach>
 						<div class="education_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 학력 추가</button>
@@ -211,20 +212,21 @@
 						<div class="career_header">
 							<h3>경력사항</h3>
 						</div>
+						<c:forEach var="careerVO" items="${carVOList}">
 						<div class="flexible_resume">
 							<div class="left_resume_flexible">
 								<div class="group_date">
 									<!-- <div class="month_picker"> -->
-										<input type="text" name="car_edate"placeholder="년/월">
+										<input type="text" name="car_edate" placeholder="년/월" value="${careerVO.car_edate}">
 									<!-- </div> -->
 									<span class="resume_etc">~</span>
 									<!-- <div class="month_picker"> -->
-										<input type="text" name="car_rdate" placeholder="년/월">
+										<input type="text" name="car_rdate" placeholder="년/월" value="${careerVO.car_rdate}">
 									<!-- </div> -->
 								</div>
 								<div class="group_check">
 									<label class="btn_check">
-										<input name="car_inoffice" type="checkbox" value="0" onclick="">
+										<input name="car_inoffice" type="checkbox" onclick="" ${careerVO.car_inoffice eq 1 ? "checked" : ""}>
 										<!-- <span class="check_icon"></span> -->
 										<span class="check_txt">재직중</span>
 									</label>
@@ -232,22 +234,23 @@
 							</div>
 							<div class="right_resume_flexible">
 								<div class="sname">
-									<input placeholder="기업명" type="text" name="car_cname">
+									<input placeholder="기업명" type="text" name="car_cname" value="${careerVO.car_cname}">
 								</div>
 								<div class="depart_post">
-									<input placeholder="부서" type="text" name="car_department">
+									<input placeholder="부서" type="text" name="car_department" value="${careerVO.car_department}">
 									<span class="rsm_dash">/</span>
-									<input placeholder="직책" type="text" name="car_position">
+									<input placeholder="직책" type="text" name="car_position" value="${careerVO.car_position}">
 								</div>
 								<div class="duty">
-									<input placeholder="직무" type="text" name="car_duty">
+									<input placeholder="직무" type="text" name="car_duty" value="${careerVO.car_duty}">
 								</div>
 								<div class="flexible_textarea">
 									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="#" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여"></textarea>
+									<textarea class="#" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여">${careerVO.car_workexp}</textarea>
 								</div>
 							</div>
 						</div>
+						</c:forEach>
 						<div class="career_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 경력 추가</button>
@@ -257,21 +260,22 @@
 						<div class="actAwards_header">
 							<h3>활동 및 수상내역</h3>
 						</div>
+						<c:forEach var="actAwardVO" items="${actAwardVOList}">
 						<div class="flexible_resume">
 							<div class="left_resume_flexible">
 								<div class="group_date">
 									<!-- <div class="month_picker"> -->
-										<input type="text" name="act_sdate" placeholder="년/월">
+										<input type="text" name="act_sdate" placeholder="년/월" value="${actAwardVO.act_sdate}">
 									<!-- </div> -->
 									<span class="resume_etc">~</span>
 									<!-- <div class="month_picker"> -->
-										<input type="text" name="act_edate" placeholder="년/월">
+										<input type="text" name="act_edate" placeholder="년/월" value="${actAwardVO.act_edate}">
 									<!-- </div> -->
 								</div>
 								<div class="group_check">
 									<label class="btn_check">
 										<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
-										<input name="act_awardCheck" type="checkbox" value="0" onclick="">
+										<input name="act_awardCheck" type="checkbox" onclick="" ${actAwardVO.act_awardcheck eq 1 ? "checked" : ""}>
 										<!-- <span class="check_icon"></span> -->
 										<span class="check_txt">수상</span>
 									</label>
@@ -279,14 +283,15 @@
 							</div>
 							<div class="right_resume_flexible">
 								<div class="actAwardname">
-									<input placeholder="활동 및 수상명을 작성합니다." type="text" name="act_actawardName">
+									<input placeholder="활동 및 수상명을 작성합니다." type="text" name="act_actawardName"  value="${actAwardVO.act_actawardname}">
 								</div>
 								<div class="flexible_textarea">
 									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="medit" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
+									<textarea class="medit" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${actAwardVO.act_description}</textarea>
 								</div>
 							</div>
 						</div>
+						</c:forEach>
 						<div class="actAwards_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 활동 및 수상내역 추가</button>
@@ -296,37 +301,39 @@
 						<div class="certiOthers_header">
 							<h3>자격증 및 기타</h3>
 						</div>
+						<c:forEach var="certiOtherVO" items="${certiOtherVCList}">
 						<div class="certiOthers_body">
 							<div class="certiOhtersName">
-								<input placeholder="항목(자격증, 언어, 스킬 등 자유롭게 기재)" type="text" name="cer_item">
+								<input placeholder="항목(자격증, 언어, 스킬 등 자유롭게 기재)" type="text" name="cer_item" value="${certiOtherVO.cer_item}">
 							</div>
 							<div class="flexible_textarea">
 								<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-								<textarea class="#" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점"></textarea>
+								<textarea class="#" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점">${certiOtherVO.cer_description}</textarea>
 							</div>
 						</div>
+						</c:forEach>
 						<div class="certiOthers_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 자격증 및 기타 추가</button>
 						</div>
 						
 						<!-- 포트폴리오 파일 첨부 -->
-						<div class="portfolios">
-							<div class="portfolios_header">
-								<h3>포트폴리오 파일 첨부</h3>
-							</div>
-							<div class="portfolio_body">
-								<label class="label_upload_resume">
-									<input type="file" class="input_upload_resume" name="por_filepath">
-									<span class="btn_upload_resume">파일선택</span>
-								</label>
-							</div>
-							<div class="portfolio_bottom">
-								<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
-							<button class="btn_plus">+ 파일추가</button>
-							</div>
+						<div class="portfolios_header">
+							<h3>포트폴리오 파일 첨부</h3>
 						</div>
-					</div>
+						<c:forEach var="portfolioVO" items="${portVOList}">
+						<div class="portfolio_body">
+							<label class="label_upload_resume">
+								<input type="file" class="input_upload_resume" name="por_filepath" value="${portfolioVO.por_filepath}">
+								<span class="btn_upload_resume">파일선택</span>
+							</label>
+						</div>
+						<div class="portfolio_bottom">
+							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
+						<button class="btn_plus">+ 파일추가</button>
+						</div>
+						</c:forEach>
+					</div> <!-- section_wrap-end -->
 				</div>
 				<div class="resume_btn_complete">
 					<button type="submit">작성완료</button>
