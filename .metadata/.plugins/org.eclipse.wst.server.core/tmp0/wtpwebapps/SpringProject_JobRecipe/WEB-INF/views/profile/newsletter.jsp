@@ -6,6 +6,10 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
 </head>
 <body>
 
@@ -14,6 +18,8 @@
 <h3 class="tit">이메일 수신 설정</h3>
 </div>
 
+<form action="newsletter.do" method="post">
+<input type="hidden" name="u_email" value="${sessionScope.u_email}">
 <div class="jpcont_wrap">
         <div class="section_group">
             <h3 class="tit">이메일 수신 설정</h3>
@@ -23,12 +29,15 @@
                     <p class="txt">잡플래닛이 찾은 맞춤 채용 및 유용한 정보 알림</p>
 
                     <label class="btn_check round btn_check_action check_chk">
-                      <input type="hidden" name="cnt" value="1">
-                      <input type="checkbox" name="notice" value="1">
+                     	 수신동의
+                      <input type="checkbox" name="newsck" value="1">
+                      	동의안함
+                      <input type="checkbox" name="newsck" value="0">
                       <input type="submit" value="전송" />
                       <span class="check_icon round"></span>
                       <span class="check_txt"></span>
                     </label>
+					
                 </div>
 
                 <div class="my_newsletter_section">
@@ -39,6 +48,7 @@
             </section>
         </div>
 </div>
+</form>
 
 <!--     <script type="text/javascript">
       $(document).ready(function () {

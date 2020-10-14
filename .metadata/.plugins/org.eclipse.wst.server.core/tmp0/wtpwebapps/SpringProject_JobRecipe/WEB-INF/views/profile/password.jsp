@@ -49,7 +49,15 @@ $(function(){
 		<h3>비밀번호 변경</h3>
 		<hr>
 
+<!-- pattern=".{8,}" -->
+
 		<form action="change_password.do" method="post">
+		
+			<div>
+				<span class="label_tit">아이디</span>
+				<input type="text" readonly value="${sessionScope.u_email}"  />
+			</div>
+			
 			<div>
 				<input type="hidden" name="u_email" value="${sessionScope.u_email}">
 				<span class="label_tit">현재 비밀번호</span>
@@ -69,11 +77,6 @@ $(function(){
 				<input type="submit" value="비밀번호변경">
 			</div>
 		</form>
-		
-		<footer>
-			<input type="text" value="${sessionScope.u_email}" />
-		</footer>
-		
 	</div>
 
 </body>

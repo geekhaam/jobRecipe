@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jobrecipe.advertisement.service.dao.AdvertisementDAO">
 
-	<resultMap type="com.jobrecipe.company.vo.CompanyVO" id="companyVO">
+	<resultMap type="com.jobrecipe.admin.vo.CompanyVO" id="companyVO">
 		<result column="c_name" property="c_name" />
 		<result column="c_loc" property="c_loc"/>
 		<result column="c_addr" property="c_addr"/>

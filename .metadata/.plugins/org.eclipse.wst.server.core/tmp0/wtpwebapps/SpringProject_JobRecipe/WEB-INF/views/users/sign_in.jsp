@@ -2,31 +2,6 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%-- <!-- 준범/정구 -->
-   <h1>로그인</h1>
-   <form action="signinCheck.do" method="post">
-      <table border="1">
-         <tr>
-            <td>이메일</td>
-            <td><input type="text" name="u_email" /></td>
-         </tr>
-         <tr>
-            <td>비밀번호</td>
-            <td><input type="password" name="u_pw" /></td>
-         </tr>
-         <tr>
-            <td><input type="submit" value="로그인"></td>
-            <td><button type="button" onclick="location.href='./findPw.do'">비밀번호 찾기</button></td>
-         </tr>
-         <tr>
-            <td><c:if test="${msg == false }">로그인실패</c:if></td>
-         </tr>
-      </table>
-
-
-   </form> --%>
-
-
 <!DOCTYPE html>
 <html>
 <head>

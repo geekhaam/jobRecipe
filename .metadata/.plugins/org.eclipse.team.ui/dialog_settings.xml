@@ -4,10 +4,12 @@
 		<item value="org.eclipse.team.svn.ui.wizard.ShareProjectWizard" key="selectedWizardId"/>
 	</section>
 	<section name="SynchronizeViewSettings">
-		<item value="1602490165584" key="lastactiveparticipant_sec_id"/>
+		<item value="1602673567803" key="lastactiveparticipant_sec_id"/>
 		<item value="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant" key="lastactiveparticipant_id"/>
 		<item value="false" key="linkWithEditor"/>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1602490165584">
+		</section>
+		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1602673567803">
 			<item value="org.eclipse.team.ui.activeModelProvider" key="org.eclipse.team.ui.activeModelProvider"/>
 		</section>
 		<section name="org.eclipse.team.svn.ui.synchronize.update.SynchronizeModelParticipant.1597051290101">

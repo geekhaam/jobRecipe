@@ -2,12 +2,10 @@ package com.jobrecipe.admin;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,12 +21,12 @@ public class AdminController {
 	private AdminService adminService;
 	
 	@RequestMapping(value="/insertCompanyForm.do")
-	public String insertCompanyForm() { //회사 추가 페이지로 이동
+	public String insertCompanyForm() { //�쉶�궗 異붽� �럹�씠吏�濡� �씠�룞
 		return "admin/insert_company";
 	}
 	
 	@RequestMapping(value="/selectCompany.do")
-	public String selectCompany(String c_name, Model m) { //회사명 검색
+	public String selectCompany(String c_name, Model m) { //�쉶�궗紐� 寃��깋
 		CompanyVO vo = adminService.selectCompanyOne(c_name);
 		
 		m.addAttribute("vo", vo);
@@ -36,8 +34,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/insertCompany.do")
-	public @ResponseBody String insertCompany(CompanyVO vo) { //회사 추가
-		String aa = "yes"; //회사명 존재하는지 한번 더 확인 여부
+	public @ResponseBody String insertCompany(CompanyVO vo) { //�쉶�궗 異붽�
+		String aa = "yes"; //�쉶�궗紐� 議댁옱�븯�뒗吏� �븳踰� �뜑 �솗�씤 �뿬遺�
 		String cName = adminService.selectCompanyName(vo.getC_name());
 	
 		if(cName == null)
@@ -48,21 +46,21 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/updateCompany.do")
-	public String updateCompany(CompanyVO vo) { //회사 수정
+	public String updateCompany(CompanyVO vo) { //�쉶�궗 �닔�젙
 		adminService.updateCompany(vo);
 		
 		return "admin/insert_company";
 	}
 	
 	@RequestMapping(value="/deleteCompany.do")
-	public String deleteCompany(String c_name) { //회사 삭제
+	public String deleteCompany(String c_name) { //�쉶�궗 �궘�젣
 		adminService.deleteCompany(c_name);
 		
 		return "admin/insert_company";
 	}
 	
 	@RequestMapping(value="/insertAdvertiseForm.do")
-	public String insertAdvertiseForm(String c_name, Model m) { //공고 추가 페이지로 이동
+	public String insertAdvertiseForm(String c_name, Model m) { //怨듦퀬 異붽� �럹�씠吏�濡� �씠�룞
 		m.addAttribute("c_name", c_name);
 		
 		return "admin/insert_advertise";

@@ -6,6 +6,7 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="docB"/>
 			<item value="Date"/>
 			<item value="docbase"/>
 			<item value="form"/>
@@ -13,7 +14,6 @@
 			<item value="checkbox"/>
 			<item value="h2"/>
 			<item value="path"/>
-			<item value="core"/>
 		</list>
 		<list key="replacehistory">
 		</list>

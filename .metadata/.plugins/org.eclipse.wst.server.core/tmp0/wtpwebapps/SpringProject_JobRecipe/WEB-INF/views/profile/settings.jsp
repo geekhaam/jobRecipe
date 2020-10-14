@@ -43,11 +43,6 @@ ul {
 							<span class="txt">이메일 수신 설정</span> <span class="num notranslate"></span>
 						</a>
 					</li>
-					<li class="">
-						<a href="/notifications" id="notifications_no_xhr">
-							<span class="txt">알림</span> <span class="num notranslate"></span>
-						</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

@@ -1,7 +1,10 @@
 /* javascript쓰는 곳 */
 
 
+
 /* 유진 */
+
+	/* 관리자  */
 		function admin_company_search() { //회사 검색
 
 			var name = $("#c_name").val();
@@ -110,6 +113,10 @@
 			$("#checkJob").val(job);
 		}
 		
+		function admin_checkJob() { //직무 직접 치려고 할 때
+			alert("찾기 버튼을 눌러주세요.");
+		}
+		
 		function admin_addLien() { //자격요건 행 추가
 			$("#lienDiv").append('<input type="text" name="lien'+adminLienCount+'"> <br>');
 			adminLienCount++;
@@ -149,10 +156,55 @@
 			}
 			return true;
 		}
+		
+		/* 공고 */
+		
+		function advertiseOrder() { //평점순으로 이동
+			var order = document.getElementById("order");
+			var orderValue = order.options[order.selectedIndex].value;
+			
+			location.href="aAllInfo1.do";
+		}
+		
+		function advertiseOrder1() { //마감순으로 이동
+			var order = document.getElementById("order");
+			var orderValue = order.options[order.selectedIndex].value;
+			
+			location.href="aAllInfo.do";
+		}
+
+		function searchJob() {
+			var search = $("#search").val().trim();
+			
+			if(search == "" || search == null) {
+				alert("찾을 내용을 입력해 주세요.");
+				return false;
+			}
+		}
+		
+		function searchJob2() {
+			var search = $("#search2").val().trim();
+			
+			if(search == "" || search == null) {
+				alert("찾을 내용을 입력해 주세요.");
+				return false;
+			}
+		}
+		
+		/* 리뷰 */
+		
+		function review_checkJob() {
+			alert("찾기 버튼을 눌러주세요.");
+		}
+
+		function review_job_check() {
+			var job = $('input[name="job"]:checked').val();
+			$("#checkJob").val(job);
+		}
+		
 /* 유진 끝 */
 		
-		/* 준범 회원가입 페이지 js 작업 */
-		
+/* 준범 */
 		function users_changeCkboxVal(id) { //체크박스 체크시 DB로 전달할 값(0 혹은 1) 변경
 			var ckboxVal = $("#"+id).val();
 			if(ckboxVal == 0) {
@@ -178,6 +230,3 @@
 				}
 			}
 		}
-		
-		
-		

@@ -40,4 +40,35 @@
 	<select id="getPortfolio" parameterType="int" resultType="com.jobrecipe.profile.vo.PortfolioVO">
 		SELECT * FROM rec_portfolios WHERE u_no=#{u_no}
 	</select>
+	
+	<!-- 이메일 수신 동의 설정 -->
+	<update id = "newsCheck">
+		update rec_users set u_newsLetter = #{u_newsLetter} where u_email = #{u_email}
+	</update>
+	
+	<!-- 비밀번호 변경 관련 mapper -->
+    <update id = "pass_change">
+    	update rec_users set u_pw=#{u_pw} where u_email=#{u_email}
+    </update>
+    
+    <!-- 내가 쓴 리뷰 -->
+    <select id="getReview" resultType="reviewVO" parameterType="reviewVO">
+	select * from rec_review where u_no = #{u_no}
+	</select>
+
+	<!-- 리뷰 업데이트 -->
+ 	<update id="reviewUpdate" parameterType="reviewVO">
+		update rec_review set 
+		
+	</update> 
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="reviewDelete" parameterType="reviewVO">
+		delete from rec_review where u_no = #{u_no}
+	</delete>
+	
+	<!-- 기업 검색 -->
+ 	<select id="searchc" resultType="String">
+ 	select c_name from rec_company where c_name = #{rev_name}
+ 	</select>
 </mapper>
