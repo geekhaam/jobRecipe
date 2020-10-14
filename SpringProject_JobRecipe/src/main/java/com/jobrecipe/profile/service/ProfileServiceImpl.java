@@ -61,6 +61,12 @@ public class ProfileServiceImpl implements ProfileService{
 		System.out.println("getPortfolio-service call");
 		return profileDAO.getPortfolio(u_no);
 	}
+
+	@Override
+	public void updateResume(int u_no) {
+		System.out.println("updateResume-service call");
+		profileDAO.updateResume(u_no);
+	}
 	
 	
 }

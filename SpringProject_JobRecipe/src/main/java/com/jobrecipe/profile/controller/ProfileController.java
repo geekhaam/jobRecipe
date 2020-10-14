@@ -7,9 +7,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jobrecipe.profile.service.ProfileServiceImpl;
+import com.jobrecipe.profile.vo.ActAwardVO;
+import com.jobrecipe.profile.vo.CareerVO;
+import com.jobrecipe.profile.vo.CertiOtherVO;
+import com.jobrecipe.profile.vo.EducationVO;
+import com.jobrecipe.profile.vo.PortfolioVO;
 import com.jobrecipe.profile.vo.ProfileVO;
 import com.jobrecipe.user.service.UserServiceImpl;
 import com.jobrecipe.user.vo.UserVO;
@@ -32,7 +40,7 @@ public class ProfileController {
 	}
 	
 	/*
-	 * 마이페이지 링크
+	 * 내프로필 링크
 	 */
 	@RequestMapping(value = "/resumes.do")
 	public String resumesForm(HttpSession session, Model model) {
@@ -56,6 +64,12 @@ public class ProfileController {
 		profileService.insertProfile(profileVO);
 		model.addAttribute("u_no", profileVO.getU_no());
 		return "wizard/signup_follow";
+	}
+	
+	@RequestMapping(value = "insertResume.do", method = RequestMethod.POST)
+	public String insertResume(ProfileVO profileVO) {
+		//profileService.updateProfile(u_no);
+		return "profile/settings";	
 	}
 	
 	/*

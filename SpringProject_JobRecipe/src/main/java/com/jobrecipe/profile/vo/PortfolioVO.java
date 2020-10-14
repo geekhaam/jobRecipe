@@ -1,5 +1,7 @@
 package com.jobrecipe.profile.vo;
 
+import java.util.List;
+
 public class PortfolioVO {
 
 	private int por_no;
@@ -40,6 +42,7 @@ public class PortfolioVO {
 	public void setPor_filepath(String por_filepath) {
 		this.por_filepath = por_filepath;
 	}
+
 
 	@Override
 	public String toString() {

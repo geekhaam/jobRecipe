@@ -1,5 +1,6 @@
 package com.jobrecipe.profile.vo;
 
+import java.util.List;
 
 public class EducationVO {
 	

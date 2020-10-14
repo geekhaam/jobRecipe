@@ -1,5 +1,7 @@
 package com.jobrecipe.profile.vo;
 
+import java.util.List;
+
 public class CertiOtherVO {
 	
 	private int cer_no;
@@ -50,6 +52,7 @@ public class CertiOtherVO {
 	public void setCer_description(String cer_description) {
 		this.cer_description = cer_description;
 	}
+
 
 	@Override
 	public String toString() {

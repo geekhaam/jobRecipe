@@ -33,5 +33,8 @@ public interface ProfileService {
 	//기존의 포트폴리오 정보를 가지고 온다.
 	public ArrayList<PortfolioVO> getPortfolio(int u_no);
 	
+	//이력서에 정보 입력시 DB에 데이터를 보내줌 (ajax 고려)
+	public void updateResume(int u_no);
+	
 	
 }

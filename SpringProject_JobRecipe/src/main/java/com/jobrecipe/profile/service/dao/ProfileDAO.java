@@ -27,4 +27,6 @@ public interface ProfileDAO {
 	public ArrayList<CertiOtherVO> getCertiOther(int u_no);
 	
 	public ArrayList<PortfolioVO> getPortfolio(int u_no);
+	
+	public void updateResume(int u_no);
 }

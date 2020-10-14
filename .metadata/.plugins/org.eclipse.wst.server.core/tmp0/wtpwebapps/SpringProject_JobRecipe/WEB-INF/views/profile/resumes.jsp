@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@
 			</div>
 		</div>
 		<div id="rsm_contents_wrap">
-			<form action="#" method="post">
+			<form action="insertResume.do" method="post">
 				<div id="rsm_contents">
 					<!-- 기본 정보 섹션 -->
 					<div class="section_wrap"> <!-- 각 입력 내용 섹션 분류용 래퍼 -->
@@ -168,41 +169,80 @@
 						<div class="education_header">
 							<h3>학력사항</h3>
 						</div>
-						<c:forEach var="educationVO" items="${eduVOList}">
-						<div class="flexible_resume">
-							<div class="left_resume_flexible">
-								<div class="group_date">
-									<!-- <div class="month_picker"> -->
-										<input type="text" name="e_edate" placeholder="년/월" value="${educationVO.e_edate}">
-									<!-- </div> -->
-									<span class="resume_etc">~</span>
-									<!-- <div class="month_picker"> -->
-										<input type="text" name="e_gdate" placeholder="년/월" value="${educationVO.e_gdate}">
-									<!-- </div> -->
+						<c:choose>
+							<c:when test="${eduVOList.size() eq 0}">
+							<div class="flexible_resume">
+								<div class="left_resume_flexible">
+									<div class="group_date">
+										<!-- <div class="month_picker"> -->
+											<input type="text" name="e_edate" placeholder="년/월">
+										<!-- </div> -->
+										<span class="resume_etc">~</span>
+										<!-- <div class="month_picker"> -->
+											<input type="text" name="e_gdate" placeholder="년/월">
+										<!-- </div> -->
+									</div>
+									<div class="group_check">
+										<label class="btn_check">
+											<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
+											<input name="e_attendcheck" type="checkbox" onclick="" value="0">
+											<!-- <span class="check_icon"></span> -->
+											<span class="check_txt">재학중</span>
+										</label>
+									</div>
 								</div>
-								<div class="group_check">
-									<label class="btn_check">
-										<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
-										<input name="e_attendcheck" type="checkbox" onclick="" ${educationVO.e_attendcheck eq 1 ? "checked" : ""}>
-										<!-- <span class="check_icon"></span> -->
-										<span class="check_txt">재학중</span>
-									</label>
+								<div class="right_resume_flexible">
+									<div class="sname">
+										<input placeholder="학교명" type="text" name="e_sname">
+									</div>
+									<div class="majordegree">
+										<input placeholder="전공 및 학위" type="text" name="e_majordegree">
+									</div>
+									<div class="flexible_textarea">
+										<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+										<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
+									</div>
 								</div>
 							</div>
-							<div class="right_resume_flexible">
-								<div class="sname">
-									<input placeholder="학교명" type="text" name="e_sname" value="${educationVO.e_sname}">
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="educationVO" items="${eduVOList}">
+								<div class="flexible_resume">
+									<div class="left_resume_flexible">
+										<div class="group_date">
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="e_edate" placeholder="년/월" value="${educationVO.e_edate}">
+											<!-- </div> -->
+											<span class="resume_etc">~</span>
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="e_gdate" placeholder="년/월" value="${educationVO.e_gdate}">
+											<!-- </div> -->
+										</div>
+										<div class="group_check">
+											<label class="btn_check">
+												<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
+												<input name="e_attendcheck" type="checkbox" onclick="" ${educationVO.e_attendcheck eq 1 ? "checked" : ""}>
+												<!-- <span class="check_icon"></span> -->
+												<span class="check_txt">재학중</span>
+											</label>
+										</div>
+									</div>
+									<div class="right_resume_flexible">
+										<div class="sname">
+											<input placeholder="학교명" type="text" name="e_sname" value="${educationVO.e_sname}">
+										</div>
+										<div class="majordegree">
+											<input placeholder="전공 및 학위" type="text" name="e_majordegree" value="${educationVO.e_majordegree}">
+										</div>
+										<div class="flexible_textarea">
+											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+											<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${educationVO.e_description}</textarea>
+										</div>
+									</div>
 								</div>
-								<div class="majordegree">
-									<input placeholder="전공 및 학위" type="text" name="e_majordegree" value="${educationVO.e_majordegree}">
-								</div>
-								<div class="flexible_textarea">
-									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${educationVO.e_description}</textarea>
-								</div>
-							</div>
-						</div>
-						</c:forEach>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						<div class="education_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 학력 추가</button>
@@ -212,45 +252,88 @@
 						<div class="career_header">
 							<h3>경력사항</h3>
 						</div>
-						<c:forEach var="careerVO" items="${carVOList}">
-						<div class="flexible_resume">
-							<div class="left_resume_flexible">
-								<div class="group_date">
-									<!-- <div class="month_picker"> -->
-										<input type="text" name="car_edate" placeholder="년/월" value="${careerVO.car_edate}">
-									<!-- </div> -->
-									<span class="resume_etc">~</span>
-									<!-- <div class="month_picker"> -->
-										<input type="text" name="car_rdate" placeholder="년/월" value="${careerVO.car_rdate}">
-									<!-- </div> -->
+						<c:choose>
+							<c:when test="${carVOList.size() eq 0}">
+								<div class="flexible_resume">
+									<div class="left_resume_flexible">
+										<div class="group_date">
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="car_edate" placeholder="년/월">
+											<!-- </div> -->
+											<span class="resume_etc">~</span>
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="car_rdate" placeholder="년/월">
+											<!-- </div> -->
+										</div>
+										<div class="group_check">
+											<label class="btn_check">
+												<input name="car_inoffice" type="checkbox" onclick="" value="0">
+												<!-- <span class="check_icon"></span> -->
+												<span class="check_txt">재직중</span>
+											</label>
+										</div>
+									</div>
+									<div class="right_resume_flexible">
+										<div class="sname">
+											<input placeholder="기업명" type="text" name="car_cname">
+										</div>
+										<div class="depart_post">
+											<input placeholder="부서" type="text" name="car_department">
+											<span class="rsm_dash">/</span>
+											<input placeholder="직책" type="text" name="car_position">
+										</div>
+										<div class="duty">
+											<input placeholder="직무" type="text" name="car_duty">
+										</div>
+										<div class="flexible_textarea">
+											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+											<textarea class="#" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여"></textarea>
+										</div>
+									</div>
 								</div>
-								<div class="group_check">
-									<label class="btn_check">
-										<input name="car_inoffice" type="checkbox" onclick="" ${careerVO.car_inoffice eq 1 ? "checked" : ""}>
-										<!-- <span class="check_icon"></span> -->
-										<span class="check_txt">재직중</span>
-									</label>
-								</div>
-							</div>
-							<div class="right_resume_flexible">
-								<div class="sname">
-									<input placeholder="기업명" type="text" name="car_cname" value="${careerVO.car_cname}">
-								</div>
-								<div class="depart_post">
-									<input placeholder="부서" type="text" name="car_department" value="${careerVO.car_department}">
-									<span class="rsm_dash">/</span>
-									<input placeholder="직책" type="text" name="car_position" value="${careerVO.car_position}">
-								</div>
-								<div class="duty">
-									<input placeholder="직무" type="text" name="car_duty" value="${careerVO.car_duty}">
-								</div>
-								<div class="flexible_textarea">
-									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="#" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여">${careerVO.car_workexp}</textarea>
-								</div>
-							</div>
-						</div>
-						</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="careerVO" items="${carVOList}">
+									<div class="flexible_resume">
+										<div class="left_resume_flexible">
+											<div class="group_date">
+												<!-- <div class="month_picker"> -->
+													<input type="text" name="car_edate" placeholder="년/월" value="${careerVO.car_edate}">
+												<!-- </div> -->
+												<span class="resume_etc">~</span>
+												<!-- <div class="month_picker"> -->
+													<input type="text" name="car_rdate" placeholder="년/월" value="${careerVO.car_rdate}">
+												<!-- </div> -->
+											</div>
+											<div class="group_check">
+												<label class="btn_check">
+													<input name="car_inoffice" type="checkbox" onclick="" ${careerVO.car_inoffice eq 1 ? "checked" : ""}>
+													<!-- <span class="check_icon"></span> -->
+													<span class="check_txt">재직중</span>
+												</label>
+											</div>
+										</div>
+										<div class="right_resume_flexible">
+											<div class="sname">
+												<input placeholder="기업명" type="text" name="car_cname" value="${careerVO.car_cname}">
+											</div>
+											<div class="depart_post">
+												<input placeholder="부서" type="text" name="car_department" value="${careerVO.car_department}">
+												<span class="rsm_dash">/</span>
+												<input placeholder="직책" type="text" name="car_position" value="${careerVO.car_position}">
+											</div>
+											<div class="duty">
+												<input placeholder="직무" type="text" name="car_duty" value="${careerVO.car_duty}">
+											</div>
+											<div class="flexible_textarea">
+												<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+												<textarea class="#" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여">${careerVO.car_workexp}</textarea>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						<div class="career_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 경력 추가</button>
@@ -260,38 +343,74 @@
 						<div class="actAwards_header">
 							<h3>활동 및 수상내역</h3>
 						</div>
-						<c:forEach var="actAwardVO" items="${actAwardVOList}">
-						<div class="flexible_resume">
-							<div class="left_resume_flexible">
-								<div class="group_date">
-									<!-- <div class="month_picker"> -->
-										<input type="text" name="act_sdate" placeholder="년/월" value="${actAwardVO.act_sdate}">
-									<!-- </div> -->
-									<span class="resume_etc">~</span>
-									<!-- <div class="month_picker"> -->
-										<input type="text" name="act_edate" placeholder="년/월" value="${actAwardVO.act_edate}">
-									<!-- </div> -->
+						<c:choose>
+							<c:when test="${actAwardVOList.size() eq 0}">
+								<div class="flexible_resume">
+									<div class="left_resume_flexible">
+										<div class="group_date">
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="act_sdate" placeholder="년/월">
+											<!-- </div> -->
+											<span class="resume_etc">~</span>
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="act_edate" placeholder="년/월">
+											<!-- </div> -->
+										</div>
+										<div class="group_check">
+											<label class="btn_check">
+												<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
+												<input name="act_awardCheck" type="checkbox" onclick="" value="0">
+												<!-- <span class="check_icon"></span> -->
+												<span class="check_txt">수상</span>
+											</label>
+										</div>
+									</div>
+									<div class="right_resume_flexible">
+										<div class="actAwardname">
+											<input placeholder="활동 및 수상명을 작성합니다." type="text" name="act_actawardName">
+										</div>
+										<div class="flexible_textarea">
+											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+											<textarea class="medit" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
+										</div>
+									</div>
 								</div>
-								<div class="group_check">
-									<label class="btn_check">
-										<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
-										<input name="act_awardCheck" type="checkbox" onclick="" ${actAwardVO.act_awardcheck eq 1 ? "checked" : ""}>
-										<!-- <span class="check_icon"></span> -->
-										<span class="check_txt">수상</span>
-									</label>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="actAwardVO" items="${actAwardVOList}">
+								<div class="flexible_resume">
+									<div class="left_resume_flexible">
+										<div class="group_date">
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="act_sdate" placeholder="년/월" value="${actAwardVO.act_sdate}">
+											<!-- </div> -->
+											<span class="resume_etc">~</span>
+											<!-- <div class="month_picker"> -->
+												<input type="text" name="act_edate" placeholder="년/월" value="${actAwardVO.act_edate}">
+											<!-- </div> -->
+										</div>
+										<div class="group_check">
+											<label class="btn_check">
+												<!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
+												<input name="act_awardCheck" type="checkbox" onclick="" ${actAwardVO.act_awardcheck eq 1 ? "checked" : ""}>
+												<!-- <span class="check_icon"></span> -->
+												<span class="check_txt">수상</span>
+											</label>
+										</div>
+									</div>
+									<div class="right_resume_flexible">
+										<div class="actAwardname">
+											<input placeholder="활동 및 수상명을 작성합니다." type="text" name="act_actawardName"  value="${actAwardVO.act_actawardname}">
+										</div>
+										<div class="flexible_textarea">
+											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+											<textarea class="medit" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${actAwardVO.act_description}</textarea>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="right_resume_flexible">
-								<div class="actAwardname">
-									<input placeholder="활동 및 수상명을 작성합니다." type="text" name="act_actawardName"  value="${actAwardVO.act_actawardname}">
-								</div>
-								<div class="flexible_textarea">
-									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="medit" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${actAwardVO.act_description}</textarea>
-								</div>
-							</div>
-						</div>
-						</c:forEach>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						<div class="actAwards_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 활동 및 수상내역 추가</button>
@@ -301,17 +420,32 @@
 						<div class="certiOthers_header">
 							<h3>자격증 및 기타</h3>
 						</div>
-						<c:forEach var="certiOtherVO" items="${certiOtherVCList}">
-						<div class="certiOthers_body">
-							<div class="certiOhtersName">
-								<input placeholder="항목(자격증, 언어, 스킬 등 자유롭게 기재)" type="text" name="cer_item" value="${certiOtherVO.cer_item}">
-							</div>
-							<div class="flexible_textarea">
-								<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-								<textarea class="#" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점">${certiOtherVO.cer_description}</textarea>
-							</div>
-						</div>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${certiOtherVOList.size() eq 0}">
+								<div class="certiOthers_body">
+									<div class="certiOhtersName">
+										<input placeholder="항목(자격증, 언어, 스킬 등 자유롭게 기재)" type="text" name="cer_item">
+									</div>
+									<div class="flexible_textarea">
+										<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+										<textarea class="#" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점"></textarea>
+									</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="certiOtherVO" items="${certiOtherVCList}">
+									<div class="certiOthers_body">
+										<div class="certiOhtersName">
+											<input placeholder="항목(자격증, 언어, 스킬 등 자유롭게 기재)" type="text" name="cer_item" value="${certiOtherVO.cer_item}">
+										</div>
+										<div class="flexible_textarea">
+											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
+											<textarea class="#" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점">${certiOtherVO.cer_description}</textarea>
+										</div>
+									</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						<div class="certiOthers_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 							<button class="btn_plus">+ 자격증 및 기타 추가</button>
@@ -321,18 +455,30 @@
 						<div class="portfolios_header">
 							<h3>포트폴리오 파일 첨부</h3>
 						</div>
-						<c:forEach var="portfolioVO" items="${portVOList}">
-						<div class="portfolio_body">
-							<label class="label_upload_resume">
-								<input type="file" class="input_upload_resume" name="por_filepath" value="${portfolioVO.por_filepath}">
-								<span class="btn_upload_resume">파일선택</span>
-							</label>
-						</div>
+						<c:choose>
+							<c:when test="${portVOList.size() eq 0}">
+								<div class="portfolio_body">
+									<label class="label_upload_resume">
+										<input type="file" class="input_upload_resume" name="por_filepath">
+										<span class="btn_upload_resume">파일선택</span>
+									</label>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="portfolioVO" items="${portVOList}">
+									<div class="portfolio_body">
+										<label class="label_upload_resume">
+											<input type="file" class="input_upload_resume" name="por_filepath" value="${portfolioVO.por_filepath}">
+											<span class="btn_upload_resume">파일선택</span>
+										</label>
+									</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						<div class="portfolio_bottom">
 							<!-- button 클릭시 양식 추가 되는 javascript 로직 필요 -->
 						<button class="btn_plus">+ 파일추가</button>
 						</div>
-						</c:forEach>
 					</div> <!-- section_wrap-end -->
 				</div>
 				<div class="resume_btn_complete">
