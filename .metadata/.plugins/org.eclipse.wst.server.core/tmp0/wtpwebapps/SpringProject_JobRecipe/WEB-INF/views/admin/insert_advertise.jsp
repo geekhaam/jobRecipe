@@ -37,7 +37,7 @@
 		<tr>
 			<th>직무</th>
 			<td>
-				<input type="text" id="checkJob" name="ad_job" required="required" placeholder="찾기">
+				<input type="text" id="checkJob" name="ad_job" required="required" placeholder="찾기" onclick="admin_checkJob()">
 				<input type="button" id="modalBtn" value="찾기" data-toggle="modal" data-target="#myModal">
  
 			    <div class="modal fade" id="myModal" role="dialog">

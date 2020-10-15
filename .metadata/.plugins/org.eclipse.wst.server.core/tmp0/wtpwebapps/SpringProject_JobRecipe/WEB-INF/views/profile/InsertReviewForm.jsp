@@ -102,7 +102,10 @@
 					alert(result);
 					$("#c_namea").val("");
 					$("#c_namea").focus();
-				} 
+				} else {
+					alert("존재하는 회사입니다.");
+					$("#rev_name").val(result);
+				}
 				
 			}
 		})
@@ -146,11 +149,11 @@
 
 
 
-	<input type="text" id="c_namea" name="rev_name" value=""/>
-	<input type="button" value="회사 검색" onclick="searchCompany()"/>
+
 
 	<form action="/hire/insertReview.do" onsubmit="return insert_Review_Check()">
-	<input type="hidden" name="rev_name" value="${rev_name }">
+	<input type="text" id="c_namea" name="rev_name" value=""/>
+	<input type="button" value="회사 검색" onclick="searchCompany()"/>
 	<table>
 		<tr>
 			<td>현직장/전직장</td>

@@ -36,7 +36,7 @@ public class ProfileController {
 	/*
 	 * 마이페이지 링크
 	 */
-	@RequestMapping(value = "/settings.do")
+	@RequestMapping(value = "settings.do")
 	public String setting(UserVO vo1) {
 		return "profile/settings";
 	}
@@ -44,7 +44,7 @@ public class ProfileController {
 	/*
 	 * 내프로필 링크
 	 */
-	@RequestMapping(value = "/resumes.do")
+	@RequestMapping(value = "/resumeForm.do")
 	public String resumesForm(HttpSession session, Model model) {
 		UserVO loginInfo = (UserVO) session.getAttribute("login");
 		int u_no = loginInfo.getU_no();
@@ -54,7 +54,7 @@ public class ProfileController {
 		model.addAttribute("actAwardVOList", profileService.getActAward(u_no));
 		model.addAttribute("certiOtherVOList", profileService.getCertiOther(u_no));
 		model.addAttribute("portVOList", profileService.getPortfolio(u_no));
-		return "profile/resumes";
+		return "profile/resumeForm";
 	}
 	
 	/* 
@@ -88,13 +88,16 @@ public class ProfileController {
 		return "/profile/job_applicants";
 	}
 
-	// 내가 쓴 리뷰 확인
+	//내가 쓴 전체 리뷰 확인
 	@RequestMapping(value = "/reviews.do", method = RequestMethod.GET)
 	public String review1(Model model, HttpSession session) throws Exception {
 		UserVO loginInfo = (UserVO) session.getAttribute("login");
 		int u_no1 = loginInfo.getU_no();
-		ArrayList<ReviewVO> list = profileService.getReview(u_no1);
+		ArrayList<ReviewVO> list = profileService.getAllReview(u_no1);
+		int reviewCnt = profileService.getAllRevCount(u_no1);
+
 		model.addAttribute("list", list);
+		model.addAttribute("reviewCnt", reviewCnt);
 
 		return "/profile/reviews";
 	}
@@ -150,7 +153,6 @@ public class ProfileController {
 	// 리뷰 추가 페이지
 	@RequestMapping(value = "/InsertReviewForm.do")
 	public String insertReviewForm() {
-
 		return "/profile/InsertReviewForm";
 	}
 
@@ -167,19 +169,45 @@ public class ProfileController {
 		} else {
 			msg = "존재하지 않는 회사입니다.";
 		}
-
 		return msg;
-
 	}
 	
-	/*
-	 * @RequestMapping(value = "/change_password") public String
-	 * change_password(UserVO vo1) { return "profile/password"; }
-	 */
-	
-	/*
-	 * @RequestMapping(value = "/newsletter.do") public String newsletter(UserVO vo)
-	 * { return "profile/newsletter"; }
-	 */
+	//리뷰 수정 페이지 이동
+    @RequestMapping(value="/updateReviewView.do", method = RequestMethod.GET)
+    public String updateReview(ReviewVO vo1, Model model,int rev_no) {
+    	ReviewVO reviewVO = profileService.getReview(rev_no);
+    	model.addAttribute("reviewVO", reviewVO);
+    	
+    	return "/profile/UpdateReviewForm";
+    }
+    
+    //리뷰 수정폼 로직
+    @RequestMapping(value="/updateReviewCon.do", method = RequestMethod.POST)
+    public String updateReview1(ReviewVO vo1, Model model) {
+    	profileService.updateReview(vo1);
+
+    	return "redirect:/reviews.do";
+    }
+    
+    
+	//리뷰 삭제
+    @RequestMapping(value="/deleteReview.do")
+	public String deleteReview(int rev_no) {
+    	
+		profileService.deleteReview(rev_no);
+		
+		return "redirect:/reviews.do";
+	}
+    
+    //해당 리뷰 가져오기
+    @RequestMapping(value="/getReview.do", method = RequestMethod.GET)
+    public String getReview5(int rev_no, Model model) {
+    	
+    	ReviewVO reviewVO = profileService.getReview(rev_no);    	
+    	model.addAttribute("reviewVO", reviewVO);
+
+		return "/profile/GetReview";
+    	
+    }
 
 }

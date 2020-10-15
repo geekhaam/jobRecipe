@@ -19,11 +19,28 @@ ul {
 <body>
 	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
-		<a href="../profile/hire/Search_Job.do">검색</a>
 	</header>
 	<section>
-		<div id="myPageMyInformationMenu" class="mypage_menu"
-			style="position: fixed; left: 0x; top: 100px;">
+		
+		<div id="myPageInfo">
+			<span class="img_profile"></span> <!-- 프로필 이미지 -->
+			<div class="my_info">
+				<h1>${u_email}</h1>
+			</div>
+		</div>
+		
+		<div id="myPageMenu">
+			<div class="mypagemenu_wrap">
+				<div class="table_row_div">
+					<a href="settings.do">계정</a>
+					<a href="resumes.do">내 프로필</a>
+					<a href="reviews.do">활동내역</a>
+					<a href="#">관심정보</a>
+				</div>
+			</div>
+		</div>
+		
+		<div id="myPageMyInformationMenu" class="mypage_menu">
 			<nav id="profile-left-menu">
 				<h2>계정</h2>
 				<hr>
@@ -47,24 +64,6 @@ ul {
 			</nav>
 		</div>
 		
-		<div id="myPageInfo">
-			<span class="img_profile"></span> <!-- 프로필 이미지 -->
-			<div class="my_info">
-				<h1>${u_email}</h1>
-			</div>
-		</div>
-		
-		<div id="myPageMenu">
-			<div class="mypagemenu_wrap">
-				<div class="table_row_div">
-					<a href="settings.do">계정</a>
-					<a href="resumes.do">내 프로필</a>
-					<a href="#">활동내역</a>
-					<a href="#">관심정보</a>
-				</div>
-			</div>
-		</div>
-		
 		<div id="mainContents" class="jpcont_rgt"
 			style="position: relative; left: 300px; top: 100px;">
 			<div class="jpcont_wrap">
@@ -85,7 +84,7 @@ ul {
 								<ul class="email_list">
 									<li class="" id="email-3325885">
 										<div class="row1">
-											<span class="email">wjdrn15@naver.com</span>
+											<label>${sessionScope.u_email}</label>
 										</div>
 										<div class="row2">
 											<span class="state">기본 이메일 주소</span>

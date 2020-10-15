@@ -109,6 +109,12 @@
 	margin: 0 auto;
 }
 </style>
+<script type="text/javascript">
+	var msg = '${msg}'
+	if(msg == 'success') {
+		alert('로그인을 하세요 ');
+	}
+</script>
 </head>
 <body>
 	<div id="logreg-forms">

@@ -23,7 +23,7 @@
 		delete from rec_company where c_name=#{c_name}
 	</delete>
 	
-	<insert id="insertAdvertise">
+	<insert id="insertAdvertise"> <!-- 공고 추가 -->
 		insert into rec_ad (ad_no, ad_name, ad_title, ad_date, ad_job, ad_carr, ad_emp, ad_skill,
 		ad_upmu, ad_lien, ad_deals, ad_pro, ad_cp, ad_ect) 
 		values (adno_seq.nextval, #{ad_name}, #{ad_title}, #{ad_date}, #{ad_job}, #{ad_carr}, #{ad_emp},

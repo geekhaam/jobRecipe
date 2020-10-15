@@ -24,8 +24,6 @@
 		<result column="ad_pro" property="ad_pro"/>
 		<result column="ad_cp" property="ad_cp"/>
 		<result column="ad_ect" property="ad_ect"/>
-		<result column="ad_dead" property="ad_dead"/>
-		<result column="ad_save" property="ad_save"/>
 		<result column="ad_count" property="ad_count"/>
 		<result column="ad_appl" property="ad_appl"/>
 		<collection property="companyVO" resultMap="companyVO" />
@@ -101,7 +99,7 @@
 	<!--검색한 내용 출력 -->
 	<select id="searchTitle" resultMap="advertisementVO">
 		select * from (select rownum rn, c_name, c_loc, c_addr, c_star, ad_skill, ad_upmu, ad_lien, ad_date, ad_title,
-		ad_count, ad_appl, ad_job, ad_no, ad_save from (select * from rec_company c , rec_ad ad 
+		ad_count, ad_appl, ad_job, ad_no from (select * from rec_company c , rec_ad ad 
 		where c.c_name = ad.ad_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1 order by ad_date))
 		where rn between #{rowStart} and #{rowEnd} <include refid="search"/> 
 	</select>
@@ -123,20 +121,10 @@
 		</if>
 	</sql>
 	
-	<!-- 공고 저장 -->
-	<update id="UpdateSave">
-		update rec_ad set ad_save = 1 where ad_no= #{ad_no}
-	</update>
-
-	<!-- 공고 저장 취소 -->
-	<update id="UpdateSaveCancel">
-		update rec_ad set ad_save = 0 where ad_no = #{ad_no}
-	</update>
-	
 	<!-- 공고 하나만 -->
 	<select id="selectSaveOne" resultMap="advertisementVO">
 		select c_name, c_loc, c_addr, c_star, ad_skill, ad_upmu, ad_lien, ad_date, ad_title,
-		ad_count, ad_appl, ad_job, ad_no, ad_save from rec_company c , rec_ad ad where c.c_name = ad.ad_name and ad_no = #{ad_no}
+		ad_count, ad_appl, ad_job, ad_no from rec_company c , rec_ad ad where c.c_name = ad.ad_name and ad_no = #{ad_no}
 	</select>
 	
 	<!-- 공고 조회수 증가 -->

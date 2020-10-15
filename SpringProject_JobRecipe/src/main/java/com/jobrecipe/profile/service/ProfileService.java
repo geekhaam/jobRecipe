@@ -41,20 +41,29 @@ public interface ProfileService {
 	
 	public void job_applicants(UserVO vo) throws Exception;
 	
-	//내가 쓴 리뷰
-	public ArrayList<ReviewVO> getReview(int u_no) throws Exception;
-	
 	//이메일수신 설정
 	public void newsCheck(UserVO vo) throws Exception;
-
+	
 	//비밀번호 변경
-    public void pass_change(UserVO vo1) throws Exception;
+	public void pass_change(UserVO vo1) throws Exception;
+
+	//기업검색
+	public String searchc(String rev_name);
+
+	//내가 쓴 전체 리뷰 불러오기
+	public ArrayList<ReviewVO> getAllReview(int u_no) throws Exception;
+	
+	//내가 쓴 전체 리뷰 개수 확인
+	public int getAllRevCount(int u_no) throws Exception;
+	
+	//특정 리뷰 불러오기
+    public ReviewVO getReview(int rev_no);
 	
     //리뷰 업데이트
     public void updateReview(ReviewVO vo1);
+    
     //리뷰 삭제
-    public void deleteReview(ReviewVO vo1);
-    //기업검색
-    public String searchc(String rev_name);
+    public void deleteReview(int rev_no);
+    
 
 }

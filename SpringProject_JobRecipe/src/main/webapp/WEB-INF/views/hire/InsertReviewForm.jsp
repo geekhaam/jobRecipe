@@ -115,7 +115,7 @@
 	<h1>${rev_name }</h1>
 	
 	<form action="insertReview.do" onsubmit="return insert_Review_Check()">
-	<input type="hidden" name="rev_name" value="${rev_name }">
+	<input type="hidden" name="rev_name" value="${rev_name}">
 	<table>
 		<tr>
 			<td>현직장/전직장</td>

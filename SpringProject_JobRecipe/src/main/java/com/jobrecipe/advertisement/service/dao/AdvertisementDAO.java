@@ -27,11 +27,11 @@ public interface AdvertisementDAO {
 	
 	int searchList(SearchCriteria scri);
 
-	void UpdateSave(AdvertisementVO vo);
+	/*void UpdateSave(AdvertisementVO vo);
 
 	void UpdateSaveCancel(AdvertisementVO vo);
 	
-	AdvertisementVO selectSaveOne(AdvertisementVO vo);
+	AdvertisementVO selectSaveOne(AdvertisementVO vo);*/
 
 	void UpdateCount(AdvertisementVO vo);
 

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobrecipe.advertisement.service.dao.AdvertisementDAO">
+
+	<resultMap type="com.jobrecipe.admin.vo.CompanyVO" id="companyVO">
+		<result column="c_name" property="c_name" />
+		<result column="c_loc" property="c_loc"/>
+		<result column="c_addr" property="c_addr"/>
+		<result column="c_star" property="c_star"/>		
+	</resultMap>
+	
+	<resultMap type="com.jobrecipe.advertisement.vo.AdvertisementVO" id="advertisementVO">
+		<result column="ad_no" property="ad_no"/>
+		<result column="ad_name" property="ad_name"/>
+		<result column="ad_title" property="ad_title"/>
+		<result column="ad_date" property="ad_date"/>
+		<result column="ad_job" property="ad_job"/>
+		<result column="ad_carr" property="ad_carr"/>
+		<result column="ad_emp" property="ad_emp"/>
+		<result column="ad_skill" property="ad_skill"/>
+		<result column="ad_upmu" property="ad_upmu"/>
+		<result column="ad_lien" property="ad_lien"/>
+		<result column="ad_deals" property="ad_deals"/>
+		<result column="ad_pro" property="ad_pro"/>
+		<result column="ad_cp" property="ad_cp"/>
+		<result column="ad_ect" property="ad_ect"/>
+		<result column="ad_count" property="ad_count"/>
+		<result column="ad_appl" property="ad_appl"/>
+		<collection property="companyVO" resultMap="companyVO" />
+	</resultMap>
+	
+	<!-- 디데이순 전체출력 -->
+	<select id="searchInfo" resultMap="advertisementVO">
+		select ad_no, c_name, c_loc, c_addr, c_star, ad_upmu, ad_lien,
+		ad_date, ad_title, ad_job, ad_count, ad_appl
+		from (select ad_no, c_name, c_loc, c_addr, c_star, ad_upmu, ad_lien, ad_date, 
+		ad_title, ad_job, ad_count, ad_appl
+		from rec_company c , rec_ad ad 
+		where c.c_name = ad.ad_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1
+		order by ad_date)
+      	<![CDATA[where rownum <= 5]]>
+	</select>
+	
+	<!--조회수 순 전체출력 -->
+	<select id="countInfo" resultMap="advertisementVO">
+		select ad_no, c_name, c_loc, c_addr, c_star, ad_upmu, ad_lien, ad_date, ad_title, ad_job, ad_count, ad_appl 
+		from (select ad_no, c_name, c_loc, c_addr, c_star, ad_upmu, ad_lien, ad_date, 
+		ad_title, ad_job, ad_count, ad_appl from rec_company c , rec_ad ad 
+		where c.c_name = ad.ad_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1
+		order by ad_count desc) 
+		<![CDATA[where rownum <= 5]]>
+	</select>
+	
+	<!-- 마감일순 -->
+	<select id="cInfo_Date" resultMap="advertisementVO">
+		select ad_no, c_name, ad_title, ad_date, c_star from 
+        (select ad_no, c_name, ad_title, ad_date, c_star, row_number() over(order by ad_date asc) 
+		as rnum from rec_ad join rec_company on ad_name = c_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1)
+        where rnum between #{rowStart} and #{rowEnd} 
+	</select>
+	
+	<!-- 마감순 페이지마다 그 첫번째 공고 -->
+	<select id="cInfo_Date_Vo" resultMap="advertisementVO">
+		select * from (select * from 
+        (select ad_no, ad_name, ad_title, ad_date, c_loc, c_addr, ad_job, ad_carr, ad_emp, ad_skill, ad_upmu, ad_lien, ad_deals,
+         ad_pro, ad_cp, ad_ect, row_number() over(order by ad_date asc) 
+		as rnum from rec_ad join rec_company on ad_name = c_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1)
+        where rnum between #{rowStart} and #{rowEnd}) where rownum=1
+	</select>
+	
+	<!-- 평점순 -->
+	<select id="cInfo_Star" resultMap="advertisementVO">
+		select * from (select ad_no, c_name, ad_title, ad_date, c_star, rownum rn
+		from (select ad_no, c_name, ad_title, ad_date, c_star
+        from rec_ad join rec_company on ad_name = c_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1
+        order by c_star desc, ad_date)) where rn between #{rowStart} and #{rowEnd} 
+	</select>
+	
+	<!-- 평점순에서 페이지마다 그 첫번째 공고 -->
+	<select id="cInfo_Star_Vo" resultMap="advertisementVO">
+		select * from (select * from (select ad_no, ad_name, ad_title, ad_date, c_star, c_loc, c_addr, ad_job, ad_carr, ad_emp, ad_skill, ad_upmu, ad_lien, 
+		ad_deals, ad_pro, ad_cp, ad_ect, rownum rn
+		from (select * from rec_ad join rec_company on ad_name = c_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1
+        order by c_star desc, ad_date)) where rn between #{rowStart} and #{rowEnd}) where rownum=1
+	</select>
+	
+	<!-- 상세 공고 -->
+	<select id="aInfo" parameterType="advertisementVO" resultMap="advertisementVO">
+		select ad_no, ad_title, ad_name, c_loc, c_addr, ad_date, ad_job, ad_carr, ad_emp, ad_skill, ad_upmu, ad_lien, ad_deals, ad_pro, ad_cp, ad_ect 
+	    from rec_ad a, rec_company c
+		where a.ad_name = c.c_name and ad_no=#{ad_no}
+	</select>
+	
+	<!-- 공고 갯수 -->
+	<select id="listCount" resultType="int"> 
+		select count(ad_no) from rec_ad where to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1
+	</select>
+	
+	<!--검색한 내용 출력 -->
+	<select id="searchTitle" resultMap="advertisementVO">
+		select * from (select rownum rn, c_name, c_loc, c_addr, c_star, ad_skill, ad_upmu, ad_lien, ad_date, ad_title,
+		ad_count, ad_appl, ad_job, ad_no,f ad_save from (select * from rec_company c , rec_ad ad 
+		where c.c_name = ad.ad_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1 order by ad_date))
+		where rn between #{rowStart} and #{rowEnd} <include refid="search"/> 
+	</select>
+	
+	<!-- 검색한 내용 갯수 -->
+	<select id="searchList" resultType="int">
+	 	select count(*) from rec_company c , rec_ad ad where c.c_name = ad.ad_name <include refid="search"/>
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'ad_title'.toString()"> and ad_title like '%' || #{keyword} || '%' </if>
+			<if test="searchType == 'c_name'.toString()"> and c_name like '%' || #{keyword} || '%' </if>
+			<if test="searchType == 'c_addr'.toString()"> and c_addr like '%' || #{keyword} || '%' </if>
+			<if test="searchType == 'ad_job'.toString()"> and ad_job like '%' || #{keyword} || '%' </if>
+			<if test="searchType == 'ad_skill'.toString()"> and ad_skill like '%' || #{keyword} || '%' </if>
+			<if test="searchType == 'ad_upmu'.toString()"> and ad_upmu like '%' || #{keyword} || '%' </if>
+			<if test="searchType == 'ad_lien'.toString()"> and ad_lien like '%' || #{keyword} || '%' </if>
+		</if>
+	</sql>
+	
+	<!-- 공고 하나만 -->
+	<select id="selectSaveOne" resultMap="advertisementVO">
+		select c_name, c_loc, c_addr, c_star, ad_skill, ad_upmu, ad_lien, ad_date, ad_title,
+		ad_count, ad_appl, ad_job, ad_no from rec_company c , rec_ad ad where c.c_name = ad.ad_name and ad_no = #{ad_no}
+	</select>
+	
+	<!-- 공고 조회수 증가 -->
+	<update id="UpdateCount">
+		update rec_ad set ad_count = ad_count + 1 where ad_no = #{ad_no}
+	</update>
+	
+</mapper>

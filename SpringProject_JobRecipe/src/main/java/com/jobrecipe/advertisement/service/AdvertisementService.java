@@ -23,12 +23,12 @@ public interface AdvertisementService {
 	
 	int searchList(SearchCriteria scri); //검색한 갯수
 
-	void UpdateSave(AdvertisementVO vo); //저장
+	/*void UpdateSave(AdvertisementVO vo); //저장
 
 	void UpdateSaveCancel(AdvertisementVO vo); //저장 취소
 	
-	AdvertisementVO selectSaveOne(AdvertisementVO vo); //공고 하나만
-
+	AdvertisementVO selectSaveOne(AdvertisementVO vo); //공고 하나만 */
+	
 	void UpdateCount(AdvertisementVO vo); //조회수 증가
 	
 	AdvertisementVO cInfo_Date_Vo(Paging pa); //마감순에서 각 페이지마다 첫 번째 공고

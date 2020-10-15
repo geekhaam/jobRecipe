@@ -51,20 +51,38 @@
     	update rec_users set u_pw=#{u_pw} where u_email=#{u_email}
     </update>
     
-    <!-- 내가 쓴 리뷰 -->
-    <select id="getReview" resultType="reviewVO" parameterType="reviewVO">
-	select * from rec_review where u_no = #{u_no}
+    <!-- 내가 쓴 전체 리뷰 -->
+    <select id="getAllReview" resultType="reviewVO" parameterType="reviewVO">
+		select * from rec_review where u_no = #{u_no}
+	</select>
+	
+	<!-- 내가 쓴 전체 리뷰 개수를 체크한다. -->
+    <select id="getAllRevCount" resultType="int" parameterType="int">
+	select count(*) from rec_review where u_no = #{u_no}
+	</select>
+	
+	<!-- 내가 쓴 리뷰 중 특정 리뷰를 불러온다. -->
+	<select id="getReview" resultType="reviewVO" parameterType="int">
+		select * from rec_review where rev_no=#{rev_no}
 	</select>
 
-	<!-- 리뷰 업데이트 -->
- 	<update id="reviewUpdate" parameterType="reviewVO">
-		update rec_review set 
-		
+	<!-- 리뷰 수정 -->
+ 	<update id="updateReview" parameterType="reviewVO">
+		update rec_review set
+		rev_state=#{rev_state},
+		rev_job=#{rev_job},
+		rev_emp=#{rev_emp},
+		rev_star=#{rev_star},
+		rev_title=#{rev_title},
+		rev_advan=#{rev_advan},
+    	rev_weak=#{rev_weak},
+   		rev_wish=#{rev_wish}
+   		where rev_no = #{rev_no}
 	</update> 
 	
 	<!-- 리뷰 삭제 -->
-	<delete id="reviewDelete" parameterType="reviewVO">
-		delete from rec_review where u_no = #{u_no}
+	<delete id="deleteReview" parameterType="int">
+		delete from rec_review where rev_no = #{rev_no}
 	</delete>
 	
 	<!-- 기업 검색 -->

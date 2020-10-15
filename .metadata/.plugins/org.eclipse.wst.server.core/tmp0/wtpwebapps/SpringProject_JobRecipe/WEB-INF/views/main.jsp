@@ -15,7 +15,7 @@
 	<!--test용 버튼  -->
 	<header>
 		<jsp:include page="./include/header.jsp"></jsp:include>
-		<a href="../profile/hire/Search_Job.do">검색</a>
+		<a href="../hire/Search_Job.do">검색</a>
 	</header>
 	
 	<section>

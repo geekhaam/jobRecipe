@@ -80,12 +80,6 @@ public class ProfileServiceImpl implements ProfileService{
 		profileDAO.job_applicants1(vo);
 	}
 	
-	//내가 쓴 리뷰
-	@Override
-	public ArrayList<ReviewVO> getReview(int u_no) throws Exception {
-		return profileDAO.getReview(u_no);
-	}
-	
 	//이메일 수신체크
 	@Override
 	public void newsCheck(UserVO vo) throws Exception {
@@ -97,21 +91,42 @@ public class ProfileServiceImpl implements ProfileService{
 	public void pass_change(UserVO vo1) throws Exception {	
 		profileDAO.pass_change(vo1);
 	}
-	//리뷰 업데이트
+	
+	//기업 검색
+	public String searchc(String rev_name) {
+		return profileDAO.searchc(rev_name);
+	}
+	
+	//내가 쓴 전체 리뷰
+	@Override
+	public ArrayList<ReviewVO> getAllReview(int u_no) throws Exception {
+		return profileDAO.getAllReview(u_no);
+	}
+	
+	//내가 쓴 전체 리뷰 개수 확인
+	@Override
+	public int getAllRevCount(int u_no) throws Exception {
+		return profileDAO.getAllRevCount(u_no);
+	}
+	
+	//해당 리뷰 가져오기
+	@Override
+	public ReviewVO getReview(int rev_no) {
+		return profileDAO.getReview(rev_no);
+	}
+	
+	//리뷰 수정
 	@Override
 	public void updateReview(ReviewVO vo1) {
 		profileDAO.updateReview(vo1);
 	}
+	
 	//리뷰 삭제
 	@Override
-	public void deleteReview(ReviewVO vo1) {
-		profileDAO.deleteReview(vo1);
+	public void deleteReview(int rev_no) {
+		profileDAO.deleteReview(rev_no);
 	}
 
-	public String searchc(String rev_name) {
-		
-		return profileDAO.searchc(rev_name);
-	}
 
 
 

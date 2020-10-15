@@ -19,16 +19,16 @@
 </head>
 <body>
 	<div class="flex-container" style="background-color: white; z-index: 50;">
-		<div style="width:13%; font-size: 25pt; font-weight: bold; font-style: italic;"><a href="#">Job Recipe </a></div>
+		<div style="width:13%; font-size: 25pt; font-weight: bold; font-style: italic;"><a href="/main.do">Job Recipe </a></div>
 		<div style="width:5%;" class="header-menu"><a href="#">채용</a></div>
 		<div style="width:5%;" class="header-menu"><a href="#">기업</a></div>
 		<div style="width:77%; text-align: end;" class="header-menu">
-		<a style="margin: 10px;" href="sign_up.do">회원가입</a>
-		<c:if test="${login == null }">
-			<a style="margin: 10px;" href="sign_in.do">로그인</a>
+		<c:if test="${login == null}">
+			<a style="margin: 10px;" href="/sign_up.do">회원가입</a>
+			<a style="margin: 10px;" href="/sign_in.do">로그인</a>
 		</c:if>
-		<c:if test="${login != null }">
-			<a style="margin: 10px;" href="settings.do">마이페이지</a>
+		<c:if test="${login != null}">
+			<a style="margin: 10px;" href="/settings.do">마이페이지</a>
 			<a style="margin: 10px;" href="logout.do">로그아웃</a>
 		</c:if>	
 		</div>

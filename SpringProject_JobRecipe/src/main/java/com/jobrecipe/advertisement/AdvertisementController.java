@@ -56,7 +56,7 @@ public class AdvertisementController {
 	    return "hire/Search_Job2";
 	}
 	
-	@RequestMapping(value = "/Search_Job25.do") // 저장/저장취소
+	/*@RequestMapping(value = "/Search_Job25.do") // 저장/저장취소
 	@ResponseBody
 	public String Save(AdvertisementVO vo, Model model) throws Exception {
 		if(vo.getAd_save() == 0) {
@@ -68,7 +68,7 @@ public class AdvertisementController {
 		String save = Integer.toString(vo1.getAd_save());
 		
 		return save;
-	}
+	}*/
 	
 	@RequestMapping(value="/aAllInfo.do") //마감순 공고 리스트, 상세 공고
 	public String InfoList(AdvertisementVO vo, Model model, Paging cri) throws Exception {

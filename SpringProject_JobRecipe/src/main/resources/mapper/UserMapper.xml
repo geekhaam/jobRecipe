@@ -15,7 +15,7 @@
 	
 	<!-- 로그인체크 -->
 	<select id="signinCheck" resultType="userVO">
-		SELECT u_email,u_pw from rec_users
+		SELECT u_no, u_email, u_pw from rec_users
 		where u_email = #{u_email} and u_pw = #{u_pw}
 	</select>
 

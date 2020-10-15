@@ -11,8 +11,7 @@
 	<!-- 리뷰 추가 -->
 	<insert id="insertReview">
 		insert into rec_review (rev_no, rev_name, u_no, rev_state, rev_job, rev_emp, rev_star, rev_title, rev_advan, rev_weak, rev_wish)
-		values (revno_seq.nextval, #{rev_name}, 1, #{rev_state}, #{rev_job}, #{rev_emp}, #{rev_star}, #{rev_title}, #{rev_advan}, #{rev_weak}, #{rev_wish})
-		<!-- 임의로 u_no 1로 설정  -->
+		values (revno_seq.nextval, #{rev_name}, #{u_no}, #{rev_state}, #{rev_job}, #{rev_emp}, #{rev_star}, #{rev_title}, #{rev_advan}, #{rev_weak}, #{rev_wish})
 	</insert>
 	
 	<!-- 리뷰 추천수 증가 -->

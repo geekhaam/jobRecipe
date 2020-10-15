@@ -41,10 +41,14 @@
 					ad_save : ad_save
 				},
 				success: function(result) {
-					if(result == 1) 
+					if(result == 1) {
 						save.val("저장취소");
-					else if(result == 0)
+						tr.find("#saveVal").val(result);
+					} else if(result == 0) {
 						save.val("저장하기");
+						tr.find("#saveVal").val(result);
+					}
+						
 				}
 			})
 		})
