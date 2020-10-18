@@ -133,8 +133,8 @@
 			<a href="./findPw.do" id="forgot_pswd">비밀번호 찾기</a>
 			<hr>
 			<!-- <p>Don't have an account!</p>  -->
-			<button class="btn btn-primary btn-block" type="button" id="btn-signup">
-				<i class="fas fa-user-plus"></i> 회원가입
+			<button class="btn btn-primary btn-block" type="button" id="btn-signup" onclick="location.href='sign_up.do'">
+				<i class="fas fa-user-plus"></i>회원가입
 			</button>
 		</form>
 	</div>

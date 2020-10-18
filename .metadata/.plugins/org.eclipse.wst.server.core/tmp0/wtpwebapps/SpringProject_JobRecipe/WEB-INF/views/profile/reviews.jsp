@@ -93,7 +93,7 @@ ul {
 
 	<script type="text/javaScript">
 		function insertReview() {
-			location.href = "/InsertReviewForm.do";
+			location.href = "/insertReviewForm.do";
 		}
 	</script>
 

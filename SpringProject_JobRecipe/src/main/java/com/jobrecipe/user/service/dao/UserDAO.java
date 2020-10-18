@@ -10,6 +10,8 @@ import com.jobrecipe.user.vo.UserVO;
 public interface UserDAO {
 	
 	//회원가입
+	public int userEmailCheck(String u_email);
+	
 	public void insertMember(UserVO userVO);
 	
 	//로그인체크

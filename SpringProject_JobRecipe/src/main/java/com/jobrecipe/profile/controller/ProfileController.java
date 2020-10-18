@@ -163,7 +163,7 @@ public class ProfileController {
 	}
 
 	// 리뷰 추가 페이지
-	@RequestMapping(value = "/InsertReviewForm.do")
+	@RequestMapping(value = "/insertReviewForm.do")
 	public String insertReviewForm() {
 		return "/profile/InsertReviewForm";
 	}

@@ -11,15 +11,9 @@ public interface UserService {
 	/*
 	 *** 회원가입 관련 서비스 ***
 	 */
+	public int userEmailCheck(String u_email);
+	
 	public void signupMember(UserVO userVO);
-	
-	public void searchAllCompany();
-	
-	public void followCompany();
-	
-	public void sendSignupMail();
-	
-	public void authEmailCheck();
 	
 	/*
 	 * 로그인 및 비밀번호 찾기 관련 서비스

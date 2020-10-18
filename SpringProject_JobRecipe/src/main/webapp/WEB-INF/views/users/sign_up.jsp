@@ -24,6 +24,48 @@
 				$("input[type=checkbox]").prop("checked",false);
 			} 
 		});
+	
+		// 이메일 중복 체크 검사(1 = 중복 / 0 != 중복)
+		$("#u_email").blur(function() {
+			var u_email = $('#u_email').val();
+			var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			
+			$.ajax({
+				url : 'emailCheck.do?u_email='+ u_email,
+				type : 'get',
+				success : function(data) {
+					console.log("1 = 중복o / 0 = 중복x : "+ data);							
+					
+					if (data == 1) {
+							// 1 : 이메일 중복
+							$("#email_check").text("사용중인 이메일입니다.");
+							$("#email_check").css("color", "red");
+							$("#reg_submit").attr("disabled", true);
+					} else {
+						
+						if (u_email.match(regExp) != null) {
+							$("#email_check").text("");
+							$("#reg_submit").attr("disabled", false);
+				
+						} else if(u_email == ""){
+							
+							$('#email_check').text('이메일을 입력해주세요.');
+							$('#email_check').css('color', 'red');
+							$("#reg_submit").attr("disabled", true);				
+							
+						} else {
+						
+							$('#email_check').text("이메일 형식에 맞게 입력해주세요.");
+							$('#email_check').css('color', 'red');
+							$("#reg_submit").attr("disabled", true);
+							    
+						}
+					}
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
 	});
 </script>
 </head>
@@ -107,7 +149,10 @@
 			<div class="users_loginInfo">
 				<table>
 					<tr>
-						<td><input type="text" name="u_email" placeholder="이메일"></td>
+						<td>
+							<input type="text" class="form-control" id="u_email" name="u_email" placeholder="이메일">
+							<div class="check_font" id="email_check"></div>
+						</td>
 					</tr>
 					<tr>
 						<td><input type="password" name="u_pw" placeholder="비밀번호"></td>
@@ -116,7 +161,7 @@
 						<td><input type="password" name="u_pwCheck" placeholder="비밀번호 확인"></td>
 					</tr>
 					<tr>
-						<td style="text-align: center;"><input type="submit" value="동의 및 회원가입"></td>
+						<td style="text-align: center;"><input type="submit" id="reg_submit" value="동의 및 회원가입"></td>
 					</tr>
 				</table>
 			</div>
