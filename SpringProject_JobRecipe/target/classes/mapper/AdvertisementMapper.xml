@@ -24,6 +24,8 @@
 		<result column="ad_pro" property="ad_pro"/>
 		<result column="ad_cp" property="ad_cp"/>
 		<result column="ad_ect" property="ad_ect"/>
+		<result column="ad_dead" property="ad_dead"/>
+		<result column="ad_save" property="ad_save"/>
 		<result column="ad_count" property="ad_count"/>
 		<result column="ad_appl" property="ad_appl"/>
 		<collection property="companyVO" resultMap="companyVO" />
@@ -98,38 +100,60 @@
 	
 	<!--검색한 내용 출력 -->
 	<select id="searchTitle" resultMap="advertisementVO">
-		select * from (select rownum rn, c_name, c_loc, c_addr, c_star, ad_skill, ad_upmu, ad_lien, ad_date, ad_title,
-		ad_count, ad_appl, ad_job, ad_no from (select * from rec_company c , rec_ad ad 
-		where c.c_name = ad.ad_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1 order by ad_date))
-		where rn between #{rowStart} and #{rowEnd} <include refid="search"/> 
+		select * from (select rownum rn, c_name, c_loc, c_addr, ad_upmu, ad_lien, ad_date, ad_title,
+      	ad_count, ad_appl, ad_job, ad_no, ad_skill from (select * from (select * from rec_company c , rec_ad ad 
+      	where c.c_name = ad.ad_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1) 
+        where <include refid="search"/>
+      	order by ad_date)) where rn between #{rowStart} and #{rowEnd}
 	</select>
 	
 	<!-- 검색한 내용 갯수 -->
 	<select id="searchList" resultType="int">
-	 	select count(*) from rec_company c , rec_ad ad where c.c_name = ad.ad_name <include refid="search"/>
+	 	select count(*) from (select * from (select rownum rn, c_name, c_loc, c_addr, ad_upmu, ad_lien, ad_date, ad_title,
+      	ad_count, ad_appl, ad_job, ad_no, ad_skill from (select * from (select * from rec_company c , rec_ad ad 
+      	where c.c_name = ad.ad_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1) 
+        where <include refid="search"/>
+      	order by ad_date)))
 	</select>
 	
 	<sql id="search">
-		<if test="searchType != null">
-			<if test="searchType == 'ad_title'.toString()"> and ad_title like '%' || #{keyword} || '%' </if>
-			<if test="searchType == 'c_name'.toString()"> and c_name like '%' || #{keyword} || '%' </if>
-			<if test="searchType == 'c_addr'.toString()"> and c_addr like '%' || #{keyword} || '%' </if>
-			<if test="searchType == 'ad_job'.toString()"> and ad_job like '%' || #{keyword} || '%' </if>
-			<if test="searchType == 'ad_skill'.toString()"> and ad_skill like '%' || #{keyword} || '%' </if>
-			<if test="searchType == 'ad_upmu'.toString()"> and ad_upmu like '%' || #{keyword} || '%' </if>
-			<if test="searchType == 'ad_lien'.toString()"> and ad_lien like '%' || #{keyword} || '%' </if>
-		</if>
+		upper(c_name) like upper('%'||#{keyword}||'%') 
+        or upper(c_loc) like upper('%'||#{keyword}||'%') 
+        or upper(c_addr) like upper('%'||#{keyword}||'%')
+        or upper(ad_upmu) like upper('%'||#{keyword}||'%')
+        or upper(ad_lien) like upper('%'||#{keyword}||'%')
+        or upper(ad_title) like upper('%'||#{keyword}||'%')
+        or upper(ad_job) like upper('%'||#{keyword}||'%')
+        or upper(ad_skill) like upper('%'||#{keyword}||'%')
 	</sql>
+	
+	<!-- 공고 저장 
+	<update id="UpdateSave">
+		update rec_ad set ad_save = 1 where ad_no= #{ad_no}
+	</update>
+
+	공고 저장 취소
+	<update id="UpdateSaveCancel">
+		update rec_ad set ad_save = 0 where ad_no = #{ad_no}
+	</update> -->
 	
 	<!-- 공고 하나만 -->
 	<select id="selectSaveOne" resultMap="advertisementVO">
 		select c_name, c_loc, c_addr, c_star, ad_skill, ad_upmu, ad_lien, ad_date, ad_title,
-		ad_count, ad_appl, ad_job, ad_no from rec_company c , rec_ad ad where c.c_name = ad.ad_name and ad_no = #{ad_no}
+		ad_count, ad_appl, ad_job, ad_no, ad_save from rec_company c , rec_ad ad where c.c_name = ad.ad_name and ad_no = #{ad_no}
 	</select>
 	
 	<!-- 공고 조회수 증가 -->
 	<update id="UpdateCount">
 		update rec_ad set ad_count = ad_count + 1 where ad_no = #{ad_no}
 	</update>
+	
+	<!-- 모든 공고 -->
+	<select id="allAdvertise" resultMap="advertisementVO">
+		select * from (select ad_no, ad_title, ad_date, c_name, c_loc, c_addr, ad_count, row_number() over(order by ad_date asc)
+		as rnum from rec_ad join rec_company on ad_name = c_name and to_date(ad_date, 'RR/MM/DD HH24:MI')-sysdate > -1)
+		where rnum between #{rowStart} and #{rowEnd}
+	</select>
+	
 	
 </mapper>

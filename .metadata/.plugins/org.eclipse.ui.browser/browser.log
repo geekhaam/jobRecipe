@@ -60,3 +60,8 @@
 10월 15, 2020 20:44:02.88 [18304:14444:1015/204402.886:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
 10월 15, 2020 21:42:35.53 [16548:13852:1015/214235.534:ERROR:device_event_log_impl.cc(208)] [21:42:35.534] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
 10월 15, 2020 21:48:10.33 [14660:14460:1015/214810.331:ERROR:device_event_log_impl.cc(208)] [21:48:10.331] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+
+10월 18, 2020 17:46:15.42 NEW SESSION
+10월 18, 2020 17:46:15.42 [13332:6724:1018/174615.425:ERROR:device_event_log_impl.cc(208)] [17:46:15.425] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 18, 2020 17:53:45.69 [16600:15792:1018/175345.695:ERROR:device_event_log_impl.cc(208)] [17:53:45.695] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 18, 2020 17:56:16.16 [17688:14840:1018/175616.160:ERROR:device_event_log_impl.cc(208)] [17:56:16.161] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.

@@ -17,6 +17,8 @@ public class AdvertisementVO {
 	private String ad_pro;
 	private String ad_cp;
 	private String ad_ect;
+	private int ad_dead; 
+	private int ad_save;
 	private int ad_count;
 	private int ad_appl;
 	private CompanyVO companyVO;
@@ -133,6 +135,22 @@ public class AdvertisementVO {
 
 	public void setAd_ect(String ad_ect) {
 		this.ad_ect = ad_ect;
+	}
+
+	public int getAd_dead() {
+		return ad_dead;
+	}
+
+	public void setAd_dead(int ad_dead) {
+		this.ad_dead = ad_dead;
+	}
+
+	public int getAd_save() {
+		return ad_save;
+	}
+
+	public void setAd_save(int ad_save) {
+		this.ad_save = ad_save;
 	}
 
 	public int getAd_count() {

@@ -58,7 +58,7 @@ public class AdvertisementServiceImpl implements AdvertisementService{
 		return dao.searchList(scri);
 	}
 
-/*	@Override
+	/*@Override
 	public void UpdateSave(AdvertisementVO vo) {
 		dao.UpdateSave(vo);
 	}
@@ -66,12 +66,12 @@ public class AdvertisementServiceImpl implements AdvertisementService{
 	@Override
 	public void UpdateSaveCancel(AdvertisementVO vo) {
 		dao.UpdateSaveCancel(vo);
-	}
+	}*/
 	
 	@Override
 	public AdvertisementVO selectSaveOne(AdvertisementVO vo) {
 		return dao.selectSaveOne(vo);
-	}*/
+	}
 
 	@Override
 	public void UpdateCount(AdvertisementVO vo) {
@@ -86,6 +86,11 @@ public class AdvertisementServiceImpl implements AdvertisementService{
 	@Override
 	public AdvertisementVO cInfo_Star_Vo(Paging pa) {
 		return dao.cInfo_Star_Vo(pa);
+	}
+
+	@Override
+	public ArrayList<AdvertisementVO> allAdvertise(Paging cri) {
+		return dao.allAdvertise(cri);
 	}
 
 	

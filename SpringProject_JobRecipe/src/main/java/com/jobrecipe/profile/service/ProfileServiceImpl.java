@@ -12,6 +12,7 @@ import com.jobrecipe.profile.vo.CertiOtherVO;
 import com.jobrecipe.profile.vo.EducationVO;
 import com.jobrecipe.profile.vo.PortfolioVO;
 import com.jobrecipe.profile.vo.ProfileVO;
+import com.jobrecipe.profile.vo.ResumeVO;
 import com.jobrecipe.review.vo.ReviewVO;
 import com.jobrecipe.user.vo.UserVO;
 
@@ -25,6 +26,12 @@ public class ProfileServiceImpl implements ProfileService{
 	public void insertProfile(ProfileVO profileVO) {
 		profileDAO.insertProfile(profileVO);
 		System.out.println("insertProfile-service call");
+	}
+	
+	@Override
+	public ArrayList<ResumeVO> getAllResumes(int u_no) {
+		System.out.println("getAllResumes-service call");
+		return profileDAO.getAllResumes(u_no);
 	}
 	
 	@Override
@@ -126,8 +133,5 @@ public class ProfileServiceImpl implements ProfileService{
 	public void deleteReview(int rev_no) {
 		profileDAO.deleteReview(rev_no);
 	}
-
-
-
 
 }

@@ -10,6 +10,7 @@ import com.jobrecipe.profile.vo.CertiOtherVO;
 import com.jobrecipe.profile.vo.EducationVO;
 import com.jobrecipe.profile.vo.PortfolioVO;
 import com.jobrecipe.profile.vo.ProfileVO;
+import com.jobrecipe.profile.vo.ResumeVO;
 import com.jobrecipe.review.vo.ReviewVO;
 import com.jobrecipe.user.vo.UserVO;
 
@@ -17,6 +18,8 @@ import com.jobrecipe.user.vo.UserVO;
 public interface ProfileDAO {
 	
 	public void insertProfile(ProfileVO profileVO);
+		
+	public ArrayList<ResumeVO> getAllResumes(int u_no);
 	
 	public ProfileVO getProfile(int u_no);
 	

@@ -35,7 +35,6 @@ ul {
 					<a href="settings.do">계정</a>
 					<a href="resumes.do">내 프로필</a>
 					<a href="reviews.do">활동내역</a>
-					<a href="#">관심정보</a>
 				</div>
 			</div>
 		</div>

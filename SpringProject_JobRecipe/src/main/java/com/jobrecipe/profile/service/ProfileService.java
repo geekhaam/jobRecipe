@@ -8,13 +8,17 @@ import com.jobrecipe.profile.vo.CertiOtherVO;
 import com.jobrecipe.profile.vo.EducationVO;
 import com.jobrecipe.profile.vo.PortfolioVO;
 import com.jobrecipe.profile.vo.ProfileVO;
+import com.jobrecipe.profile.vo.ResumeVO;
 import com.jobrecipe.review.vo.ReviewVO;
 import com.jobrecipe.user.vo.UserVO;
 
 public interface ProfileService {
 	
-	 //회원가입시 프로필 등록
+	//회원가입시 프로필 등록
 	public void insertProfile(ProfileVO profileVO);
+	
+	//작성한 모든 이력서의 정보를 가지고 옴
+	public ArrayList<ResumeVO> getAllResumes(int u_no);
 	
 	//기존의 기본 정보를 가지고 옴
 	public ProfileVO getProfile(int u_no);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jobrecipe.profile.service.ProfileService;
 import com.jobrecipe.profile.service.ProfileServiceImpl;
 import com.jobrecipe.profile.vo.ProfileVO;
+import com.jobrecipe.profile.vo.ResumeVO;
 import com.jobrecipe.review.service.ReviewServiceimpl;
 import com.jobrecipe.review.vo.ReviewVO;
 import com.jobrecipe.user.service.UserService;
@@ -42,7 +43,19 @@ public class ProfileController {
 	}
 	
 	/*
-	 * 내프로필 링크
+	 * 내 프로필 링크
+	 */
+	@RequestMapping(value = "resumes.do")
+	public String resumes(HttpSession session, Model model) {
+		UserVO loginInfo = (UserVO) session.getAttribute("login");
+		int u_no = loginInfo.getU_no();
+		ArrayList<ResumeVO> resumeVOList = profileService.getAllResumes(u_no);
+		model.addAttribute("resumeVOList", resumeVOList);
+		return "profile/resumes";
+	}
+	
+	/*
+	 * 이력서 클릭시 이력서를 볼 수 있음
 	 */
 	@RequestMapping(value = "/resumeForm.do")
 	public String resumesForm(HttpSession session, Model model) {
@@ -64,8 +77,7 @@ public class ProfileController {
 	@RequestMapping(value = "insertProfile.do")
 	public String insertProfile(ProfileVO profileVO, Model model) {
 		profileService.insertProfile(profileVO);
-		model.addAttribute("u_no", profileVO.getU_no());
-		return "wizard/signup_follow";
+		return "main";
 	}
 	
 	/*

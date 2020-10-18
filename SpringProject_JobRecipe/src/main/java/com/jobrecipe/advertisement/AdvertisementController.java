@@ -43,7 +43,7 @@ public class AdvertisementController {
 	public String SearchTitle(SearchCriteria scri, Model model) throws Exception {
 	   
 	    ArrayList<AdvertisementVO> list = advertisementService.searchTitle(scri); //찾을 내용
-		
+	    
 	    PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(advertisementService.searchList(scri));
@@ -117,7 +117,19 @@ public class AdvertisementController {
 		return "hire/CompanyInfo"; 
 	}
 	
-	
+	@RequestMapping(value="/allAdvertise.do") //모든 공고 (채용 눌렀을 때)
+	public String allAdvertise(Paging cri, Model model) throws Exception {
+		
+		ArrayList<AdvertisementVO> list =  advertisementService.allAdvertise(cri);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(advertisementService.listCount());
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("list", list);
+		return "hire/allAdvertise";
+	}
 	
 	
 

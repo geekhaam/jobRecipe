@@ -20,7 +20,7 @@
 <body>
 	<div class="flex-container" style="background-color: white; z-index: 50;">
 		<div style="width:13%; font-size: 25pt; font-weight: bold; font-style: italic;"><a href="/main.do">Job Recipe </a></div>
-		<div style="width:5%;" class="header-menu"><a href="#">채용</a></div>
+		<div style="width:5%;" class="header-menu"><a href="/hire/allAdvertise.do">채용</a></div>
 		<div style="width:5%;" class="header-menu"><a href="#">기업</a></div>
 		<div style="width:77%; text-align: end;" class="header-menu">
 		<c:if test="${login == null}">
