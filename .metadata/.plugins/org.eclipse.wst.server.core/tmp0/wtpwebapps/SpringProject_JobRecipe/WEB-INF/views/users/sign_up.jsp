@@ -66,6 +66,20 @@
 				}
 			});
 		});
+		
+		$("#u_pwCheck").blur(function() {
+			var pw = $("#u_pw").val();
+			var pwCheck = $("#u_pwCheck").val(); 
+			
+			if(pw != pwCheck) {
+				$('#pw_check').text("비밀번호가 다릅니다.");
+				$('#pw_check').css('color', 'red');
+				$("#reg_submit").attr("disabled", true);
+			} else {
+				$('#pw_check').text("");
+				$("#reg_submit").attr("disabled", false);
+			}
+		});
 	});
 </script>
 </head>
@@ -155,10 +169,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td><input type="password" name="u_pw" placeholder="비밀번호"></td>
+						<td><input type="password" id="u_pw" name="u_pw" placeholder="비밀번호"></td>
 					</tr>
 					<tr>
-						<td><input type="password" name="u_pwCheck" placeholder="비밀번호 확인"></td>
+						<td>
+							<input type="password" id="u_pwCheck" name="u_pwCheck" placeholder="비밀번호 확인">
+							<div class="check_font" id="pw_check"></div>
+						</td>
 					</tr>
 					<tr>
 						<td style="text-align: center;"><input type="submit" id="reg_submit" value="동의 및 회원가입"></td>

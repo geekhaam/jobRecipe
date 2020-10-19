@@ -66,21 +66,29 @@
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
-	<!-- email 인증 : gmail -->   
-   <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
-        <property name="host" value="smtp.gmail.com" />
-        <property name="port" value="587" />
-        <property name="defaultEncoding" value="utf-8"/>
-        <property name="username" value="wjdrndkel@gmail.com" />
-        <property name="password" value="gwtdkgod1851108@" />
-       
-        <property name="javaMailProperties">
-            <props>
-                <prop key="mail.smtp.starttls.enable">true</prop>
-                <prop key="mail.smtp.auth">true</prop>
-            </props>
-        </property>
-        
-    </bean>
+	<!-- email 인증 : gmail -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="username" value="wjdrndkel@gmail.com" />
+		<property name="password" value="gwtdkgod1851108@" />
+
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 파일 업로드 관련 -->
+	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+         <property name="maxUploadSize" value="52428800" />
+         <!-- 디스크에 임시 파일을 생성하기 전에 메모리에 보관할수있는 최대 바이트 크기 -->
+         <!-- defaultEncoding -->
+         <property name="defaultEncoding" value="utf-8" />
+	</bean>
 	
 </beans>

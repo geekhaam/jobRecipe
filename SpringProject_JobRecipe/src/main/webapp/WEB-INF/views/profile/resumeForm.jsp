@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		<div id="rsm_contents_wrap">
-			<form action="insertResume.do" method="post">
+			<form action="insertResume.do" method="post" enctype="multipart/form-data">
 				<div id="rsm_contents">
 					<!-- 기본 정보 섹션 -->
 					<div class="section_wrap"> <!-- 각 입력 내용 섹션 분류용 래퍼 -->
