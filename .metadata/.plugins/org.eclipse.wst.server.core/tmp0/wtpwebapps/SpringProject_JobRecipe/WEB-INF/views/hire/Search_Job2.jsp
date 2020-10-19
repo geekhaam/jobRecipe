@@ -11,6 +11,21 @@
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
 <script>
 	$(function() {
+		$('#searchButton').click(function() {
+			if($("select option:selected").val()=="n") {
+				alert("검색할 카테고리를 선택해 주세요.");
+			} else if($("#keywordInput").val().trim()=="" || $("#keywordInput").val().trim()==null) {
+				alert("검색할 내용을 입력해 주세요.");
+				$("#keywordInput").focus();
+			} else {
+				self.location = "../../hire/Search_Job2.do"
+					+ '${pageMaker.makeQuery(1)}'
+					+ "&searchType="
+					+ $("select option:selected").val()
+					+ "&keyword="
+					+ encodeURIComponent($('#keywordInput').val());
+			}
+		});
 		
 		$("#saveButton input").click(function() {
 			var save = $(this);
@@ -27,11 +42,12 @@
 				},
 				success: function(result) {
 					if(result == 1) {
+						$("#saveVal").val(result);
 						save.val("저장취소");
-						tr.find("#saveVal").val(result);
-					} else if(result == 0) {
+					}
+					else if(result == 0) {
+						$("#saveVal").val(result);
 						save.val("저장하기");
-						tr.find("#saveVal").val(result);
 					}
 						
 				}
@@ -45,12 +61,35 @@
 
 <jsp:useBean id="now" class="java.util.Date" />
 
-<form action="Search_Job2.do" method="post">
-	<input type="text" name="keyword" placeholder="기업, 채용공고를 검색해 보세요.">
-	<input type="submit" value="검색">
-</form>
+<div>
+	<select name="searchType">
+		<option value="n"<c:out value="${search.searchType == null ? 'selected' : '' }"/>>----</option>
+		<option value="ad_title"<c:out value="${search.searchType eq 'ad_title' ? 'selected' : '' }"/>>제목</option>
+		<option value="c_name"<c:out value="${search.searchType eq 'c_name' ? 'selected' : '' }"/>>회사이름</option>
+		<option value="c_addr"<c:out value="${search.searchType eq 'c_addr' ? 'selected' : '' }"/>>회사주소</option>
+		<option value="ad_job"<c:out value="${search.searchType eq 'ad_job' ? 'selected' : '' }"/>>직무</option>	
+		<option value="ad_skill"<c:out value="${search.searchType eq 'ad_skill' ? 'selected' : '' }"/>>스킬</option>
+		<option value="ad_upmu"<c:out value="${search.searchType eq 'ad_upmu' ? 'selected' : '' }"/>>주요업무</option>
+		<option value="ad_lien"<c:out value="${search.searchType eq 'ad_lien' ? 'selected' : '' }"/>>자격요건</option>					
+	</select>
+	<input maxlength="20" type="text" name="keyword" id="keywordInput" placeholder="기업, 채용공고를 검색해 보세요." value="${title.keyword }">
+	<button id="searchButton">검색</button>
+</div>
 
 <br>
+
+<c:if test="${!empty vo}">
+	<table>
+		<tr>
+			<td>회사 이름</td><td>회사 위치</td><td>회사 주소</td>
+		</tr>
+		<tr>
+			<td><a href="reviewAll.do?rev_name=${vo.c_name }">${vo.c_name }</a></td>
+			<td>${vo.c_loc }</td>
+			<td>${vo.c_addr }</td>
+		</tr>
+	</table>
+</c:if>
 
 <h2>검색한 게시물 목록</h2>
 <table border=2>

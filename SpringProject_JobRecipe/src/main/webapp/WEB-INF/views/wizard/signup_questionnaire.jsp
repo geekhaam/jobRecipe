@@ -84,7 +84,7 @@
 						</div>
 						<div class="question_btn">
 							<input type="hidden" name="u_no" value="${u_no}">
-							<button id="btn_next" type="submit">다음</button>
+							<button id="btn_next" type="submit">회원가입 완료</button>
 						</div>
 					</form>
 				</div>

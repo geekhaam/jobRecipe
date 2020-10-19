@@ -33,7 +33,7 @@
 	</div> -->
 	<script>
 	window.onload=function(){
-		location.replace('main.do')
+		location.replace('../hire/Search_Job.do')
 	}
 	/* Vue.component('test-input',{
 		props:['message','contents'],

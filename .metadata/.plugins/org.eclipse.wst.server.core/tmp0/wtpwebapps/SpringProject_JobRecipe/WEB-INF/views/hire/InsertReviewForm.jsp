@@ -51,6 +51,7 @@
 				review_title = 1;
 			} else {
 				$("#titleText").css("color", "red");
+				review_title = 0;
 			}
 		});
 		
@@ -61,6 +62,7 @@
 				review_advan = 1;
 			} else {
 				$("#advanText").css("color", "red");
+				review_advan = 0;
 			}
 		});
 		
@@ -71,6 +73,7 @@
 				review_weak = 1;
 			} else {
 				$("#weakText").css("color", "red");
+				review_weak = 0;
 			}
 		});
 		
@@ -81,6 +84,7 @@
 				review_wish = 1;
 			} else {
 				$("#wishText").css("color", "red");
+				review_wish = 0;
 			}
 		})
 	});

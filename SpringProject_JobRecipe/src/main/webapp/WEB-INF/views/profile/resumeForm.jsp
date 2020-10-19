@@ -9,6 +9,17 @@
 <title>잡레시피</title>
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
+<script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+<style type="text/css">
+	textarea.flexible { min-width: 200px; min-height: 50px; }
+</style>
+<script type="text/javascript">
+	$(function() {
+		$("textarea.flexible").on('keydown keyup', function() {
+		  $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
+		});	
+	});
+</script>
 </head>
 <body>
 	<header>
@@ -22,16 +33,19 @@
 				<h1>${u_email}</h1>
 			</div>
 		</div>
-		<div id="myPageMenu">
-			<div class="mypagemenu_wrap">
-				<div class="table_row_div">
-					<a href="settings.do">계정</a>
-					<a href="resumes.do">내 프로필</a>
-					<a href="#">활동내역</a>
-					<a href="#">관심정보</a>
+		
+		<div id="myPageMenuWrap">
+			<div id="myPageMenu">
+				<div class="mypagemenu_wrap">
+					<div class="table_row_div">
+						<a href="settings.do">계정</a>
+						<a href="resumes.do">내 프로필</a>
+						<a href="reviews.do">활동내역</a>
+					</div>
 				</div>
 			</div>
 		</div>
+		
 		<div id="rsm_contents_wrap">
 			<form action="insertResume.do" method="post" enctype="multipart/form-data">
 				<div id="rsm_contents">
@@ -157,7 +171,7 @@
 							<div class="profile2_content">
 								<div class="flexible_textarea">
 									<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-									<textarea class="#" placeholder="경력, 경험 위주의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다."></textarea>
+									<textarea class="flexible" placeholder="경력, 경험 위주의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다."></textarea>
 								</div>
 							</div>
 						</div>
@@ -200,7 +214,7 @@
 									</div>
 									<div class="flexible_textarea">
 										<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-										<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
+										<textarea class="flexible" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
 									</div>
 								</div>
 							</div>
@@ -236,7 +250,7 @@
 										</div>
 										<div class="flexible_textarea">
 											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-											<textarea class="#" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${educationVO.e_description}</textarea>
+											<textarea class="flexible" name="e_description" placeholder="학력사항에 추가로 기재할 특별한 사항이 있을 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${educationVO.e_description}</textarea>
 										</div>
 									</div>
 								</div>
@@ -287,7 +301,7 @@
 										</div>
 										<div class="flexible_textarea">
 											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-											<textarea class="#" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여"></textarea>
+											<textarea class="flexible" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여"></textarea>
 										</div>
 									</div>
 								</div>
@@ -327,7 +341,7 @@
 											</div>
 											<div class="flexible_textarea">
 												<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-												<textarea class="#" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여">${careerVO.car_workexp}</textarea>
+												<textarea class="flexible" name="car_workexp" placeholder="업무경험을 입력하세요. 추상적인 내용보다는 수치가 들어간 간결하고 객관적인 내용을 입력하는 것이 좋습니다. 예) 미디어 사업부(연간 매출 약 10억, 회원 50만 증가)의 사업전략 수립, 신규 사업 도입으로 3년간 내년 매출 약 2배 상승 기여">${careerVO.car_workexp}</textarea>
 											</div>
 										</div>
 									</div>
@@ -370,8 +384,7 @@
 											<input placeholder="활동 및 수상명을 작성합니다." type="text" name="act_actawardName">
 										</div>
 										<div class="flexible_textarea">
-											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-											<textarea class="medit" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
+											<textarea class="flexible" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다."></textarea>
 										</div>
 									</div>
 								</div>
@@ -403,8 +416,7 @@
 											<input placeholder="활동 및 수상명을 작성합니다." type="text" name="act_actawardName"  value="${actAwardVO.act_actawardname}">
 										</div>
 										<div class="flexible_textarea">
-											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-											<textarea class="medit" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${actAwardVO.act_description}</textarea>
+											<textarea class="flexible" name="act_description" placeholder="활동 및 수상과 관련한 상세한 정보가 필요한 경우 입력하세요. 추가로 기재할 사항이 없을 경우 입력하지 않으셔도 괜찮습니다.">${actAwardVO.act_description}</textarea>
 										</div>
 									</div>
 								</div>
@@ -427,8 +439,7 @@
 										<input placeholder="항목(자격증, 언어, 스킬 등 자유롭게 기재)" type="text" name="cer_item">
 									</div>
 									<div class="flexible_textarea">
-										<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-										<textarea class="#" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점"></textarea>
+										<textarea class="flexible" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점"></textarea>
 									</div>
 								</div>
 							</c:when>
@@ -439,8 +450,7 @@
 											<input placeholder="항목(자격증, 언어, 스킬 등 자유롭게 기재)" type="text" name="cer_item" value="${certiOtherVO.cer_item}">
 										</div>
 										<div class="flexible_textarea">
-											<!-- class 통해서 텍스트에어리어 크기 조절 필요 -->
-											<textarea class="#" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점">${certiOtherVO.cer_description}</textarea>
+											<textarea class="flexible" name="cer_description" placeholder="항목에 해당하는 상세 내용을 입력하세요. 예) 토익/780점">${certiOtherVO.cer_description}</textarea>
 										</div>
 									</div>
 								</c:forEach>

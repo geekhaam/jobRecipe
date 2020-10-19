@@ -36,7 +36,7 @@ public class AdvertisementController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
-		return "hire/Search_Job";
+		return "main";
 	}
 	
 	@RequestMapping(value = "/Search_Job2.do") //검색했을 때 나오는 공고

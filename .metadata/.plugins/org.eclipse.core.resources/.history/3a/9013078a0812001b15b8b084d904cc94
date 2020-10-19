@@ -1,0 +1,115 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>잡레시피</title>
+<link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
+<script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
+<script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+<style>
+	ul {
+		list-style: none;
+	}
+</style>
+
+</head>
+<body>
+	<header>
+		<jsp:include page="../include/header.jsp"></jsp:include>
+	</header>
+	<section>
+		<div id="myPageInfo">
+			<span class="img_profile"></span>
+			<!-- 프로필 이미지 -->
+			<div class="my_info">
+				<h1>${u_email}</h1>
+			</div>
+		</div>
+		
+		<div id="myPageMenuWrap">
+			<div id="myPageMenu">
+				<div class="mypagemenu_wrap">
+					<div class="table_row_div">
+						<a href="settings.do">계정</a>
+						<a href="resumes.do">내 프로필</a>
+						<a href="reviews.do">활동내역</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="myPageMyInformationMenu" class="mypage_menu">
+			<nav id="profile-left-menu">
+				<h2>계정</h2>
+				<hr>
+				<ul>
+					<li class="active"><a href="./settings.do"> <span
+							class="txt">계정 설정</span> <span class="num notranslate"></span>
+					</a></li>
+					<li class=""><a href="./change_password.do"> <span
+							class="txt">비밀번호 변경</span> <span class="num notranslate"></span>
+					</a></li>
+					<li class=""><a href="./newsletter.do"> <span class="txt">이메일
+								수신 설정</span> <span class="num notranslate"></span>
+					</a></li>
+				</ul>
+			</nav>
+		</div>
+		
+		<h3 class="tit">이메일 수신 설정</h3>
+		<form action="newsletter.do" method="post">
+			<input type="hidden" name="u_email" value="${sessionScope.u_email}">
+			<div class="jpcont_wrap">
+			        <div class="section_group">
+			            <h3 class="tit">이메일 수신 설정</h3>
+			            <section class="my_newsletter">
+			                <div class="my_newsletter_section">
+			                    <span class="tit_agree">맞춤 정보 및 뉴스레터(광고성)</span>
+			                    <p class="txt">잡플래닛이 찾은 맞춤 채용 및 유용한 정보 알림</p>
+			
+			                    <label class="btn_check round btn_check_action check_chk">
+			                     	 수신동의
+			                      <input type="checkbox" name="newsck" value="1">
+			                      	동의안함
+			                      <input type="checkbox" name="newsck" value="0">
+			                      <input type="submit" value="전송" />
+			                      <span class="check_icon round"></span>
+			                      <span class="check_txt"></span>
+			                    </label>
+								
+			                </div>
+			
+			                <div class="my_newsletter_section">
+			                  <span class="tit_agree">콘텐츠 승인여부</span>
+			                  <p class="txt">작성한 콘텐츠(리뷰, 연봉, 면접 등)의 승인, 수정요청 등에 대한 알림</p>
+			                  <p class="txt">(수신 설정에 상관 없이 발송되는 승인여부 안내 메일입니다.)</p>
+			                </div>
+			            </section>
+			        </div>
+			</div>
+		</form>
+	</section>
+	<footer>
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</footer>
+
+<!--     <script type="text/javascript">
+      $(document).ready(function () {
+        $('#rd2').click(function () {
+          // checkbox
+
+          // var check = $('#rd2').is(":checked");
+          // alert(check);
+
+          // var check = $('input[id="rd2"]').is(':checked');
+          // alert(check);
+
+          var check = $('input:checkbox[id="rd2"]').is(':checked');
+          alert(check);
+        });
+      });
+    </script> -->
+</body>
+</html>

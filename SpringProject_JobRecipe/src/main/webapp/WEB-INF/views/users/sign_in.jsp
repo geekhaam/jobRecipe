@@ -120,15 +120,11 @@
 	<div id="logreg-forms">
 		<form class="form-signin" action="signinCheck.do" method="post">
 			<h1 class="h3 mb-3 font-weight-normal" style="text-align: center">로그인</h1>
-			<div class="social-login">
-				<button class="btn facebook-btn social-btn" type="button">
-					<span><i class="fab fa-facebook-f"></i> 페이스북 로그인</span>
-				</button>
-			</div>
-			<p style="text-align: center">OR</p>
 			<input type="email" name="u_email" class="form-control" placeholder="이메일 ">
 			<input type="password" name="u_pw" class="form-control" placeholder="비밀번호">
-			
+			<c:if test="${msg==false}">
+			   <p style="color:#f00;">로그인에 실패했습니다. 아이디 또는 패스워드를 다시 입력해주세요.</p>
+			</c:if>
 			<button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> 로그인</button>
 			<a href="./findPw.do" id="forgot_pswd">비밀번호 찾기</a>
 			<hr>
@@ -138,5 +134,6 @@
 			</button>
 		</form>
 	</div>
+	
 </body>
 </html>

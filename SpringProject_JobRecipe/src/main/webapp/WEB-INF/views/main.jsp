@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,131 +9,159 @@
 <title>JobRecipe</title>
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
+<script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
 </head>
 <body>
-	<!--test용 버튼  -->
-	<button onclick="location.href='admin/insertCompanyForm.do'">bbbb</button>
-	<!--test용 버튼  -->
+	
 	<header>
 		<jsp:include page="./include/header.jsp"></jsp:include>
-		<a href="../hire/Search_Job.do">검색</a>
 	</header>
 	
 	<section>
 		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
 		<!-- 전체화면 -->
 		
-			<div style="width: 20%; background-color: #e6ecff; margin-left: 5%;">
-				여기는 제일왼쪽...사용자 정보등?
-				<a href="editPw.do">EDIT</a>
+			<div style="width: 15%;	 margin-left: 3%;">
+				<div style="display:flex; flex-direction: column; border">
+					<img style="height:17vh;" src="/resources/images/default_user.png">
+					<div>이름</div>
+					<div>아이디</div>
+					<div>...</div>
+					<div>...</div>
+					<div>...</div>
+				</div>
 			</div>
 			
-			<div style="width: 50%; flex-direction: column; justify-content: flex-end;">
-			<!-- 분할 왼쪽화면 -->
-				<table style="width:90%;">
-				<!-- 왼쪽화면 첫번쨰 요소 -->
-					<tr>
-						<td colspan="3" style="border-right: 0;padding: 2%;">
-							<span style="font-size: 15pt; font-weight: bold;">회사 정보</span>
-						</td>
-						<td colspan="2" style="text-align: right; border-left: 0;">
-							<span style="margin-right: 3%;">
-							<a href="#" style="font-size: 7pt;font-style:italic; font-weight: bold;">회사 더보기</a></span>
-						</td>
-					</tr>
-					<tr style="padding: 2%; height: 10vh;">
-						<td style="width: 20%;">회사1</td>
-						<td style="width: 20%;">회사2</td>
-						<td style="width: 20%;">회사3</td>
-						<td style="width: 20%;">회사4</td>
-						<td style="width: 25%;">회사5</td>
-					</tr>
-				</table>
-				<hr style="width: 80%;">
-				<table style="width:90%;">
-				<!-- 왼쪽화면 두번쨰 요소 -->
-					<tr>
-						<td style="border-right: 0;padding: 2%;">
-							<span style="font-size: 15pt; font-weight: bold;">최신 구인</span>
-						</td>
-						<td style="text-align: right; border-left: 0;">
-							<span style="margin-right: 3%;">
-							<a href="#" style="font-size: 7pt;font-style:italic; font-weight: bold;">구직 더보기</a></span>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					
-				</table>
-				<hr style="width: 80%;">
-				<table style="width:90%;">
-				<!-- 왼쪽화면 세번쨰 요소 -->
-					<tr>
-						<td style="border-right: 0;padding: 2%;">
-							<span style="font-size: 15pt; font-weight: bold;">최신 구인</span>
-						</td>
-						<td style="text-align: right; border-left: 0;">
-							<span style="margin-right: 3%;">
-							<a href="#" style="font-size: 7pt;font-style:italic; font-weight: bold;">구직 더보기</a></span>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="padding: 2%;">회사1</td>
-					</tr>
-					
-				</table>
-			</div>
-			<div style="width: 25%; background-color: #e6ecff; align-items: flex-start; flex-direction: column;">
-			<!--분할화면 오른쪽  -->
-				<table style="width:40%; margin-left: 0; margin-top:8%; height: 50vh;">
+			<div style="width: 60%;display:flex; flex-direction: column;margin-bottom:5%; ">
+				<div style="font-size: 20pt;display:flex; flex-direction: row; padding-left:7%; 
+					justify-content: space-between; font-weight: bold;color:#fac5a1; margin-bottom:3%;">
+					<div>마감 임박 구인</div>
+					<div style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
+						border:1px solid; border-radius:10px;padding:1%;">
+						+ 구인더보기
+					</div>
+				</div>
+				<hr style="width: 80%;margin-bottom:1%; border:solid 1px #fac5a1">
 				
-					<tr>
-						<td style="border-right: 0;padding: 2%;">
-							<span style="font-size: 15pt; font-weight: bold;">여긴 뭘까</span>
-						</td>
-					</tr>
-					<tr>
-						<td style="padding: 2%;">?</td>
-					</tr>
-					<tr>
-						<td style="padding: 2%;">??</td>
-					</tr>
-					<tr>
-						<td style="padding: 2%;">???</td>
-					</tr>
-					<tr>
-						<td style="padding: 2%;">????</td>
-					</tr>
-					<tr>
-						<td style="padding: 2%;">?????</td>
-					</tr>
-					
-				</table>
+				<c:forEach var="imsi" items="${list}">
+					<div style="margin-left:12%;margin-right:10%;display:flex; flex-direction: row;
+						align-items: center;cursor:pointer;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
+
+						<div style="width:35%;font-size: 15pt;">${imsi.ad_title }</div>
+						<div style="width:10%;font-size: 15pt;">${imsi.companyVO.c_name }</div>
+						<div style="width:30%;display:flex; flex-direction: column;">
+							<div style="font-size:10pt;font-weight:bold;margin-bottom:5%;">
+								
+								${imsi.companyVO.c_addr }
+							</div>
+							<div style="font-size:10pt;font-weight:bold;">
+								${imsi.companyVO.c_loc }
+							</div>
+						</div>
+						<div style="width:10%;display:flex; flex-direction: column;align-items:center;">
+							<div style="font-size:8pt;margin-bottom:5%;">
+								조회수
+							</div>
+							<div style="font-size:10pt;font-weight:bold;">
+								${imsi.ad_count }
+							</div>
+						</div>
+						<div style="width:10%;display:flex; flex-direction: column;align-items:center;">
+							<div style="font-size:8pt;margin-bottom:5%;">
+								D-days
+							</div>
+							<div style="font-size:10pt;font-weight:bold;">
+								<c:choose>
+									<c:when test="${endDate-nowDate+1 < 0 }">
+			  							마감된 공고입니다.
+			  						</c:when>
+									<c:when test="${endDate-nowDate+1 == 0 }">
+			  							오늘 마감입니다.
+			  						</c:when>
+									<c:otherwise>
+										D - ${endDate-nowDate+1 }   
+			  						</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						
+					</div>
+					<hr style="width: 80%;margin-bottom:1%; border:solid 1px #fac5a1">
+				</c:forEach>
+				
+				<div style="font-size: 20pt;display:flex; flex-direction: row; padding-left:7%; 
+					justify-content: space-between; font-weight: bold;color:#fac5a1; margin-bottom:3%;
+					margin-top:7%;">
+					<div>마감 임박 구인</div>
+					<div style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
+						border:1px solid; border-radius:10px;padding:1%;">
+						+ 구인더보기
+					</div>
+				</div>
+				<hr style="width: 80%;margin-bottom:1%; border:solid 1px #fac5a1">
+				
+				<c:forEach var="imsi" items="${list1}">
+					<div style="margin-left:12%;margin-right:10%;display:flex; flex-direction: row;
+						align-items: center; cursor:pointer;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
+
+						<div style="width:35%;font-size: 15pt;">${imsi.ad_title }</div>
+						<div style="width:10%;font-size: 15pt;">${imsi.companyVO.c_name }</div>
+						<div style="width:30%;display:flex; flex-direction: column;">
+							<div style="font-size:10pt;font-weight:bold;margin-bottom:5%;">
+								
+								${imsi.companyVO.c_addr }
+							</div>
+							<div style="font-size:10pt;font-weight:bold;">
+								${imsi.companyVO.c_loc }
+							</div>
+						</div>
+						<div style="width:10%;display:flex; flex-direction: column;align-items:center;">
+							<div style="font-size:8pt;margin-bottom:5%;">
+								조회수
+							</div>
+							<div style="font-size:10pt;font-weight:bold;">
+								${imsi.ad_count }
+							</div>
+						</div>
+						<div style="width:10%;display:flex; flex-direction: column;align-items:center;">
+							<div style="font-size:8pt;margin-bottom:5%;">
+								D-days
+							</div>
+							<div style="font-size:10pt;font-weight:bold;">
+								<c:choose>
+									<c:when test="${endDate-nowDate+1 < 0 }">
+			  							마감된 공고입니다.
+			  						</c:when>
+									<c:when test="${endDate-nowDate+1 == 0 }">
+			  							오늘 마감입니다.
+			  						</c:when>
+									<c:otherwise>
+										D - ${endDate-nowDate+1 }   
+			  						</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+						
+					</div>
+					<hr style="width: 80%;margin-bottom:1%; border:solid 1px #fac5a1">
+				</c:forEach>
+				
+				
+			</div>
+			<div style="width: 25%; align-items:center;display:flex; flex-direction: column;">
+			<!--분할화면 오른쪽  -->
+				<div style="margin-bottom:3%;margin-top:6%; align-items:center;display:flex; flex-direction: column;">
+					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad1.gif"/>
+					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div>
+				</div>
+				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
+					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad2.gif"/>
+					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div>
+				</div>
+				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
+					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad3.gif"/>
+					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div>
+				</div>
 				
 			</div>
 		</div>
@@ -140,5 +169,27 @@
 	<footer>
 		<jsp:include page="./include/footer.jsp"></jsp:include>
 	</footer>
+	
+	
+<jsp:useBean id="now" class="java.util.Date" />	
+<script>
+	$(function() {
+		$('#searchButton').click(function() {
+			if($("select option:selected").val()=="n") {
+				alert("검색할 카테고리를 선택해 주세요.");
+			} else if($("#keywordInput").val().trim()=="" || $("#keywordInput").val().trim()==null) {
+				alert("검색할 내용을 입력해 주세요.");
+				$("#keywordInput").focus();
+			} else {
+				self.location = "../../hire/Search_Job2.do"
+					+ '${pageMaker.makeQuery(1)}'
+					+ "&searchType="
+					+ $("select option:selected").val()
+					+ "&keyword="
+					+ encodeURIComponent($('#keywordInput').val());
+			}
+		});
+	});
+</script>
 </body>
 </html>

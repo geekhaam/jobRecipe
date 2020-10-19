@@ -1,35 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.label_tit{
-font-family: 'Roboto', 'Noto Sans Korean', '돋움', dotum, Arial, sans-serif;
--webkit-font-smoothing: antialiased;
-position: relative;
-width: 157px;
-font-size: 14px;
-color: #333333;
-text-align: left;
-vertical-align: top;
-display: block;
-padding-bottom: 9px;
-height: 14px;
-line-height: 14px;
-font-weight: normal;
-}
-</style>
 <meta charset="utf-8">
-<title>Insert title here</title>
-</head>
-<body>
+<title>잡레시피</title>
+<link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
+<script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>	
 
-<script>
-$(function(){
+<style>
+	ul {
+		list-style: none;
+	}
+</style>
 
+<script>
+	$(function(){
 	//비밀번호 확인
 		$('#pw2').blur(function(){
 		   if($('#pw').val() != $('#pw2').val()){
@@ -41,16 +30,62 @@ $(function(){
 		    }
 		})  	   
 	});
-
 </script>
+</head>
+<body>
+	<header>
+		<jsp:include page="../include/header.jsp"></jsp:include>
+	</header>
+	<section>
+		<div id="myPageInfo">
+			<span class="img_profile"></span>
+			<!-- 프로필 이미지 -->
+			<div class="my_info">
+				<h1>${u_email}</h1>
+			</div>
+		</div>
+		
+		<div id="myPageMenuWrap">
+			<div id="myPageMenu">
+				<div class="mypagemenu_wrap">
+					<div class="table_row_div">
+						<a href="settings.do">계정</a>
+						<a href="resumes.do">내 프로필</a>
+						<a href="reviews.do">활동내역</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="myPageMyInformationMenu" class="mypage_menu">
+			<nav id="profile-left-menu">
+				<h2>계정</h2>
+				<hr>
+				<ul>
+					<li class="">
+						<a href="./settings.do">
+							<span class="txt">계정 설정</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="./change_password.do">
+							<span class="txt">비밀번호 변경</span>
+						</a>
+					</li>
+					<li class="">
+						<a href="./newsletter.do">
+							<span class="txt">이메일 수신 설정</span> 
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
 
-
-	<div>
-		<h3>비밀번호 변경</h3>
 		<hr>
+		
+		<h3>비밀번호 변경</h3>
 
-<!-- pattern=".{8,}" -->
-
+		<!-- pattern=".{8,}" -->
 		<form action="change_password.do" method="post">
 		
 			<div>
@@ -77,8 +112,10 @@ $(function(){
 				<input type="submit" value="비밀번호변경">
 			</div>
 		</form>
-	</div>
-
+	</section>
+	<footer>
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>
 
