@@ -78,7 +78,7 @@
 			<select style="width:30%; padding:2%;border-color:#fac5a1;align-self: flex-end;border-radius:10px;
     			margin-right: 5%;margin-bottom:3%;font-weight:bold;" id="order" name="order" onchange="advertiseOrder()">
 				<option value="마감일">마감일</option>
-				<option value="평점수">평점수</option>
+				<option value="평점순">평점순</option>
 			</select>
 			<div style="overflow: auto; width: 90%;">
 				<div id="companyOrder">
@@ -136,8 +136,7 @@
 				</div>
 			</div>
 		</div>
-		<div style="width: 60%;border:1px solid #fac5a1 ;display:flex; flex-direction: column;padding-bottom:5%;
-			    border-radius: 13px;">
+		<div style="width: 60%;border:1px solid #fac5a1 ;display:flex; flex-direction: column;padding-bottom:5%; border-radius: 13px;">
 			<div id="advertisementOrder">
 			<div style="overflow:auto; max-height:92vh;padding-left:2%;">
 				<div style="display:flex; flex-direction: row; flex-wrap:nowrap;margin-top:1%;">
@@ -165,6 +164,12 @@
 						<li>
 							<button type="button" style="font-weight:bold;border:1px solid #fac5a1; border-radius:15px;"
 								onclick="location.href='reviewAll.do?rev_name=${imsi.ad_name }'">리뷰</button>
+						</li>
+
+						<li>
+							<button type="button" style="font-weight:bold;border:1px solid #fac5a1; border-radius:15px;" onclick="location.href='/apply.do?ad_no=${imsi.ad_no}'">
+								지원하기
+							</button>						
 						</li>
 					</ul>
 				</div>

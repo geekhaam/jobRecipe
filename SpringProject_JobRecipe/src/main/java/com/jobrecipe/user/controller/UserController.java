@@ -88,20 +88,25 @@ public class UserController {
 	@RequestMapping(value = "/signinCheck.do")
 	public String login(UserVO vo, HttpServletRequest request, RedirectAttributes rttr, HttpSession session)
 			throws Exception {
-
+		
 		session = request.getSession();
-
+		
 		UserVO login = userService.signinCheck(vo);
-
+		
 		if (login == null) {
 			session.setAttribute("login", null);
 			rttr.addFlashAttribute("msg", false);
 			return "redirect:/sign_in.do";
 		} else {
-			session.setAttribute("login", login);
-			session.setAttribute("u_email", login.getU_email());
-			return "redirect:/";
-		}
+			
+			if(login.getU_email().equals("admin@jobrecipe.com")) {
+				return "admin/insert_company";
+			} else {
+				session.setAttribute("login", login);
+				session.setAttribute("u_email", login.getU_email());
+				return "redirect:/";
+			}
+		}			
 	}
 
 	// ·Î±×¾Æ¿ô

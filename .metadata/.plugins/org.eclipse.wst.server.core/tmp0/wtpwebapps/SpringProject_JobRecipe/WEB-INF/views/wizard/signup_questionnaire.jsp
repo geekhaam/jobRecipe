@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>잡레시피</title>
+<link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
+<script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
+<script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
 </head>
 <body style="margin:0;">
 	<header>
@@ -12,8 +17,7 @@
 	</header>
 	
 	<section>
-		<div
-			style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
+		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
 			<!-- 전체화면 -->
 
 			<div style="width: 15%; margin-left: 3%;">
@@ -27,18 +31,15 @@
 				</div> -->
 			</div>
 
-			<div
-				style="width: 60%; display: flex; flex-direction: column; margin-bottom: 5%;">
+			<div style="width: 60%; display: flex; flex-direction: column; margin-bottom: 5%;">
 				<div style="width:100%;text-align:center;margin-top:5%;margin-bottom:3%;color:#ff6900;">
-					<h1>Survey</h1>
+					<h1>회원가입</h1>
 				</div>
 				<div class="question_wrap">
-					<div class="question_head">
+					<div class="question_head" style="text-align:center;">
 						<div class="head_title_group">
 							<p class="head_title1">설문을 완료하시면 서비스 이용이 가능합니다.</p>
-							<p class="head_desc">* 입력된 정보는 외부에 노출되지 않고, 보다 나은 서비스 제공을 위한
-								통계자료로만 활용됩니다.</p>
-
+							<p class="head_desc">* 입력된 정보는 외부에 노출되지 않고, 보다 나은 서비스 제공을 위한 통계자료로만 활용됩니다.</p>
 						</div>
 					</div>
 					<div class="question_body">
@@ -50,11 +51,11 @@
 										<h3>성별을 알려주세요.</h3>
 									</div>
 									<div class="gender_radio">
-										<label class="btn_radio" for="gender_man"> <input
-											type="radio" name="pro_gender" id="gender_man" value="1">
+										<label class="btn_radio" for="gender"> <input
+											type="radio" name="pro_gender" id="gender" value="1">
 											<span class="radio_txt">남자</span>
-										</label> <label class="btn_radio" for="gender_woman"> <input
-											type="radio" name="pro_gender" id="gender_woman" value="2">
+										</label> <label class="btn_radio" for="gender"> <input
+											type="radio" name="pro_gender" id="gender" value="2">
 											<span class="radio_txt">여자</span>
 										</label>
 									</div>
@@ -64,9 +65,8 @@
 										<h3>출생연도를 알려주세요.</h3>
 									</div>
 									<div class="birthYear_select">
-										<select id="birth_year" name="pro_birthYear" style="padding:1%;border-color:#fac5a1;
-											border-radius:15px;">
-											<option>선택해주세요.</option>
+										<select id="birth_year" name="pro_birthYear" style="padding:1%;border-color:#fac5a1; border-radius:15px;">
+											<option value="none">선택해주세요.</option>
 											<option value="2006">2006년</option>
 											<option value="2005">2005년</option>
 											<option value="2004">2004년</option>
@@ -95,7 +95,7 @@
 									<div class="career_select" style="display: flex; flex-direction: row;flex-wrap: nowrap;">
 										<select id="career" name="pro_career"style="padding:1%;border-color:#fac5a1;
 											border-radius:15px;margin-bottom:2%;">
-											<option>선택해주세요.</option>
+											<option value="none">선택해주세요.</option>
 											<option value="0">0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
@@ -113,11 +113,12 @@
 								</div>
 								<div class="question_btn" style="text-align:center;">
 									<input type="hidden" name="u_no" value="${u_no}">
-									<button id="btn_next" type="submit" style="font-size:15pt;padding:1%;color:white;
+									<button id="btn_complete" type="submit" style="font-size:15pt;padding:1%;color:white;
 										background-color:#ff6900;border:0;">
 										회원가입 완료
 									</button>
 								</div>
+								<div class="check_font" id="info_check"style="width:90%;margin-left:auto;margin-right:auto; margin-top:1%;margin-bottom:3%;font-size:17pt;"></div>
 							</form>
 						</div>
 					</div>
@@ -147,9 +148,9 @@
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
 					<img style="border-radius: 30px; width: 90%;"
 						src="/resources/images/ad3.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						hire</div>
+					<div style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">
+						Kaja hire
+					</div>
 				</div>
 
 			</div>

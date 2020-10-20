@@ -155,5 +155,9 @@
 		where rnum between #{rowStart} and #{rowEnd}
 	</select>
 	
+	<select id="selectOne" parameterType="int" resultMap="advertisementVO">
+		SELECT * FROM rec_ad WHERE ad_no = #{ad_no}
+	</select>
+	
 	
 </mapper>

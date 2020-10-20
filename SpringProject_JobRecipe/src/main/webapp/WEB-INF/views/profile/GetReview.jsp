@@ -81,61 +81,100 @@
 </script>
 </head>
 <body>
-
-	<h1 id="rev_name">${reviewVO.rev_name}</h1>
-
-		<br><br>
-		
-			<table>
-				<tr>
-					<td><input type="text" id="no" value="${reviewVO.rev_no}" style="display: none;">${reviewVO.rev_job } | ${reviewVO.rev_state } | ${reviewVO.rev_date }</td>
-				</tr>
-				<tr>
-					<td id="review_list_td">
-						<input type="text" id="star" value="${reviewVO.rev_star }" style="display: none;">
-						<div class="review_star">
-							<span class="star1 on" id="0.5"></span>
-							<span class="star2" id="1.0"></span>
-							<span class="star1" id="1.5"></span>
-							<span class="star2" id="2.0"></span>
-							<span class="star1" id="2.5"></span>
-							<span class="star2" id="3.0"></span>
-							<span class="star1" id="3.5"></span>
-							<span class="star2" id="4.0"></span>
-							<span class="star1" id="4.5"></span>
-							<span class="star2" id="5.0"></span>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><b>"${reviewVO.rev_title }"</b></td> <!-- 한 줄 평가 -->
-				</tr>
-				<tr>
-					<td style="color: blue;"><b>장점</b></td>
-				</tr>
-				<tr>
-					<td style="white-space: pre;">${reviewVO.rev_advan }</td>
-				</tr>
-				<tr>
-					<td style="color: red;"><b>단점</b></td>
-				</tr>
-				<tr>
-					<td style="white-space: pre;">${reviewVO.rev_weak }</td>
-				</tr>
-				<tr>
-					<td><b>경영진에게 바라는 점</b></td>
-				</tr>
-				<tr>
-					<td style="white-space: pre;">${reviewVO.rev_wish }</td>
-				</tr>
-				<tr>
-					<td><input type="button" value="전체 리뷰 보기" onclick="location.href='reviews.do'"></td>
-				</tr>
-			</table>
-		
-		<br><br>
-		
+	<header>
+		<jsp:include page="../include/header.jsp"></jsp:include>
+	</header>
+	<section>
+	<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
+	<div style="width: 15%; margin-left: 3%;">
+		<div id="myPageInfo" style="margin-bottom:5%;margin-top:15%;text-align:center;">
+			<span class="img_profile"></span>
+			<!-- 프로필 이미지 -->
+			<img style="height:17vh;" src="/resources/images/default_user.png">
+			<div class="my_info" style="font-weight:bold;">
+				<h1>${u_email}</h1>
+			</div>
 		</div>
-
+		<div id="myPageMenu">
+			<div class="mypagemenu_wrap">
+				<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
+					
+					<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+						계정
+					</div>
+					<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+						프로필
+					</div>
+					<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+						활동내역
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div style="width: 60%; display: flex; flex-direction: column;margin-left:15%;margin-bottom: 5%;">
+		<h1 id="rev_name">${reviewVO.rev_name}</h1>
+	
+			<br><br>
+			
+				<table>
+					<tr>
+						<td><input type="text" id="no" value="${reviewVO.rev_no}" style="display: none;">${reviewVO.rev_job } | ${reviewVO.rev_state } | ${reviewVO.rev_date }</td>
+					</tr>
+					<tr>
+						<td id="review_list_td">
+							<input type="text" id="star" value="${reviewVO.rev_star }" style="display: none;">
+							<div class="review_star">
+								<span class="star1 on" id="0.5"></span>
+								<span class="star2" id="1.0"></span>
+								<span class="star1" id="1.5"></span>
+								<span class="star2" id="2.0"></span>
+								<span class="star1" id="2.5"></span>
+								<span class="star2" id="3.0"></span>
+								<span class="star1" id="3.5"></span>
+								<span class="star2" id="4.0"></span>
+								<span class="star1" id="4.5"></span>
+								<span class="star2" id="5.0"></span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><b>"${reviewVO.rev_title }"</b></td> <!-- 한 줄 평가 -->
+					</tr>
+					<tr>
+						<td style="color: blue;"><b>장점</b></td>
+					</tr>
+					<tr>
+						<td style="white-space: pre;">${reviewVO.rev_advan }</td>
+					</tr>
+					<tr>
+						<td style="color: red;"><b>단점</b></td>
+					</tr>
+					<tr>
+						<td style="white-space: pre;">${reviewVO.rev_weak }</td>
+					</tr>
+					<tr>
+						<td><b>경영진에게 바라는 점</b></td>
+					</tr>
+					<tr>
+						<td style="white-space: pre;">${reviewVO.rev_wish }</td>
+					</tr>
+					<tr>
+						<td><input type="button" value="전체 리뷰 보기" onclick="location.href='reviews.do'"></td>
+					</tr>
+				</table>
+			
+			<br><br>
+		</div>
+	</div>
+	</section>
+	<footer>
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

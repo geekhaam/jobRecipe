@@ -77,7 +77,7 @@
 		<div style="width: 30%;	display:flex;align-items:center; flex-direction: column;">
 			<select style="width:30%; padding:2%;border-color:#fac5a1;align-self: flex-end;border-radius:10px;
     			margin-right: 5%;margin-bottom:3%;font-weight:bold;" id="order" name="order" onchange="advertiseOrder1()">
-				<option value="평점수">평점수</option>
+				<option value="평점순">평점순</option>
 				<option value="마감일">마감일</option>
 			</select>
 			<div style="overflow: auto; width: 90%;">
@@ -120,17 +120,17 @@
 				<!-- 게시판 하단의 페이징  -->
 					<c:if test="${pageMaker.prev}">
 						<li id="center">
-							<a href="aAllInfo.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
+							<a href="aAllInfo1.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
 						</li>
 					</c:if>
 					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 						<li id="center">
-							<a href="aAllInfo.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+							<a href="aAllInfo1.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
 					</c:forEach>
 
 					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						<li id="center">
-							<a href="aAllInfo.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+							<a href="aAllInfo1.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
 					</c:if>
 				</ul>
 				</div>
@@ -165,6 +165,12 @@
 						<li>
 							<button type="button" style="font-weight:bold;border:1px solid #fac5a1; border-radius:15px;"
 								onclick="location.href='reviewAll.do?rev_name=${imsi.ad_name }'">리뷰</button>
+						</li>
+						
+						<li>
+							<button type="button" style="font-weight:bold;border:1px solid #fac5a1; border-radius:15px;" onclick="location.href='/apply.do?ad_no=${imsi.ad_no}'">
+								지원하기
+							</button>						
 						</li>
 					</ul>
 				</div>

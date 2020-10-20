@@ -151,6 +151,36 @@ public class ProfileServiceImpl implements ProfileService{
 		profileDAO.job_applicants1(vo);
 	}
 	
+	@Override
+	public void deleteEducation(int e_no) {
+		profileDAO.deleteEducation(e_no);
+	}
+
+	@Override
+	public void deleteCareer(int car_no) {
+		profileDAO.deleteCareer(car_no);
+	}
+
+	@Override
+	public void deleteActAward(int act_no) {
+		profileDAO.deleteActAward(act_no);
+	}
+
+	@Override
+	public void deleteCertiOther(int cer_no) {
+		profileDAO.deleteCertiOther(cer_no);	
+	}
+
+	@Override
+	public void deletePortfolio(int por_no) {
+		profileDAO.deletePortfolio(por_no);
+	}
+	
+	@Override
+	public void deleteResume(int res_no) {
+		profileDAO.deleteResume(res_no);
+	}
+	
 	//이메일 수신체크
 	@Override
 	public void newsCheck(UserVO vo) throws Exception {
@@ -197,6 +227,5 @@ public class ProfileServiceImpl implements ProfileService{
 	public void deleteReview(int rev_no) {
 		profileDAO.deleteReview(rev_no);
 	}
-
 
 }

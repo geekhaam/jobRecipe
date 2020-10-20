@@ -6,7 +6,6 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <style>
 ul {
@@ -20,10 +19,8 @@ ul {
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>
 	<section>
-		<div
-			style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
+		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
 			<!-- 전체화면 -->
-
 			<div style="width: 15%; margin-left: 3%;">
 				<div id="myPageInfo" style="margin-bottom:5%;margin-top:15%;text-align:center;">
 					<span class="img_profile"></span>
@@ -56,8 +53,7 @@ ul {
 				
 			</div>
 
-			<div
-				style="width: 60%; display: flex; flex-direction: column; margin-bottom: 5%;">
+			<div style="width: 60%; display: flex; flex-direction: column; margin-bottom: 5%;">
 				<div style="width:100%;text-align:center;margin-top:5%;margin-bottom:3%;color:#ff6900;">
 					<h1 style="font-size:22pt;">내 활동내역</h1><br>
 					
@@ -72,22 +68,48 @@ ul {
 										border:1px solid #fac5a1;background-color:#ff6900;color:white;border-radius:10px;margin-right:2%;">
 										리뷰 (${reviewCnt})
 									</div>
-									<div onclick="location.href='./drafts.do'" style="cursor:pointer;padding:1%;
-										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
-										입사지원한 기업 (0)
-									</div>
-									
 								</div>
-								<hr>
+								<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 								
 							</div>
 						</div>
-					</div>
-
-					
+					</div>					
 				</div>
 
-				
+				<div style="margin-left: 37%">
+					<div>
+						<h2>내 기업리뷰</h2>
+						<h3>
+							<span>${reviewCnt}</span>개의 리뷰를 작성하셨습니다.
+						</h3>
+					</div>
+					<table>
+						<caption>내 기업리뷰</caption>
+						<thead>
+							<tr>
+								<th>기업명</th>
+								<th>고용형태</th>
+								<th>작성일</th>
+								<th>수정/삭제</th>
+							</tr>
+						</thead>
+						<c:forEach items="${list}" var="reviewVO">
+							<tbody>
+								<tr>
+									<td><a href="getReview.do?rev_no=${reviewVO.rev_no}">${reviewVO.rev_name}</a></td>
+									<td>${reviewVO.rev_emp}</td>
+									<td>${reviewVO.rev_date}</td>
+									<td><a href="./updateReviewView.do?rev_no=${reviewVO.rev_no}">수정</a>/<a
+										href="./deleteReview.do?rev_no=${reviewVO.rev_no}">삭제</a></td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</table>
+					
+					<div>
+						<button onclick="insertReview();">기업리뷰 작성</button>
+					</div>
+				</div>
 
 				
 			</div>

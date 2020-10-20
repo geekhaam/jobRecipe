@@ -93,6 +93,11 @@ public class AdvertisementServiceImpl implements AdvertisementService{
 		return dao.allAdvertise(cri);
 	}
 
+	@Override
+	public AdvertisementVO selectOne(int ad_no) {
+		return dao.selectOne(ad_no);
+	}
+
 	
 
 	

@@ -119,7 +119,7 @@ $(function(){
 									<div style="display: flex; flex-direction: column;width:90%;margin-left:auto;
 										margin-right:auto;margin-top:5%;margin-bottom:10%;">
 										<div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
-											<div style="width: 19%;font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
+											<div style="width: 11%;font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
 												아이디
 											</div>
 											<input type="text" readonly value="${sessionScope.u_email}" 
@@ -135,20 +135,19 @@ $(function(){
 										</div>
 										
 										<div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
-											<div style="font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
+											<div style="width:11%;font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
 												새 비밀번호
 											</div>
-											
-										</div>
-										
-										<div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
 											<input type="password" name="u_pw" id="pw" placeholder="비밀번호(8자리 이상)"
 												title="비밀번호는 8자 이상이어야 합니다." style="border:1px solid #ff6900;
 												border-radius:10px;padding:1%;margin-right:2%;"/>
 											<input type="password" name="user_password_confirmation"
 											id="pw2" placeholder="비밀번호 확인" title="비밀번호는 8자 이상이어야 합니다."
-												style="border:1px solid #ff6900;border-radius:10px;padding:1%;"/>
+												style="border:1px solid #ff6900;border-radius:10px;padding:1%;"/>											
 										</div>
+										
+										<!-- <div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
+										</div> -->
 										<div style="text-align:end;">
 											<input type="submit" style="background-color:#ff6900;color:white;padding:1%;
 												margin-right:25%;" value="비밀번호변경">

@@ -9,14 +9,23 @@
 <title>잡레시피</title>
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
+<script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+<script type="text/javascript">
+	function deleteCheck() {
+		if(confirm("정말로 삭제하시겠습니까?")) {
+			location.href="deleteResume.do?res_no=" + $("#res_no").val();
+		} else {
+			location.href="redirect:/resumes.do"
+		}
+	};
+</script>
 </head>
 <body>
 	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>
 	<section>
-		<div
-			style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
+		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
 			<!-- 전체화면 -->
 
 			<div style="width: 15%; margin-left: 3%;">
@@ -56,7 +65,6 @@
 				<div style="width:100%;text-align:center;margin-top:5%;margin-bottom:3%;color:#ff6900;">
 					<h1 style="font-size:22pt;">내 프로필</h1><br>
 					
-					
 				</div>
 				<div id="mainContents" class="jpcont_rgt" style="width:90%;margin-right:auto;margin-left:auto;">
 					<div class="jpcont_wrap">
@@ -71,15 +79,15 @@
 									</c:when>
 									<c:otherwise>
 										<c:forEach var="resumeVO" items="${resumeVOList}">
-											<div style="display: flex; flex-direction: row;flex-wrap:nowrap;">
+											<div style="display:flex; flex-direction:row; flex-wrap:nowrap;">
 												<div style="width:60%;font-size: 15pt;">
 													${resumeVO.res_title}
 												</div>
 												<div style="width:20%;font-size: 11pt;">${resumeVO.write_date}</div>
-												<button onclick="location.href='updateResumeForm.do?res_no=${resumeVO.res_no}'" style="background-color:#ff6900;color:white;border:0;border-radius:10px;padding:1%;margin-right: 20px;">수정</button>
-												<button onclick="location.href='deleteResume.do'" style="background-color:#ff6900;color:white;border:0;border-radius:10px;padding:1%;">삭제</button>
-												
-											</div>
+													<button onclick="location.href='updateResumeForm.do?res_no=${resumeVO.res_no}'" style="background-color:#ff6900;color:white;border:0;border-radius:10px;padding:1%;margin-right: 20px;">수정</button>
+													<button onclick="deleteCheck()" style="background-color:#ff6900;color:white;border:0;border-radius:10px;padding:1%;margin-right: 20px;">삭제</button>
+												</div>
+												<input type="hidden" id="res_no" value="${resumeVO.res_no}">
 												<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 										</c:forEach>
 									</c:otherwise>

@@ -169,28 +169,25 @@
 								<div style="font-weight:bold;color:blue;font-size:12pt;margin-bottom:1%;">
 									장점
 								</div>
-								<textarea readonly cols="40" rows="3" style="resize: none;width:93%;
-									    overflow-x: hidden;">
+								<div>
 									${imsi.rev_title }
-								</textarea>
+								</div>
 							</div>
 							<div style="display: flex; flex-wrap: nowrap; flex-direction: column;margin-top:2%;">
 								<div style="font-weight:bold;color:red;font-size:12pt;margin-bottom:1%;">
 									단점
 								</div>
-								<textarea readonly cols="40" rows="3" style="resize: none;width:93%;
-									    overflow-x: hidden;">
+								<div>
 									${imsi.rev_weak }
-								</textarea>
+								</div>
 							</div>
 							<div style="display: flex; flex-wrap: nowrap; flex-direction: column;margin-top:2%;">
 								<div style="font-weight:bold;color:green;font-size:12pt;margin-bottom:1%;">
 									경영진에게 바라는 점
 								</div>
-								<textarea readonly cols="40" rows="3" style="resize: none;width:93%;
-									    overflow-x: hidden;">
+								<div>
 									${imsi.rev_wish }
-								</textarea>
+								</div>
 							</div>	
 							<div id="cnt" style="text-align:end;margin-top:2%;margin-bottom:1%;">
 								<input type="button" id="rev_cnt" style="background-color:white;color:#ff6900;

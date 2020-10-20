@@ -33,12 +33,10 @@
 			</div>
 		</div>
 		<!--test  -->
-		<div>
-			
-				<button onclick="location.href='/admin/insertCompanyForm.do'">admin</button>
-				<!--test용 버튼  -->
-				
-		</div>
+		<!-- <div>
+			<button onclick="location.href='/admin/insertCompanyForm.do'">admin</button>
+			test용 버튼 	
+		</div> -->
 		<div style="display:flex; flex-direction: row;flex-wrap: nowrap;">
 			<c:if test="${login == null }">
 				<div style="cursor:pointer;font-size: 12pt;margin-right:10px; margin-left: 10px;padding-top:3%;

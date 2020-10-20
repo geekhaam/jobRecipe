@@ -36,6 +36,8 @@ public interface AdvertisementService {
 	AdvertisementVO cInfo_Star_Vo(Paging pa); //평점순에서 각 페이지마다 첫 번째 공고
 
 	ArrayList<AdvertisementVO> allAdvertise(Paging cri); //모든 공고
+	
+	AdvertisementVO selectOne(int ad_no);
 
 	
 }

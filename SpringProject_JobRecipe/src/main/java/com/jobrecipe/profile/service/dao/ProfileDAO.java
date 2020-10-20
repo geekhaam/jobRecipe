@@ -75,6 +75,24 @@ public interface ProfileDAO {
 	//이력서 취합 정보 수정
 	public void updateResume(ResumeVO resumeVO);
 	
+	//학력사항 삭제
+	public void deleteEducation(int e_no);
+	
+	//경력사항 삭제
+	public void deleteCareer(int car_no);
+	
+	//활동 및 수상내역 삭제
+	public void deleteActAward(int act_no);
+	
+	//자격증 및 기타 삭제
+	public void deleteCertiOther(int cer_no);
+	
+	//포트폴리오 삭제
+	public void deletePortfolio(int por_no);
+	
+	//이력서 삭제
+	public void deleteResume(int res_no);
+	
 	//작성중
 	public void drafts1(UserVO vo);
 	

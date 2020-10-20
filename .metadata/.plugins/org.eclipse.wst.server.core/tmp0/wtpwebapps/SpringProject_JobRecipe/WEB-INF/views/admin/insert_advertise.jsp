@@ -19,8 +19,16 @@
 	</script>
 </head>
 <body>
-
-	<form action="insertAdvertise.do" method="post" onsubmit="return admin_addAdvertise()">
+	
+	<header>
+		<jsp:include page="../include/header.jsp"></jsp:include>
+	</header>
+	
+	<section>
+		<div style="width: 100%;  min-height: 70vh; text-align: center;">
+		<!-- section 기본화면 셋팅 -->
+		
+			<form action="insertAdvertise.do" method="post" onsubmit="return admin_addAdvertise()">
 	<table>
 		<tr>
 			<th>채용 제목</th>
@@ -134,6 +142,12 @@
 
 	<input type="submit" value="추가">
 	</form>
+		</div>	
+	</section>
+	
+	<footer>
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</footer>
 	
 <!-- 유진 -->
 </body>

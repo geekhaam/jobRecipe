@@ -40,6 +40,8 @@ public interface AdvertisementDAO {
 	AdvertisementVO cInfo_Star_Vo(Paging pa);
 
 	ArrayList<AdvertisementVO> allAdvertise(Paging cri);
+	
+	AdvertisementVO selectOne(int ad_no);
 
 	
 
