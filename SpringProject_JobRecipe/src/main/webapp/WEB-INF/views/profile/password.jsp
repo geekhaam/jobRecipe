@@ -1,24 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.label_tit{
+font-family: 'Roboto', 'Noto Sans Korean', '돋움', dotum, Arial, sans-serif;
+-webkit-font-smoothing: antialiased;
+position: relative;
+width: 157px;
+font-size: 14px;
+color: #333333;
+text-align: left;
+vertical-align: top;
+display: block;
+padding-bottom: 9px;
+height: 14px;
+line-height: 14px;
+font-weight: normal;
+}
+</style>
 <meta charset="utf-8">
-<title>잡레시피</title>
+<title>Insert title here</title>
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
-<script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
+</head>
+<body style="margin:0;">
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>	
 
-<style>
-	ul {
-		list-style: none;
-	}
-</style>
-
 <script>
-	$(function(){
+$(function(){
+
 	//비밀번호 확인
 		$('#pw2').blur(function(){
 		   if($('#pw').val() != $('#pw2').val()){
@@ -30,92 +42,165 @@
 		    }
 		})  	   
 	});
+
 </script>
-</head>
-<body>
-	<header>
+
+<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>
 	<section>
-		<div id="myPageInfo">
-			<span class="img_profile"></span>
-			<!-- 프로필 이미지 -->
-			<div class="my_info">
-				<h1>${u_email}</h1>
-			</div>
-		</div>
-		
-		<div id="myPageMenuWrap">
-			<div id="myPageMenu">
-				<div class="mypagemenu_wrap">
-					<div class="table_row_div">
-						<a href="settings.do">계정</a>
-						<a href="resumes.do">내 프로필</a>
-						<a href="reviews.do">활동내역</a>
+		<div
+			style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
+			<!-- 전체화면 -->
+
+			<div style="width: 15%; margin-left: 3%;">
+				<div id="myPageInfo" style="margin-bottom:5%;margin-top:15%;text-align:center;">
+					<span class="img_profile"></span>
+					<!-- 프로필 이미지 -->
+					<img style="height:17vh;" src="/resources/images/default_user.png">
+					<div class="my_info" style="font-weight:bold;">
+						<h1>${u_email}</h1>
 					</div>
 				</div>
+				<div id="myPageMenu">
+					<div class="mypagemenu_wrap">
+						<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
+							
+							<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+								계정
+							</div>
+							<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+								프로필
+							</div>
+							<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+								활동내역
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div
+				style="width: 60%; display: flex; flex-direction: column; margin-bottom: 5%;">
+				<div style="width:100%;text-align:center;margin-top:5%;margin-bottom:3%;color:#ff6900;">
+					<h1 style="font-size:22pt;">계정 설정</h1><br>
+					
+					
+				</div>
+				<div id="mainContents" class="jpcont_rgt" style="width:90%;margin-right:auto;margin-left:auto;">
+					<div class="jpcont_wrap">
+						<div class="layout_my_account myaccountcon">
+							<div class="section_group">
+								<div style="display: flex; flex-direction: row;flex-wrap: nowrap;">
+									<div onclick="location.href='./settings.do'" style="cursor:pointer;padding:1%;
+										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
+										계정 설정
+									</div>
+									<div onclick="location.href='./change_password.do'" style="cursor:pointer;padding:1%;
+										border:1px solid #fac5a1;background-color:#ff6900;color:white;border-radius:10px;margin-right:2%;">
+										비밀번호 변경
+									</div>
+									<div onclick="location.href='./newsletter.do'" style="cursor:pointer;padding:1%;
+										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
+										이메일 수신 설정
+									</div>
+									<div onclick="location.href='./memberDelete.do'" style="cursor:pointer;padding:1%;
+										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
+										회원 탈퇴
+									</div>
+								</div>
+								<hr>
+								<form action="change_password.do" method="post">
+									<div style="display: flex; flex-direction: column;width:90%;margin-left:auto;
+										margin-right:auto;margin-top:5%;margin-bottom:10%;">
+										<div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
+											<div style="width: 19%;font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
+												아이디
+											</div>
+											<input type="text" readonly value="${sessionScope.u_email}" 
+												style="border:1px solid #ff6900;border-radius:10px;padding:1%;"/>
+										</div>
+										
+										<div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
+											<div style="font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
+												현재 비밀번호
+											</div>
+											<input type="password" name="user_current_password"placeholder="비밀번호(8자리 이상)"
+											title="비밀번호는 8자 이상이어야 합니다."  style="border:1px solid #ff6900;border-radius:10px;padding:1%;"/>
+										</div>
+										
+										<div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
+											<div style="font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
+												새 비밀번호
+											</div>
+											
+										</div>
+										
+										<div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
+											<input type="password" name="u_pw" id="pw" placeholder="비밀번호(8자리 이상)"
+												title="비밀번호는 8자 이상이어야 합니다." style="border:1px solid #ff6900;
+												border-radius:10px;padding:1%;margin-right:2%;"/>
+											<input type="password" name="user_password_confirmation"
+											id="pw2" placeholder="비밀번호 확인" title="비밀번호는 8자 이상이어야 합니다."
+												style="border:1px solid #ff6900;border-radius:10px;padding:1%;"/>
+										</div>
+										<div style="text-align:end;">
+											<input type="submit" style="background-color:#ff6900;color:white;padding:1%;
+												margin-right:25%;" value="비밀번호변경">
+										</div>
+									</div>
+									
+									
+								</form>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+				
+			</div>
+			<div
+				style="width: 25%; align-items: center; display: flex; flex-direction: column;">
+				<!--분할화면 오른쪽  -->
+				<div
+					style="margin-bottom: 3%; margin-top: 6%; align-items: center; display: flex; flex-direction: column;">
+					<img style="border-radius: 30px; width: 90%;"
+						src="/resources/images/ad1.gif" />
+					<div
+						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
+						Airline</div>
+				</div>
+				<div
+					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
+					<img style="border-radius: 30px; width: 90%;"
+						src="/resources/images/ad2.gif" />
+					<div
+						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
+						Company</div>
+				</div>
+				<div
+					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
+					<img style="border-radius: 30px; width: 90%;"
+						src="/resources/images/ad3.gif" />
+					<div
+						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
+						hire</div>
+				</div>
+
 			</div>
 		</div>
-		
-		<div id="myPageMyInformationMenu" class="mypage_menu">
-			<nav id="profile-left-menu">
-				<h2>계정</h2>
-				<hr>
-				<ul>
-					<li class="">
-						<a href="./settings.do">
-							<span class="txt">계정 설정</span>
-						</a>
-					</li>
-					<li class="active">
-						<a href="./change_password.do">
-							<span class="txt">비밀번호 변경</span>
-						</a>
-					</li>
-					<li class="">
-						<a href="./newsletter.do">
-							<span class="txt">이메일 수신 설정</span> 
-						</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-
-		<hr>
-		
-		<h3>비밀번호 변경</h3>
-
-		<!-- pattern=".{8,}" -->
-		<form action="change_password.do" method="post">
-		
-			<div>
-				<span class="label_tit">아이디</span>
-				<input type="text" readonly value="${sessionScope.u_email}"  />
-			</div>
-			
-			<div>
-				<input type="hidden" name="u_email" value="${sessionScope.u_email}">
-				<span class="label_tit">현재 비밀번호</span>
-				<input type="password" name="user_current_password" placeholder="비밀번호(8자리 이상)" title="비밀번호는 8자 이상이어야 합니다.">
-			</div>
-			
-			<div>
-				<span class="label_tit">새 비밀번호</span>
-				<input type="password" name="u_pw" id="pw" placeholder="비밀번호(8자리 이상)" title="비밀번호는 8자 이상이어야 합니다.">
-			</div>
-			
-			<div>
-				<input type="password" name="user_password_confirmation" id="pw2" placeholder="비밀번호 확인" title="비밀번호는 8자 이상이어야 합니다.">
-			</div>
-			
-			<div>
-				<input type="submit" value="비밀번호변경">
-			</div>
-		</form>
 	</section>
 	<footer>
 		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</footer>
+	
+
 </body>
 </html>
 

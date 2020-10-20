@@ -115,8 +115,267 @@
 </script>
 </head>
 <body>
+<body style="margin:0;">
+	
+	<header>
+		<jsp:include page="../include/header.jsp"></jsp:include>
+	</header>
+	
+	<section>
+		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
+		<!-- 전체화면 -->
+		
+			<div style="width: 15%;	 margin-left: 3%;">
+			<!--  left -->
+				<!-- <div style="display:flex; flex-direction: column; border">
+					<img style="height:17vh;" src="/resources/images/default_user.png">
+					<div>이름</div>
+					<div>아이디</div>
+					<div>...</div>
+					<div>...</div>
+					<div>...</div>
+				</div> -->
+			</div>
+			
+			<div style="width: 60%;display:flex; flex-direction: column;margin-bottom:5%; ">
+				<!--center  -->
+				<div style="width:100%;text-align:center;margin-top:5%;margin-bottom:3%;color:#ff6900;">
+					<h1 >${rev_name } Review 등록</h1>
+					<hr style="border:solid 1px #fac5a1">
+					</div>
+					<!--//////////////////////////////////  -->
+					<form action="insertReview.do"
+						onsubmit="return insert_Review_Check()">
+						<input type="hidden" name="rev_name" value="${rev_name }">
+						<div style="width: 85%;display:flex;flex-direction: column;">
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;margin-bottom:2%;
+								padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;">현직장/전직장</div>
+								<label style="width:20%;">
+									<input type="radio" name="rev_state" value="현직장">현직장
+								</label> 
+								<label style="width:20%;">
+									<input type="radio" name="rev_state" value="전직장">전직장
+								</label>
+							</div>
+							
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;
+								margin-bottom:2%;padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;">직무</div>
+								<input type="text" id="checkJob" name="rev_job" required="required"
+									 placeholder="찾기" onclick="review_checkJob()"> 
+								<input type="button" id="modalBtn" value="찾기" data-toggle="modal"
+									data-target="#myModal" style="margin-left:1%;background-color:#fac5a1;
+									color:white;border:0;">
+									
+								<div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<b>직무 선택</b>
+												<button type="button" class="close" data-dismiss="modal">
+													<span>&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<p>
+													<label>
+														<input type="radio" name="job" value="QA">
+														QA
+													</label>
+														&nbsp;&nbsp;&nbsp; 
+													<label>
+														<input type="radio" name="job" value="프로젝트매니저">
+														프로젝트매니저
+													</label> 
+													<br> 
+													<label>
+														<input type="radio" name="job" value="모바일앱개발">
+															모바일앱개발
+													</label>
+														&nbsp;&nbsp;&nbsp; 
+													<label>
+														<input type="radio" name="job" value="웹개발">
+														웹개발
+													</label> 
+													<br> 
+													<label>
+														<input type="radio" name="job" value="DBA">
+														DBA
+													</label>
+														&nbsp;&nbsp;&nbsp; 
+													<label>
+														<input type="radio" name="job" value="시스템엔지니어">
+														시스템엔지니어
+													</label> 
+													<br> 
+													<label>
+														<input type="radio" name="job" value="소프트웨어엔지니어">
+														소프트웨어엔지니어
+													</label>
+														&nbsp;&nbsp;&nbsp; 
+													<label>
+														<input type="radio" name="job" value="하드웨어엔지니어">
+														하드웨어엔지니어
+													</label> 
+													<br> 
+													<label>
+														<input type="radio" name="job" value="네트워크/보안/운영">
+														네트워크/보안/운영
+													</label>
+														&nbsp;&nbsp;&nbsp; 
+													<label>
+														<input type="radio" name="job" value="게임개발">
+														게임개발
+													</label> 
+													<br> 
+													<input type="button" value="선택" data-dismiss="modal"
+															onclick="review_job_check()">
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;
+								margin-bottom:2%;padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;">고용형태</div>
+								<label style="width:15%;">
+									<input type="radio" name="rev_emp" value="정규직">
+									정규직
+								</label> 
+								<label style="width:15%;">
+									<input type="radio" name="rev_emp" value="계약직">
+									계약직
+								</label> 
+								<label style="width:15%;">
+									<input type="radio" name="rev_emp" value="인턴">
+									인턴
+								</label>
+							</div>
+							<div style="font-style:italic;font-size:9pt;padding-left:5%;margin-bottom:5%;">
+							* 경력 정보는 노출되지 않습니다. (현재, 또는 퇴직 당시의 경력 정보를 입력해 주세요.)
+							</div>
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;
+								margin-bottom:3%;padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;">기업 총 평가</div>
+								<div class="review_star">
+										<span class="star1 on" id="0.5"></span> 
+										<span class="star2" id="1.0"></span> 
+										<span class="star1" id="1.5"></span> 
+										<span class="star2" id="2.0"></span> 
+										<span class="star1" id="2.5"></span>
+										<span class="star2" id="3.0"></span> 
+										<span class="star1" id="3.5"></span> 
+										<span class="star2" id="4.0"></span> 
+										<span class="star1" id="4.5"></span> 
+										<span class="star2" id="5.0"></span>
+								</div>
+								<input type="hidden" id="rev_star" name="rev_star" value="0.5">
+							</div>
+							
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;
+								margin-bottom:3%;padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;padding-top: 3%;">
+									기업 한줄 평
+								</div>
+								<textarea name="rev_title" id="rev_title"
+										required="required" cols="40" rows="2" style="resize: none;width:45%;"
+										placeholder="최소 30자 이상 기재해 주세요.">
+								</textarea>
+								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
+									최소 30자
+								</div>
+								<span id="titleText" style="padding-top: 3%;color: red;">
+									<b>√</b>
+								</span>
+							</div>
+							
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;
+								margin-bottom:3%;padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;padding-top: 3%;">
+									기업의 장점
+								</div>
+								<textarea name="rev_advan" id="rev_advan"
+										required="required" cols="40" rows="5" style="resize: none;width:45%;"
+										placeholder="최소 30자 이상 기재해 주세요.">
+								</textarea>
+								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
+									최소 30자
+								</div>
+								<span id="advanText" style="padding-top: 3%;color: red;">
+									<b>√</b>
+								</span>
+							</div>
+							
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;
+								margin-bottom:3%;padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;padding-top: 3%;">
+									기업의 단점
+								</div>
+								<textarea name="rev_weak" id="rev_weak"
+										required="required" cols="40" rows="2" style="resize: none;width:45%;"
+										placeholder="최소 30자 이상 기재해 주세요.">
+								</textarea>
+								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
+									최소 30자
+								</div>
+								<span id="weakText" style="padding-top: 3%;color: red;">
+									<b>√</b>
+								</span>
+							</div>
+							<div style="display:flex;flex-direction: row;flex-wrap: nowrap;
+								margin-bottom:3%;padding-left:4%;">
+								<div style="padding-left:4%;width:35%;font-weight:bold;padding-top: 3%;">
+									경영진에게 바라는 점
+								</div>
+								<textarea name="rev_wish" id="rev_wish"
+										required="required" cols="40" rows="2" style="resize: none;width:45%;"
+										placeholder="최소 30자 이상 기재해 주세요.">
+								</textarea>
+								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
+									최소 30자
+								</div>
+								<span id="wishText" style="padding-top: 3%;color: red;">
+									<b>√</b>
+								</span>
+							</div>
+							
+						</div>
+						<div style="width:100%;text-align:end;margin-top:5%;margin-bottom:3%;">
+							<input style="width:20%;border:0;background-color:#ff6900;color:white;
+								font-size:20pt;margin-right:18%;" type="submit" value="추가">
+						</div>
+					</form>
+					<!--//////////////////////////////////  -->
+				
+				
+			</div>
+			<div style="width: 25%; align-items:center;display:flex; flex-direction: column;">
+			<!--분할화면 오른쪽  -->
+				<div style="margin-bottom:3%;margin-top:6%; align-items:center;display:flex; flex-direction: column;">
+					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad1.gif"/>
+					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div>
+				</div>
+				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
+					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad2.gif"/>
+					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div>
+				</div>
+				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
+					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad3.gif"/>
+					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<footer>
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</footer>
+		
+	
 
-	<h1>${rev_name }</h1>
+	<%-- <h1>${rev_name }</h1>
 	
 	<form action="insertReview.do" onsubmit="return insert_Review_Check()">
 	<input type="hidden" name="rev_name" value="${rev_name }">
@@ -225,6 +484,6 @@
 	</table>
 	<input type="submit" value="추가">
 	</form>
-
+ --%>
 </body>
 </html>

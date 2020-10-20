@@ -1,6 +1,9 @@
 package com.jobrecipe.profile.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,14 +14,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.jobrecipe.profile.service.ProfileService;
 import com.jobrecipe.profile.service.ProfileServiceImpl;
+import com.jobrecipe.profile.vo.ActAwardVO;
+import com.jobrecipe.profile.vo.CareerVO;
+import com.jobrecipe.profile.vo.CertiOtherVO;
+import com.jobrecipe.profile.vo.EducationVO;
+import com.jobrecipe.profile.vo.PortfolioVO;
 import com.jobrecipe.profile.vo.ProfileVO;
 import com.jobrecipe.profile.vo.ResumeVO;
 import com.jobrecipe.review.service.ReviewServiceimpl;
 import com.jobrecipe.review.vo.ReviewVO;
-import com.jobrecipe.user.service.UserService;
 import com.jobrecipe.user.service.UserServiceImpl;
 import com.jobrecipe.user.vo.UserVO;
 
@@ -35,7 +42,18 @@ public class ProfileController {
 	private ReviewServiceimpl reviewService;
 	
 	/*
-	 * ¸¶ÀÌÆäÀÌÁö ¸µÅ©
+	 * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	 * ê° í´ë”ë¥¼ ì›í•˜ëŠ” ìœ„ì¹˜ì— ë§Œë“¤ê³  PATH ë‘˜ ë‹¤ ë³€ê²½ í•´ì¤˜ì•¼ í•œë‹¤.
+	 * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	 */
+	
+	//í”„ë¡œí•„ ì´ë¯¸ì§€ ì €ì¥ ê²½ë¡œ
+	private static final String IMG_UPLOAD_PATH = "C:\\Users\\geekh\\Desktop\\jobRecipe_workspace\\img_upload";
+	//í¬íŠ¸í´ë¦¬ì˜¤ ì €ì¥ ê²½ë¡œ
+	private static final String PORT_UPLOAD_PATH = "C:\\Users\\geekh\\Desktop\\jobRecipe_workspace\\portfolio_upload";
+	
+	/*
+	 * ë§ˆì´í˜ì´ì§€ ë§í¬
 	 */
 	@RequestMapping(value = "settings.do")
 	public String setting(UserVO vo1) {
@@ -43,7 +61,7 @@ public class ProfileController {
 	}
 	
 	/*
-	 * ³» ÇÁ·ÎÇÊ ¸µÅ©
+	 * ë‚´ í”„ë¡œí•„ ë§í¬
 	 */
 	@RequestMapping(value = "resumes.do")
 	public String resumes(HttpSession session, Model model) {
@@ -54,39 +72,188 @@ public class ProfileController {
 		return "profile/resumes";
 	}
 	
+	/* 
+	 * ì„¤ë¬¸ì¡°ì‚¬ í˜ì´ì§€ì—ì„œ ë‹¤ìŒì„ ëˆ„ë¥´ë©´ íŒ”ë¡œì‰ ê¸°ì—… ì²´í¬ í˜ì´ì§€ë¡œ ì´ë™í•˜ë©°,
+	 * rec_profile í…Œì´ë¸”ì— íšŒì› ê¸°ë³¸ ì •ë³´ ì €ì¥
+	 */
+	@RequestMapping(value = "insertProfile.do")
+	public String insertProfile(ProfileVO profileVO, Model model) {
+		profileService.insertProfile(profileVO);
+		return "redirect:/hire/Search_Job.do";
+	}
+	
 	/*
-	 * ÀÌ·Â¼­ Å¬¸¯½Ã ÀÌ·Â¼­¸¦ º¼ ¼ö ÀÖÀ½
+	 * ì´ë ¥ì„œ í´ë¦­ì‹œ ì´ë ¥ì„œë¥¼ ë³¼ ìˆ˜ ìˆìŒ
 	 */
 	@RequestMapping(value = "/resumeForm.do")
 	public String resumesForm(HttpSession session, Model model) {
 		UserVO loginInfo = (UserVO) session.getAttribute("login");
 		int u_no = loginInfo.getU_no();
 		model.addAttribute("profileVO", profileService.getProfile(u_no));
-		model.addAttribute("eduVOList", profileService.getEducation(u_no));
-		model.addAttribute("carVOList", profileService.getCareer(u_no));
-		model.addAttribute("actAwardVOList", profileService.getActAward(u_no));
-		model.addAttribute("certiOtherVOList", profileService.getCertiOther(u_no));
-		model.addAttribute("portVOList", profileService.getPortfolio(u_no));
 		return "profile/resumeForm";
 	}
 	
-	/* 
-	 * ¼³¹®Á¶»ç ÆäÀÌÁö¿¡¼­ ´ÙÀ½À» ´©¸£¸é ÆÈ·ÎÀ× ±â¾÷ Ã¼Å© ÆäÀÌÁö·Î ÀÌµ¿ÇÏ¸ç,
-	 * rec_profile Å×ÀÌºí¿¡ È¸¿ø ±âº» Á¤º¸ ÀúÀå
-	 */
-	@RequestMapping(value = "insertProfile.do")
-	public String insertProfile(ProfileVO profileVO, Model model) {
-		profileService.insertProfile(profileVO);
-		return "main";
-	}
-	
 	/*
-	 * ÀÌ·Â¼­ ÀÛ¼º½Ã
+	 * ìƒˆ ì´ë ¥ì„œ ì‘ì„±ì‹œ (ìˆ˜ì •í•  ë•ŒëŠ” service ë¶€ë¶„ insert ì•„ë‹Œ updateë¡œ ì§„í–‰)
 	 */
 	@RequestMapping(value = "insertResume.do", method = RequestMethod.POST)
-	public String insertResume(ProfileVO profileVO) {
-		//profileService.updateProfile(u_no);
-		return "profile/settings";	
+	public String insertResume(ProfileVO profileVO, EducationVO educationVO, CareerVO careerVO,
+								ActAwardVO actAwardVO, CertiOtherVO certiOtherVO, PortfolioVO portfolioVO,
+								ResumeVO resumeVO, HttpSession session) {
+		UserVO loginInfo = (UserVO) session.getAttribute("login");
+		int u_no = loginInfo.getU_no();
+		
+		//ProfileVO ì²˜ë¦¬
+		if(profileVO.getPro_imgFile() != null) {
+			String pro_imgPath = getSaveImgPath(profileVO.getPro_imgFile());
+			if(pro_imgPath == null) {
+				//ì—ëŸ¬ : ì´ë¯¸ì§€ íŒŒì¼ì´ ì €ì¥ë˜ì§€ ì•ŠìŒ -> ì—ëŸ¬ ë©”ì‹œì§€ ì¶œë ¥
+				System.out.println("í”„ë¡œí•„ ì´ë¯¸ì§€ ì—…ë¡œë“œ ì—ëŸ¬");
+			} else {
+				profileVO.setPro_imgPath(pro_imgPath);				
+			}
+		}
+		profileService.updateProfile(profileVO);
+		
+		/* 
+		 * ì´í›„ì˜ ë°ì´í„°ë“¤ì€ ì„ íƒì  ì…ë ¥ì´ë¯€ë¡œ null ì²´í¬ í›„,
+		 * ë„˜ì–´ì˜¨ ë°ì´í„°ê°€ ì—†ëŠ” ê²½ìš° ë¹ˆë¬¸ìì—´ê³¼ 0ì˜ ë°ì´í„°ë¥¼ DBì— ì €ì¥í•œë‹¤.
+		 */
+		
+		if(educationVO == null) {
+			educationVO = new EducationVO(u_no, "", "", 0, "", "", "");
+		} else {
+			educationVO.setU_no(u_no);			
+		}
+		profileService.insertEducation(educationVO);
+		
+		if(careerVO == null) {
+			careerVO = new CareerVO(u_no, "", "", 0, "", "", "", "", "");
+		} else {
+			careerVO.setU_no(u_no);			
+		}
+		profileService.insertCareer(careerVO);
+		
+		if(actAwardVO == null) {
+			actAwardVO = new ActAwardVO(u_no, "", "", 0, "", "");
+		} else {
+			actAwardVO.setU_no(u_no);			
+		}
+		profileService.insertActAward(actAwardVO);
+		
+		if(certiOtherVO == null) {
+			certiOtherVO = new CertiOtherVO(u_no, "", "");
+		} else {
+			certiOtherVO.setU_no(u_no);		
+		}
+		profileService.insertCertiOther(certiOtherVO);
+		
+		if(portfolioVO == null) {
+			portfolioVO = new PortfolioVO(u_no, "");
+		} else {
+			portfolioVO.setU_no(u_no);
+			String por_filepath = getSavePortPath(portfolioVO.getPor_file());
+			if(por_filepath == null) {
+				//ì—ëŸ¬ : í¬íŠ¸í´ë¦¬ì˜¤ íŒŒì¼ì´ ì €ì¥ë˜ì§€ ì•ŠìŒ -> ì—ëŸ¬ ë©”ì‹œì§€ ì¶œë ¥
+				System.out.println("í¬íŠ¸í´ë¦¬ì˜¤ íŒŒì¼ ì—…ë¡œë“œ ì—ëŸ¬");
+			} else {
+				portfolioVO.setPor_filepath(por_filepath);				
+				profileService.insertPortfolio(portfolioVO);
+			}
+		}
+		
+		/*
+		 * ê° ë°ì´í„°ë“¤ì„ DBì— ì €ì¥í•œ í›„ ì·¨í•©ëœ ì •ë³´ì¸ resumeVO ì •ë³´ë¥¼ DBì— ì €ì¥í•œë‹¤.
+		 */
+		resumeVO.setU_no(u_no);
+		resumeVO.setPro_no(profileVO.getPro_no());
+		resumeVO.setE_no(educationVO.getE_no());
+		resumeVO.setCar_no(careerVO.getCar_no());
+		resumeVO.setAct_no(actAwardVO.getAct_no());
+		resumeVO.setCer_no(certiOtherVO.getCer_no());
+		resumeVO.setPor_no(portfolioVO.getPor_no());
+		profileService.insertResume(resumeVO);
+		return "redirect:/resumes.do";	
+	}
+	
+	//í”„ë¡œí•„ ì´ë¯¸ì§€ ì €ì¥ í›„ ê²½ë¡œ ë°˜í™˜
+	private String getSaveImgPath(MultipartFile pro_imgFile) {
+		UUID uuid = UUID.randomUUID();
+		String saveName = uuid + "_" + pro_imgFile.getOriginalFilename();
+		File saveFile = new File(IMG_UPLOAD_PATH, saveName);
+		try {
+			pro_imgFile.transferTo(saveFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		String savePath = IMG_UPLOAD_PATH + "\\" + saveName;
+		return savePath;
+	}
+	
+	//í¬íŠ¸í´ë¦¬ì˜¤ íŒŒì¼ ì €ì¥ í›„ ê²½ë¡œ ë°˜í™˜
+	private String getSavePortPath(MultipartFile por_file) {
+		UUID uuid = UUID.randomUUID();
+		String saveName = uuid + "_" + por_file.getOriginalFilename();
+		File saveFile = new File(PORT_UPLOAD_PATH, saveName);
+		try {
+			por_file.transferTo(saveFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		String savePath = PORT_UPLOAD_PATH + "\\" + saveName;
+		return savePath;
+	}
+	
+	@RequestMapping(value = "/updateResumeForm.do")
+	public String updateResume(int res_no, Model model) {
+		ResumeVO resumeVO = profileService.getResumeInfo(res_no);
+		model.addAttribute("resumeVO", resumeVO);
+		model.addAttribute("profileVO", profileService.getProfile(resumeVO.getU_no()));
+		model.addAttribute("eduVOList", profileService.getEducation(resumeVO.getE_no()));
+		model.addAttribute("carVOList", profileService.getCareer(resumeVO.getCar_no()));
+		model.addAttribute("actAwardVOList", profileService.getActAward(resumeVO.getAct_no()));
+		model.addAttribute("certiOtherVOList", profileService.getCertiOther(resumeVO.getCer_no()));
+		model.addAttribute("portVOList", profileService.getPortfolio(resumeVO.getPor_no()));
+		return "profile/updateResume";
+	}
+	
+	@RequestMapping(value = "updateResume.do", method = RequestMethod.POST)
+	public String updateResume(ProfileVO profileVO, EducationVO educationVO, CareerVO careerVO,
+								ActAwardVO actAwardVO, CertiOtherVO certiOtherVO, PortfolioVO portfolioVO,
+								ResumeVO resumeVO, HttpSession session) {
+		UserVO loginInfo = (UserVO) session.getAttribute("login");
+		int u_no = loginInfo.getU_no();
+		
+		//ProfileVO ì²˜ë¦¬
+		if(profileVO.getPro_imgFile() != null) {
+			String pro_imgPath = getSaveImgPath(profileVO.getPro_imgFile());
+			if(pro_imgPath == null) {
+				//ì—ëŸ¬ : ì´ë¯¸ì§€ íŒŒì¼ì´ ì €ì¥ë˜ì§€ ì•ŠìŒ -> ì—ëŸ¬ ë©”ì‹œì§€ ì¶œë ¥
+				System.out.println("í”„ë¡œí•„ ì´ë¯¸ì§€ ì—…ë¡œë“œ ì—ëŸ¬");
+			} else {
+				profileVO.setPro_imgPath(pro_imgPath);				
+			}
+		}
+		profileService.updateProfile(profileVO);
+
+		profileService.updateEducation(educationVO);
+		profileService.updateCareer(careerVO);
+		profileService.updateActAward(actAwardVO);
+		profileService.updateCertiOther(certiOtherVO);
+
+		String por_filepath = getSavePortPath(portfolioVO.getPor_file());
+		if(por_filepath == null) {
+			//ì—ëŸ¬ : í¬íŠ¸í´ë¦¬ì˜¤ íŒŒì¼ì´ ì €ì¥ë˜ì§€ ì•ŠìŒ -> ì—ëŸ¬ ë©”ì‹œì§€ ì¶œë ¥
+			System.out.println("í¬íŠ¸í´ë¦¬ì˜¤ íŒŒì¼ ì—…ë¡œë“œ ì—ëŸ¬");
+		} else {
+			portfolioVO.setPor_filepath(por_filepath);				
+			profileService.updatePortfolio(portfolioVO);
+		}
+		
+		profileService.updateResume(resumeVO);
+		return "redirect:/resumes.do";	
 	}
 	
 	@RequestMapping(value = "drafts.do", method = RequestMethod.GET)
@@ -100,7 +267,7 @@ public class ProfileController {
 		return "/profile/job_applicants";
 	}
 
-	//³»°¡ ¾´ ÀüÃ¼ ¸®ºä È®ÀÎ
+	//ë‚´ê°€ ì“´ ì „ì²´ ë¦¬ë·° í™•ì¸
 	@RequestMapping(value = "/reviews.do", method = RequestMethod.GET)
 	public String review1(Model model, HttpSession session) throws Exception {
 		UserVO loginInfo = (UserVO) session.getAttribute("login");
@@ -114,14 +281,14 @@ public class ProfileController {
 		return "/profile/reviews";
 	}
 
-	// ¸¶ÀÌÆäÀÌÁö¿¡¼­ ÀÌ¸ŞÀÏ ¼ö½Å µ¿ÀÇ ÆäÀÌÁö ÀÌµ¿
+	// ë§ˆì´í˜ì´ì§€ì—ì„œ ì´ë©”ì¼ ìˆ˜ì‹  ë™ì˜ í˜ì´ì§€ ì´ë™
 	@RequestMapping(value = "/newsletter.do", method = RequestMethod.GET)
 	public String newsletter(UserVO vo, HttpSession session, HttpServletRequest request) throws Exception {
 
 		return "/profile/newsletter";
 	}
 
-	// ¸¶ÀÌÆäÀÌÁö¿¡¼­ ÀÌ¸ŞÀÏ ¼ö½Å µ¿ÀÇ ·ÎÁ÷ Ã³¸®
+	// ë§ˆì´í˜ì´ì§€ì—ì„œ ì´ë©”ì¼ ìˆ˜ì‹  ë™ì˜ ë¡œì§ ì²˜ë¦¬
 	@RequestMapping(value = "/newsletter.do", method = RequestMethod.POST)
 	public String newsletter1(UserVO vo, HttpSession session, HttpServletRequest request) throws Exception {
 		String u_email = request.getParameter("u_email");
@@ -136,14 +303,14 @@ public class ProfileController {
 		return "/profile/settings";
 	}
 
-	// ¸¶ÀÌÆäÀÌÁö¿¡¼­ ºñ¹Ğ¹øÈ£ º¯°æ ÆäÀÌÁö ÀÌµ¿
+	// ë§ˆì´í˜ì´ì§€ì—ì„œ ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ í˜ì´ì§€ ì´ë™
 	@RequestMapping(value = "/change_password.do", method = RequestMethod.GET)
 	public String changePasswd(UserVO vo, HttpSession session, HttpServletRequest request) throws Exception {
 
 		return "/profile/password";
 	}
 
-	// ¸¶ÀÌÆäÀÌÁö ºñ¹Ğ¹øÈ£ º¯°æ ·ÎÁ÷Ã³¸®
+	// ë§ˆì´í˜ì´ì§€ ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ë¡œì§ì²˜ë¦¬
 	@RequestMapping(value = "/change_password.do", method = RequestMethod.POST)
 	public String changePasswd1(UserVO vo, HttpSession session, HttpServletRequest request) throws Exception {
 		String u_email = request.getParameter("u_email");
@@ -162,13 +329,13 @@ public class ProfileController {
 		}
 	}
 
-	// ¸®ºä Ãß°¡ ÆäÀÌÁö
+	// ë¦¬ë·° ì¶”ê°€ í˜ì´ì§€
 	@RequestMapping(value = "/insertReviewForm.do")
 	public String insertReviewForm() {
 		return "/profile/InsertReviewForm";
 	}
 
-	// ¸®ºä Ãß°¡ ÆäÀÌÁö
+	// ë¦¬ë·° ì¶”ê°€ í˜ì´ì§€
 	@RequestMapping(value = "/company1.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String company1(String rev_name) {
@@ -179,12 +346,12 @@ public class ProfileController {
 		if (rev_name1 != null) {
 			msg = rev_name1;
 		} else {
-			msg = "Á¸ÀçÇÏÁö ¾Ê´Â È¸»çÀÔ´Ï´Ù.";
+			msg = "ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íšŒì‚¬ì…ë‹ˆë‹¤.";
 		}
 		return msg;
 	}
 	
-	//¸®ºä ¼öÁ¤ ÆäÀÌÁö ÀÌµ¿
+	//ë¦¬ë·° ìˆ˜ì • í˜ì´ì§€ ì´ë™
     @RequestMapping(value="/updateReviewView.do", method = RequestMethod.GET)
     public String updateReview(ReviewVO vo1, Model model,int rev_no) {
     	ReviewVO reviewVO = profileService.getReview(rev_no);
@@ -193,7 +360,7 @@ public class ProfileController {
     	return "/profile/UpdateReviewForm";
     }
     
-    //¸®ºä ¼öÁ¤Æû ·ÎÁ÷
+    //ë¦¬ë·° ìˆ˜ì •í¼ ë¡œì§
     @RequestMapping(value="/updateReviewCon.do", method = RequestMethod.POST)
     public String updateReview1(ReviewVO vo1, Model model) {
     	profileService.updateReview(vo1);
@@ -202,7 +369,7 @@ public class ProfileController {
     }
     
     
-	//¸®ºä »èÁ¦
+	//ë¦¬ë·° ì‚­ì œ
     @RequestMapping(value="/deleteReview.do")
 	public String deleteReview(int rev_no) {
     	
@@ -211,7 +378,7 @@ public class ProfileController {
 		return "redirect:/reviews.do";
 	}
     
-    //ÇØ´ç ¸®ºä °¡Á®¿À±â
+    //í•´ë‹¹ ë¦¬ë·° ê°€ì ¸ì˜¤ê¸°
     @RequestMapping(value="/getReview.do", method = RequestMethod.GET)
     public String getReview5(int rev_no, Model model) {
     	

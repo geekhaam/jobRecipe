@@ -1,0 +1,20 @@
+package com.jobrecipe.profile.vo;
+
+import java.sql.Date;
+
+public class ResumeVO {
+	private int res_no;
+	private int u_no;
+	private String res_title;
+	private int pro_no;
+	private int edu_no;
+	private int car_no;
+	private int act_no;
+	private int cer_no;
+	private Date write_date;
+	
+	public ResumeVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+}

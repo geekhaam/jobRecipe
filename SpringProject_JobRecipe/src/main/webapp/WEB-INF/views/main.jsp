@@ -22,21 +22,21 @@
 		<!-- 전체화면 -->
 		
 			<div style="width: 15%;	 margin-left: 3%;">
-				<div style="display:flex; flex-direction: column; border">
+				<!-- <div style="display:flex; flex-direction: column; border">
 					<img style="height:17vh;" src="/resources/images/default_user.png">
 					<div>이름</div>
 					<div>아이디</div>
 					<div>...</div>
 					<div>...</div>
 					<div>...</div>
-				</div>
+				</div> -->
 			</div>
 			
 			<div style="width: 60%;display:flex; flex-direction: column;margin-bottom:5%; ">
 				<div style="font-size: 20pt;display:flex; flex-direction: row; padding-left:7%; 
-					justify-content: space-between; font-weight: bold;color:#fac5a1; margin-bottom:3%;">
-					<div>마감 임박 구인</div>
-					<div style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
+					justify-content: space-between; font-weight: bold;color:#ff6900; margin-bottom:3%;">
+					<div style="margin-left: 30%;">마감 임박 구인</div>
+					<div onclick="location.href='/hire/allAdvertise.do'" style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
 						border:1px solid; border-radius:10px;padding:1%;">
 						+ 구인더보기
 					</div>
@@ -45,7 +45,7 @@
 				
 				<c:forEach var="imsi" items="${list}">
 					<div style="margin-left:12%;margin-right:10%;display:flex; flex-direction: row;
-						align-items: center;cursor:pointer;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
+						align-items: center;cursor:pointer;color:#333333;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
 
 						<div style="width:35%;font-size: 15pt;">${imsi.ad_title }</div>
 						<div style="width:10%;font-size: 15pt;">${imsi.companyVO.c_name }</div>
@@ -90,10 +90,10 @@
 				</c:forEach>
 				
 				<div style="font-size: 20pt;display:flex; flex-direction: row; padding-left:7%; 
-					justify-content: space-between; font-weight: bold;color:#fac5a1; margin-bottom:3%;
+					justify-content: space-between; font-weight: bold;color:#ff6900; margin-bottom:3%;
 					margin-top:7%;">
-					<div>마감 임박 구인</div>
-					<div style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
+					<div style="margin-left: 30%;">마감 임박 구인</div>
+					<div onclick="location.href='/hire/allAdvertise.do'" style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
 						border:1px solid; border-radius:10px;padding:1%;">
 						+ 구인더보기
 					</div>
@@ -102,7 +102,7 @@
 				
 				<c:forEach var="imsi" items="${list1}">
 					<div style="margin-left:12%;margin-right:10%;display:flex; flex-direction: row;
-						align-items: center; cursor:pointer;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
+						align-items: center; cursor:pointer;color:#333333;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
 
 						<div style="width:35%;font-size: 15pt;">${imsi.ad_title }</div>
 						<div style="width:10%;font-size: 15pt;">${imsi.companyVO.c_name }</div>

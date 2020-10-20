@@ -106,12 +106,12 @@ public class UserController {
 
 	// 로그아웃
 	@RequestMapping("logout.do")
-	public ModelAndView logout(HttpSession session) throws ClassNotFoundException, SQLException {
+	public String logout(HttpSession session) throws ClassNotFoundException, SQLException {
 		userService.logout(session);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main");
 		mav.addObject("msg", "logout");
-		return mav;
+		return "redirect:/hire/Search_Job.do";
 	}
 
 	// 비밀번호 찾기 페이지로 이동

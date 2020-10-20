@@ -41,39 +41,103 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 
 	@Override
-	public ArrayList<EducationVO> getEducation(int u_no) {
+	public ArrayList<EducationVO> getEducation(int e_no) {
 		System.out.println("getEducation-service call");
-		return profileDAO.getEducation(u_no);
+		return profileDAO.getEducation(e_no);
 	}
 
 	@Override
-	public ArrayList<CareerVO> getCareer(int u_no) {
+	public ArrayList<CareerVO> getCareer(int car_no) {
 		System.out.println("getCareer-service call");
-		return profileDAO.getCareer(u_no);
+		return profileDAO.getCareer(car_no);
 	}
 
 	@Override
-	public ArrayList<ActAwardVO> getActAward(int u_no) {
+	public ArrayList<ActAwardVO> getActAward(int act_no) {
 		System.out.println("getActAward-service call");
-		return profileDAO.getActAward(u_no);
+		return profileDAO.getActAward(act_no);
 	}
 
 	@Override
-	public ArrayList<CertiOtherVO> getCertiOther(int u_no) {
+	public ArrayList<CertiOtherVO> getCertiOther(int cer_no) {
 		System.out.println("getCertiOther-service call");
-		return profileDAO.getCertiOther(u_no);
+		return profileDAO.getCertiOther(cer_no);
 	}
 
 	@Override
-	public ArrayList<PortfolioVO> getPortfolio(int u_no) {
+	public ArrayList<PortfolioVO> getPortfolio(int por_no) {
 		System.out.println("getPortfolio-service call");
-		return profileDAO.getPortfolio(u_no);
+		return profileDAO.getPortfolio(por_no);
+	}
+	
+	@Override
+	public void updateProfile(ProfileVO profileVO) {
+		profileDAO.updateProfile(profileVO);
 	}
 
 	@Override
-	public void updateResume(int u_no) {
-		System.out.println("updateResume-service call");
-		profileDAO.updateResume(u_no);
+	public void insertEducation(EducationVO educationVO) {
+		profileDAO.insertEducation(educationVO);
+	}
+
+	@Override
+	public void insertCareer(CareerVO careerVO) {
+		profileDAO.insertCareer(careerVO);
+	}
+
+	@Override
+	public void insertActAward(ActAwardVO actAwardVO) {
+		profileDAO.insertActAward(actAwardVO);
+	}
+
+	@Override
+	public void insertCertiOther(CertiOtherVO certiOtherVO) {
+		profileDAO.insertCertiOther(certiOtherVO);
+	}
+
+	@Override
+	public void insertPortfolio(PortfolioVO portfolioVO) {
+		profileDAO.insertPortfolio(portfolioVO);
+	}
+
+	@Override
+	public void insertResume(ResumeVO resumeVO) {
+		profileDAO.insertResume(resumeVO);
+	}
+
+	@Override
+	public ResumeVO getResumeInfo(int res_no) {
+		return profileDAO.getResumeInfo(res_no);
+	}
+	
+	@Override
+	public void updateEducation(EducationVO educationVO) {
+		profileDAO.updateEducation(educationVO);	
+	}
+
+	@Override
+	public void updateCareer(CareerVO careerVO) {
+		profileDAO.updateCareer(careerVO);
+	}
+
+	@Override
+	public void updateActAward(ActAwardVO actAwardVO) {
+		profileDAO.updateActAward(actAwardVO);
+	}
+
+	@Override
+	public void updateCertiOther(CertiOtherVO certiOtherVO) {
+		profileDAO.updateCertiOther(certiOtherVO);
+	}
+
+	@Override
+	public void updatePortfolio(PortfolioVO portfolioVO) {
+		profileDAO.updatePortfolio(portfolioVO);
+	}
+
+	@Override
+	public void updateResume(ResumeVO resumeVO) {
+		profileDAO.updateResume(resumeVO);
 	}
 
 	@Override
@@ -133,5 +197,6 @@ public class ProfileServiceImpl implements ProfileService{
 	public void deleteReview(int rev_no) {
 		profileDAO.deleteReview(rev_no);
 	}
+
 
 }

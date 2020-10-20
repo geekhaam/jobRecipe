@@ -1,6 +1,5 @@
 package com.jobrecipe.profile.vo;
 
-import java.util.List;
 
 public class ActAwardVO {
 
@@ -20,6 +19,17 @@ public class ActAwardVO {
 			String act_actawardname, String act_description) {
 		super();
 		this.act_no = act_no;
+		this.u_no = u_no;
+		this.act_sdate = act_sdate;
+		this.act_edate = act_edate;
+		this.act_awardcheck = act_awardcheck;
+		this.act_actawardname = act_actawardname;
+		this.act_description = act_description;
+	}
+
+	public ActAwardVO(int u_no, String act_sdate, String act_edate, int act_awardcheck, String act_actawardname,
+			String act_description) {
+		super();
 		this.u_no = u_no;
 		this.act_sdate = act_sdate;
 		this.act_edate = act_edate;

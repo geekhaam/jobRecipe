@@ -88,7 +88,7 @@ header, footer
 section
 {
 	position: relative;
-	min-height: 520px;
+	min-height: 80vh;
 	margin: 3% 0;
 }
 

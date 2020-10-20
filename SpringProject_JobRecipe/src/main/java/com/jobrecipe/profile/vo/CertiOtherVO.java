@@ -1,6 +1,5 @@
 package com.jobrecipe.profile.vo;
 
-import java.util.List;
 
 public class CertiOtherVO {
 	
@@ -16,6 +15,13 @@ public class CertiOtherVO {
 	public CertiOtherVO(int cer_no, int u_no, String cer_item, String cer_description) {
 		super();
 		this.cer_no = cer_no;
+		this.u_no = u_no;
+		this.cer_item = cer_item;
+		this.cer_description = cer_description;
+	}
+
+	public CertiOtherVO(int u_no, String cer_item, String cer_description) {
+		super();
 		this.u_no = u_no;
 		this.cer_item = cer_item;
 		this.cer_description = cer_description;

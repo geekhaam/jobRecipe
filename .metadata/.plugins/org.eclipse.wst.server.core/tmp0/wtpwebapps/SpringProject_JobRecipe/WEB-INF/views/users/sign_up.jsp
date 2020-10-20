@@ -84,26 +84,36 @@
 </script>
 </head>
 <body>
+	<div style="width:100%; text-align:center;color:#ff6900;font-style:italic;margin-top:4%;margin-bottom:4%;
+	font-weight:bold;font-size:38pt;">
+		Job Recipe
+	</div>
+	<div style="width:40%;display:flex; flex-direction: column;margin-bottom:5%; margin-right:auto; 
+		margin-left:auto;text-align:center;border:1px solid #fafafa;background-color:#fafafa;">
 	<form action="signupMember.do" method="post">
 		<div class="signup_warp">
-			<h1>회원가입</h1>
+			<h1 style="font-size:20pt;color:#fac5a1;margin-top:3%;margin-bottom:2%;">회원가입</h1>
+			<hr style="border:1px solid #e8e8e8">
 			<!-- 이용 약관 체크 -->
 			<div class="users_terms">
-				<div class="terms_top">
-					<h2>전체동의</h2>
-					<label class="btn_check" for="agree_all">
+				<div class="terms_top" style="display:flex; flex-direction: row;justify-content: center;
+					flex-wrap: nowrap;margin-bottom:4%;">
+					<h2 style="font-size:16pt;color:green;">전체동의</h2>
+					<label class="btn_check" for="agree_all" style="padding-top: 1%;margin-left: 1%;">
 						<input type="checkbox" id="agree_all" name="agree_all" value="0" onclick="users_agreeAll();">
 						<!-- <span class="check_icon"></span> -->
 					</label>
 				</div>
 				<div class="terms_body">
-					<div class="terms_title1"> <!-- 개인정보 회원 이용약관 동의 제목 -->
+					<div class="terms_title1" style="display:flex; flex-direction: row;justify-content: center;
+					flex-wrap: nowrap;margin-bottom:3%;">
+					<!-- 개인정보 회원 이용약관 동의 제목 -->
 						<div>
-							<h2>
+							<h2 style="font-size:16pt;">
 								개인정보 회원 이용약관 동의<span class="txt_gra"> (필수)</span> <!-- txt_gra 등의 클래스는 폰트 색상 등 변경 -->
 							</h2>
 						</div>
-						<label class="btn_check" for="tou_service"> <!-- tou : terms of use -->
+						<label class="btn_check" for="tou_service" style="padding-top:1%;margin-left: 1%;"> <!-- tou : terms of use -->
 							<input type="checkbox" id="tou_service" name="u_tou_service" value="0" onclick="users_changeCkboxVal('tou_service');">
 							<!-- <span class="check_icon"></span> -->
 						</label>
@@ -114,24 +124,26 @@
 					<div class="terms_title2"> <!-- 개인정보 수집 및 이용 제목 -->
 						<h2>개인정보 수집 및 이용</h2>
 					</div>
-					<div class="sub_check">
+					<div class="sub_check" style="display:flex; flex-direction: row;justify-content: center;
+					flex-wrap: nowrap;margin-bottom:3%;">
 						<div>
-							<h3>
+							<h3 style="font-size:16pt;">
 								필수적 개인정보 수집 및 이용 동의<span class="txt_gra"> (필수)</span>
 							</h3>
 						</div>
-						<label class="btn_check" for="tou_privacy">
+						<label class="btn_check" for="tou_privacy" style="padding-top:1%;margin-left: 1%;">
 							<input type="checkbox" id="tou_privacy" name="u_tou_privacy" value="0" onclick="users_changeCkboxVal('tou_privacy');">
 							<!-- <span class="check_icon"></span> -->
 						</label>
 					</div>
-					<div class="sub_check">
+					<div class="sub_check" style="display:flex; flex-direction: row;justify-content: center;
+					flex-wrap: nowrap;margin-bottom:3%;">
 						<div>
-							<h3>
+							<h3 style="font-size:16pt;">
 								선택적 개인정보 수집 및 이용 동의<span class="txt_gre"> (선택)</span> <!-- gre는 gra와 다른 색상으로 (필수/선택 구분) -->
 							</h3>
 						</div>
-						<label class="btn_check" for="tou_privacy_optional">
+						<label class="btn_check" for="tou_privacy_optional" style="padding-top:1%;margin-left: 1%;">
 							<input type="checkbox" id="tou_privacy_optional" name="u_privateInfo" value="0" onclick="users_changeCkboxVal('tou_privacy_optional');"> <!-- 체크시 rec_users 테이블로 넘어가는 정보 -->
 							<!-- <span class="check_icon"></span> -->
 						</label>
@@ -139,20 +151,21 @@
 					<div class="terms_con2">
 					
 					</div>
-					<div class="terms_title3">
+					<div class="terms_title3" style="display:flex; flex-direction: row;justify-content: center;
+					flex-wrap: nowrap;margin-bottom:3%;">
 						<div>
-							<h2>
+							<h2 style="font-size:16pt;">
 								채용 뉴스레터 등 마케팅 정보 수신<span class="txt_gre"> (선택)</span>
 							</h2>
 						</div>
-						<label class="btn_check" for="user_subscribe_news">
+						<label class="btn_check" for="user_subscribe_news" style="padding-top:1%;margin-left: 1%;">
 							<input type="checkbox" id="user_subscribe_news" name="u_newsLetter" value="0" onclick="users_changeCkboxVal('user_subscribe_news');"> <!-- 체크시 rec_users 테이블로 넘어가는 정보 -->
 							<!-- <span class="check_icon"></span> -->
 						</label>
+					</div>
 						<div class="sub_check">
 							<h3>잡레시피에서 제공하는 채용 정보 및 유용한 정보를 받겠습니다.</h3>
 						</div>
-					</div>
 					<div class="terms_con3">
 						이용약관과 개인정보 수집 및 이용(필수)에 대한 안내 모두 동의해주세요.
 					</div>
@@ -160,8 +173,26 @@
 			</div>
 			
 			<!-- 회원 정보(로그인 관련) 입력 -->
-			<div class="users_loginInfo">
-				<table>
+			<div class="users_loginInfo" style="display:flex; flex-direction: column;justify-content: center;
+					flex-wrap: nowrap;">
+				<input type="text" class="form-control" id="u_email" name="u_email" placeholder="이메일"
+					style="width:90%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
+					margin-top:1%;margin-bottom:1%;font-size:17pt;">
+				<div class="check_font" id="email_check" style="width:90%;margin-left:auto;margin-right:auto;
+					margin-top:1%;margin-bottom:1%;font-size:17pt;"></div>
+				
+				<input type="password" id="u_pw" name="u_pw" placeholder="비밀번호"style="width:90%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
+					margin-top:1%;margin-bottom:1%;font-size:17pt;">
+				
+				<input type="password" id="u_pwCheck" name="u_pwCheck" placeholder="비밀번호 확인"style="width:90%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
+					margin-top:1%;margin-bottom:1%;font-size:17pt;">
+				<div class="check_font" id="pw_check"style="width:90%;margin-left:auto;margin-right:auto;
+					margin-top:1%;margin-bottom:3%;font-size:17pt;"></div>
+				
+				<input type="submit" id="reg_submit" value="동의 및 회원가입" style="font-size:17pt; background-color:#ff6900; color:white;
+					border:0;border-radius:15px;width:50%;margin-bottom:4%;margin-left:auto;margin-right:auto;padding:1%;">
+			</div>
+				<!-- <table>
 					<tr>
 						<td>
 							<input type="text" class="form-control" id="u_email" name="u_email" placeholder="이메일">
@@ -180,9 +211,9 @@
 					<tr>
 						<td style="text-align: center;"><input type="submit" id="reg_submit" value="동의 및 회원가입"></td>
 					</tr>
-				</table>
+				</table> -->
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </body>
 </html>

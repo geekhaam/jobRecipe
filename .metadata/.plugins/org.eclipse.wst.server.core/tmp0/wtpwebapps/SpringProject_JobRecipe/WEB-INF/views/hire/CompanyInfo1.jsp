@@ -72,159 +72,322 @@
 	<jsp:include page="../include/header.jsp"></jsp:include>
 </header>
 
-	<section>
-		<div class="box1"
-			style="overflow: scroll; width: 300px; height: 900px;">
-
-			<select id="order" name="order" onchange="advertiseOrder1()">
+<section style="color:#333333;">
+	<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
+		<div style="width: 30%;	display:flex;align-items:center; flex-direction: column;">
+			<select style="width:30%; padding:2%;border-color:#fac5a1;align-self: flex-end;border-radius:10px;
+    			margin-right: 5%;margin-bottom:3%;font-weight:bold;" id="order" name="order" onchange="advertiseOrder1()">
 				<option value="평점수">평점수</option>
 				<option value="마감일">마감일</option>
 			</select>
-
-			<div id="companyOrder">
-				<ul id="companyTable">
-
-					<c:forEach var="vo" items="${info }">
-						<li>
-							<div id="companyNo" style="display: none;">${vo.ad_no }</div>
-							<p class="company">${vo.companyVO.c_name }</p>
-							<p id="ad_title" class="title">
-								<a href="#">${vo.ad_title }</a>
-							</p>
-							<p class="star">${vo.ad_date }</p>
-							<p>${vo.companyVO.c_star }</p>
-						</li>
-						<hr>
-					</c:forEach>
-				</ul>
-			</div>
-
-			<ul>
+			<div style="overflow: auto; width: 90%;">
+				<div id="companyOrder">
+					<div id="companyTable">
+						<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
+						<c:forEach var="vo" items="${info }">
+							<div style="display:flex; flex-direction: column;flex-wrap: nowrap;
+								cursor:pointer; margin-left:3%;" onclick="location.href='aAllInfo.do?ad_no=${vo.ad_no }'">
+								<div id="companyNo" style="display: none;">${vo.ad_no }</div>
+								<div style="display:flex; flex-direction: row;flex-wrap: nowrap;">
+									<div style="font-size:6pt;border:solid 1px #fac5a1;border-radius:5px;
+									padding: 1%;margin-top: auto;margin-bottom: auto;color: #ff6900;margin-right:1%;">
+										title
+									</div>
+									<div id="ad_title" class="title">
+										${vo.ad_title }
+									</div>
+								</div>
+									<div class="company">${vo.companyVO.c_name }</div>
+									
+								<div style="display:flex; flex-direction: row;flex-wrap: nowrap;justify-content: space-between;">
+									<div class="star">${vo.ad_date }</div>
+									<c:if test="${vo.companyVO.c_star==null }">
+										<div class="company">평점 : 0</div>
+									</c:if>
+									<c:if test="${vo.companyVO.c_star!=null }">
+										<div class="company">평점 : ${vo.companyVO.c_star }</div>
+									</c:if>
+								</div>
+							
+								
+							</div>
+							<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
+						</c:forEach>
+					</div>
+				</div>
+				<div >
+				<ul>
 				<!-- 게시판 하단의 페이징  -->
-				<c:if test="${pageMaker.prev}">
-					<li id="center"><a
-						href="aAllInfo1.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a></li>
-				</c:if>
+					<c:if test="${pageMaker.prev}">
+						<li id="center">
+							<a href="aAllInfo.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
+						</li>
+					</c:if>
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+						<li id="center">
+							<a href="aAllInfo.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
+					</c:forEach>
 
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"
-					var="idx">
-					<li id="center"><a
-						href="aAllInfo1.do${pageMaker.makeQuery(idx)}">${idx}</a></li>
-				</c:forEach>
-
-				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-					<li id="center"><a
-						href="aAllInfo1.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
-				</c:if>
-			</ul>
+					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+						<li id="center">
+							<a href="aAllInfo.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a></li>
+					</c:if>
+				</ul>
+				</div>
+			</div>
 		</div>
-
-		<!-- ----------------------------------------------------------------------------- -->
-
-		<div id="advertisementOrder">
-			<div class="box2">
-				<h1 class="ad_title">${imsi.ad_title}</h1>
-				<span class="ad_name">${imsi.ad_name }</span> <span class="var">|</span>
-				<span class="location">${imsi.companyVO.c_loc }</span>
-
+		<div style="width: 60%;border:1px solid #fac5a1 ;display:flex; flex-direction: column;padding-bottom:5%;
+			    border-radius: 13px;">
+			<div id="advertisementOrder">
+			<div style="overflow:auto; max-height:92vh;padding-left:2%;">
+				<div style="display:flex; flex-direction: row; flex-wrap:nowrap;margin-top:1%;">
+					<img style="border-radius: 30px;width:15%;" src="/resources/images/default_comp.png"/>
+					<div style="display:flex;width:85%; flex-direction: column;">
+						<h1 style="width:90%;padding-left:2%; margin-bottom:0;" class="ad_title">
+							${imsi.ad_title}
+						</h1>
+						<div style="display:flex; padding-left:2%; flex-direction: column; flex-wrap:nowrap;">
+							<div style="font-weight:bold;font-size:15pt;">${imsi.ad_name } </div>
+							<div style="font-size:12pt;color:#fafafa;">${imsi.companyVO.c_loc }</div>
+						</div>
+					</div>
+				</div>
+				
+				<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 				<div class="job_posting_tab">
 					<ul class="tab_list">
 						<li class="on">
-							<button type="button">상세</button>
+							<button type="button" style="font-weight:bold;border:1px solid #fac5a1; border-radius:15px;">
+								상세
+							</button>
 						</li>
+						
 						<li>
-							<button type="button"
+							<button type="button" style="font-weight:bold;border:1px solid #fac5a1; border-radius:15px;"
 								onclick="location.href='reviewAll.do?rev_name=${imsi.ad_name }'">리뷰</button>
 						</li>
 					</ul>
 				</div>
+				
+				
 				<ul>
-					<li class="ad_date"><span class="tit"> <i
-							class="jp-calendar"></i> 마감일
-					</span> <span class="cont"> <span class="day_text">${imsi.ad_date }</span>
+					<li class="ad_date">
+						<div style="display:flex; flex-direction: row;margin-left:2%; flex-wrap:nowrap;margin-top:1%;">
+						<span class="tit" style="text-align: center;width:20%;font-weight:bold;"> 
+								마감일
+						</span>
+						<span class="cont"  style="width:45%;padding-left: 3%;border:1px solid #ff6900; border-radius:10px;"> 
+							<span class="day_text">
+								${imsi.ad_date }
+							</span>
 							<input style="border: none; width: 100px; color: red;"
-							type="text" id="Day1" value="" readonly />
-					</span></li>
-					<li class="ad_job"><span class="tit"> <i
-							class="jp-briefcase"></i> 직무
-					</span> <span class="cont"> <span>${imsi.ad_job }</span>
-					</span></li>
-					<li class="ad_carr"><span class="tit"> <i
-							class="jp-bar-chart"></i> 경력
-					</span> <span class="cont"> <span>${imsi.ad_carr}</span>
-					</span></li>
-					<li class="ad_emp"><span class="tit"> <i
-							class="jp-check-circle"></i> 고용형태
-					</span> <span class="cont">${imsi.ad_emp} </span></li>
+								type="text" id="Day1" value="" readonly />
+						</span>
+						</div>
+					</li>
+					<li class="ad_job">
+						<div style="display:flex; flex-direction: row;margin-left:2%; flex-wrap:nowrap;margin-top:1%;">
+						<span class="tit" style="text-align: center;width:20%;font-weight:bold;">  
+								직무
+						</span> 
+						<span class="cont"  style="width:45%;padding-left: 3%;border:1px solid #ff6900; border-radius:10px;"> 
+							<span>${imsi.ad_job }</span>
+						</span>
+						</div>
+					</li>
+					<li class="ad_carr">
+						<div style="display:flex; flex-direction: row;margin-left:2%; flex-wrap:nowrap;margin-top:1%;">
+						<span class="tit" style="text-align: center;width:20%;font-weight:bold;"> 
+								경력
+						</span> 
+						<span class="cont" style="width:45%;padding-left: 3%;border:1px solid #ff6900; border-radius:10px;"> 
+							<span>${imsi.ad_carr}</span>
+						</span>
+						</div>
+					</li>
+					<li class="ad_emp">
+						<div style="display:flex; flex-direction: row;margin-left:2%; flex-wrap:nowrap;margin-top:1%;">
+						<span class="tit" style="text-align: center;width:20%;font-weight:bold;"> 
+							고용형태
+						</span> 
+						<span class="cont" style="width:45%;padding-left: 3%;border:1px solid #ff6900; border-radius:10px;"> 
+							${imsi.ad_emp} 
+						</span>
+						</div>
+					</li>
 					<c:if test="${not empty imsi.ad_skill }">
-						<li class="ad_skill"><span class="tit"> <i
-								class="jp-server"></i> 스킬
-						</span> <span class="cont"> <span>${imsi.ad_skill }</span>
-						</span></li>
+						<li class="ad_skill">
+							<div style="display:flex; flex-direction: row;margin-left:2%; flex-wrap:nowrap;margin-top:1%;">
+							<span class="tit" style="text-align: center;width:20%;font-weight:bold;"> 
+									스킬
+							</span> 
+							<span class="cont" style="width:45%;padding-left: 3%;border:1px solid #ff6900; border-radius:10px;"> 
+								<span>${imsi.ad_skill }</span>
+							</span>
+							</div>
+						</li>
+					</c:if>
+					<c:if test="${empty imsi.ad_skill }">
+						<li class="ad_skill">
+							<div style="display:flex; flex-direction: row;margin-left:2%; flex-wrap:nowrap;margin-top:1%;">
+							<span class="tit" style="text-align: center;width:20%;font-weight:bold;"> 
+									스킬
+							</span> 
+							<span class="cont" style="width:45%;padding-left: 3%;border:1px solid #ff6900; border-radius:10px;"> 
+								<span>-</span>
+							</span>
+							</div>
+						</li>
 					</c:if>
 				</ul>
-
 				<br>
-				<c:if test="${not empty imsi.ad_upmu }">
-					<h3 class="title">주요업무</h3>
-					<div class="text">${imsi.ad_upmu}</div>
-				</c:if>
-
-				<br>
-
-				<c:if test="${not empty imsi.ad_lien }">
-					<div class="ad_lien">
-						<h3 class="title">자격요건</h3>
-						<div class="text">${fn:replace(imsi.ad_lien, newLienChar, "<br>") }
+				<hr style="margin-bottom:4	%; border:solid 1px #fac5a1">
+				<div style="display:flex; flex-direction: column;margin-left:2%; flex-wrap:nowrap;
+					width:75;margin-top:3%;">
+					
+					<!-- 시작 -->
+					<div style="display:flex; flex-direction: row;flex-wrap:nowrap;
+						justify-content: space-around;text-align:center; margin-bottom:2%;">
+						<div style="width:40%;">
+							<c:if test="${not empty imsi.ad_upmu }">
+							<div style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+								<h3 class="title" style="margin-right:2%;width: 35%;">주요업무</h3>
+								<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+									${imsi.ad_upmu}
+								</div>
+							</div>
+							</c:if>
+							<c:if test="${empty imsi.ad_upmu }">
+							<div style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+								<h3 class="title" style="margin-right:2%;width: 35%;">주요업무</h3>
+								<div class="text"style="width:60%;border:1px solid #fac5a1; border-radius:10px;">-</div>
+							</div>
+							</c:if>
+						</div>
+						<div style="width:40%;">
+							<c:if test="${not empty imsi.ad_lien }">
+								<div class="ad_lien"style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+									<h3 class="title"  style="margin-right:2%;width: 35%;">자격요건</h3>
+									<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+										${fn:replace(imsi.ad_lien, newLienChar, "<br>") }
+									</div>
+								</div>
+							</c:if>
+							<c:if test="${empty imsi.ad_lien }">
+								<div class="ad_lien"style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+									<h3 class="title"  style="margin-right:2%;width: 35%;">자격요건</h3>
+									<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+										-
+									</div>
+								</div>
+							</c:if>
 						</div>
 					</div>
-				</c:if>
+					<div style="display:flex; flex-direction: row;flex-wrap:nowrap;
+						justify-content: space-around;text-align:center; margin-bottom:2%;">
+						<div style="width:40%;">
+							<c:if test="${not empty imsi.ad_deals }">
+							<div style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+								<h3 class="title" style="margin-right:2%;width: 35%;">우대사항</h3>
+								<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+									${fn:replace(imsi.ad_deals, newLienChar, "<br>") }
+								</div>
+							</div>
+							</c:if>
+							<c:if test="${empty imsi.ad_deals }">
+							<div style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+								<h3 class="title" style="margin-right:2%;width: 35%;">우대사항</h3>
+								<div class="text"style="width:60%;border:1px solid #fac5a1; border-radius:10px;">-</div>
+							</div>
+							</c:if>
+						</div>
+						<div style="width:40%;">
+							<c:if test="${not empty imsi.ad_pro }">
+								<div class="ad_lien"style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+									<h3 class="title"  style="margin-right:2%;width: 35%;">채용절차</h3>
+									<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+										${imsi.ad_pro }
+									</div>
+								</div>
+							</c:if>
+							<c:if test="${ empty imsi.ad_pro }">
+								<div class="ad_lien"style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+									<h3 class="title"  style="margin-right:2%;width: 35%;">채용절차</h3>
+									<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+										-
+									</div>
+								</div>
+							</c:if>
+						</div>
+					</div>
+					
+					<div style="display:flex; flex-direction: row;flex-wrap:nowrap;
+						justify-content: space-around;text-align:center; margin-bottom:2%;">
+						<div style="width:40%;">
+							<c:if test="${not empty imsi.ad_cp }">
+							<div style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+								<h3 class="title" style="margin-right:2%;width: 35%;">복리후생</h3>
+								<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+									${fn:replace(imsi.ad_cp, newLienChar, "<br>") }
+								</div>
+							</div>
+							</c:if>
+							<c:if test="${ empty imsi.ad_cp }">
+							<div style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+								<h3 class="title" style="margin-right:2%;width: 35%;">복리후생</h3>
+								<div class="text"style="width:60%;border:1px solid #fac5a1; border-radius:10px;">-</div>
+							</div>
+							</c:if>
+						</div>
+						<div style="width:40%;">
+							<c:if test="${not empty imsi.ad_ect }">
+								<div class="ad_lien"style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+									<h3 class="title"  style="margin-right:2%;width: 35%;">기타</h3>
+									<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+										${fn:replace(imsi.ad_ect, newLienChar, "<br>") }
+									</div>
+								</div>
+							</c:if>
+							<c:if test="${ empty imsi.ad_ect }">
+								<div class="ad_lien"style="width:90%;display:flex; flex-direction: row;flex-wrap:nowrap;">
+									<h3 class="title"  style="margin-right:2%;width: 35%;">기타</h3>
+									<div class="text" style="width:60%;border:1px solid #fac5a1; border-radius:10px;">
+										-
+									</div>
+								</div>
+							</c:if>
+						</div>
+					</div>
+					
+				</div>
 
 				<br>
 				<br>
 				<br>
-
-				<c:if test="${not empty imsi.ad_deals }">
-					<div class="list">
-						<h3 class="title">우대사항</h3>
-						<div class="text">${fn:replace(imsi.ad_deals, newLienChar, "<br>") }
-						</div>
-					</div>
-				</c:if>
-
-				<c:if test="${not empty imsi.ad_pro }">
-					<div class="list">
-						<h3 class="title">채용절차</h3>
-						<div class="text">${imsi.ad_pro }</div>
-					</div>
-				</c:if>
-
-				<c:if test="${not empty imsi.ad_cp }">
-					<div class="list">
-						<h3 class="title">복리후생</h3>
-						<div class="text">${fn:replace(imsi.ad_cp, newLienChar, "<br>") }
-						</div>
-					</div>
-				</c:if>
-
-				<c:if test="${not empty imsi.ad_ect }">
-					<div class="list">
-						<h3 class="title">기타</h3>
-						<div class="text">${fn:replace(imsi.ad_ect, newLienChar, "<br>") }
-						</div>
-					</div>
-				</c:if>
-
-				<c:if test="${not empty imsi.companyVO.c_addr }">
-					<div class="list">
-						<h3 class="title">주소</h3>
-						<div class="text">${imsi.companyVO.c_addr }</div>
-					</div>
-				</c:if>
 
 			</div>
+		</div>	
 		</div>
-	</section>
+		<div style="width: 24%;margin-left:1%; align-items:center;display:flex; flex-direction: column;
+			border:1px solid #e6e8ff;border-radius:15px;">
+			<!--분할화면 오른쪽  -->
+			<div style="margin-bottom:3%;margin-top:6%; align-items:center;display:flex; flex-direction: column;">
+				<img style="border-radius: 30px;width:90%;" src="/resources/images/ad1.gif"/>
+				<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div>
+			</div>
+			<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
+				<img style="border-radius: 30px;width:90%;" src="/resources/images/ad2.gif"/>
+				<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div>
+			</div>
+			<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
+				<img style="border-radius: 30px;width:90%;" src="/resources/images/ad3.gif"/>
+				<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div>
+			</div>
+				
+		</div>
+		
+	</div>
+</section>
 	<footer>
 		<jsp:include page="../include/footer.jsp"></jsp:include>
 	</footer>

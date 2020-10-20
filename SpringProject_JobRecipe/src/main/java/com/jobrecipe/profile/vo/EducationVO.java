@@ -1,6 +1,5 @@
 package com.jobrecipe.profile.vo;
 
-import java.util.List;
 
 public class EducationVO {
 	
@@ -29,7 +28,19 @@ public class EducationVO {
 		this.e_majordegree = e_majordegree;
 		this.e_description = e_description;
 	}
-	
+
+	public EducationVO(int u_no, String e_edate, String e_gdate, int e_attendcheck, String e_sname,
+			String e_majordegree, String e_description) {
+		super();
+		this.u_no = u_no;
+		this.e_edate = e_edate;
+		this.e_gdate = e_gdate;
+		this.e_attendcheck = e_attendcheck;
+		this.e_sname = e_sname;
+		this.e_majordegree = e_majordegree;
+		this.e_description = e_description;
+	}
+
 	public int getE_no() {
 		return e_no;
 	}

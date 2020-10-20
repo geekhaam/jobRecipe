@@ -1,6 +1,5 @@
 package com.jobrecipe.profile.vo;
 
-import java.util.List;
 
 public class CareerVO {
 	private int car_no;
@@ -22,6 +21,20 @@ public class CareerVO {
 			String car_department, String car_position, String car_duty, String car_workexp) {
 		super();
 		this.car_no = car_no;
+		this.u_no = u_no;
+		this.car_edate = car_edate;
+		this.car_rdate = car_rdate;
+		this.car_inoffice = car_inoffice;
+		this.car_cname = car_cname;
+		this.car_department = car_department;
+		this.car_position = car_position;
+		this.car_duty = car_duty;
+		this.car_workexp = car_workexp;
+	}
+
+	public CareerVO(int u_no, String car_edate, String car_rdate, int car_inoffice, String car_cname,
+			String car_department, String car_position, String car_duty, String car_workexp) {
+		super();
 		this.u_no = u_no;
 		this.car_edate = car_edate;
 		this.car_rdate = car_rdate;

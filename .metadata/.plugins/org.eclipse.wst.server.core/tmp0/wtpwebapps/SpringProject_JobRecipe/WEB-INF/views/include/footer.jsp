@@ -9,7 +9,7 @@
 <body>
 	
 	
-	<div style="padding-bottom:2%;margin: 10px;background-color: #6273ff;">
+	<div style="padding-bottom:2%;margin: 10px;background-color: #fac5a1;">
 		
 		<div style="margin:1%; padding-left:3%;padding-top:1%; color:white; font-size:15pt;font-weight: bold;">(주) JobRecipe</div>
 		<hr style="border:solid 1px white">

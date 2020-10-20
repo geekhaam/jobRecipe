@@ -81,33 +81,9 @@
 </script>
 </head>
 <body>
-	<header>
-		<jsp:include page="../include/header.jsp"></jsp:include>
-	</header>
-	<section>
-	
-		<div id="myPageInfo">
-			<span class="img_profile"></span>
-			<!-- 프로필 이미지 -->
-			<div class="my_info">
-				<h1>${u_email}</h1>
-			</div>
-		</div>
-		
-		<div id="myPageMenuWrap">
-			<div id="myPageMenu">
-				<div class="mypagemenu_wrap">
-					<div class="table_row_div">
-						<a href="settings.do">계정</a>
-						<a href="resumes.do">내 프로필</a>
-						<a href="reviews.do">활동내역</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-		<h1 id="rev_name">${reviewVO.rev_name}</h1>
-	
+
+	<h1 id="rev_name">${reviewVO.rev_name}</h1>
+
 		<br><br>
 		
 			<table>
@@ -156,9 +132,10 @@
 					<td><input type="button" value="전체 리뷰 보기" onclick="location.href='reviews.do'"></td>
 				</tr>
 			</table>
-	</section>
-	<footer>
-		<jsp:include page="../include/footer.jsp"></jsp:include>
-	</footer>
+		
+		<br><br>
+		
+		</div>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.jobrecipe.profile.vo;
 
+import org.springframework.web.multipart.MultipartFile;
 
 public class ProfileVO {
 	
@@ -14,16 +15,17 @@ public class ProfileVO {
 	private String pro_name;	//이름
 	private String pro_email;	//이메일(이력서)
 	private String pro_tel;		//전화번호
+	private MultipartFile pro_imgFile; //업로드 이미지 파일
 	private String pro_imgPath;	//프로필 이미지 경로
 	private String pro_aboutMe;	//자기소개
 	
 	public ProfileVO() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public ProfileVO(int pro_no, int u_no, int pro_gender, int pro_birthYear, int pro_career, String pro_occu,
-			String pro_skill, String pro_subOccu, String pro_name, String pro_email, String pro_tel, String pro_imgPath,
-			String pro_aboutMe) {
+			String pro_subOccu, String pro_skill, String pro_name, String pro_email, String pro_tel,
+			MultipartFile pro_imgFile, String pro_imgPath, String pro_aboutMe) {
 		super();
 		this.pro_no = pro_no;
 		this.u_no = u_no;
@@ -31,14 +33,17 @@ public class ProfileVO {
 		this.pro_birthYear = pro_birthYear;
 		this.pro_career = pro_career;
 		this.pro_occu = pro_occu;
-		this.pro_skill = pro_skill;
 		this.pro_subOccu = pro_subOccu;
+		this.pro_skill = pro_skill;
 		this.pro_name = pro_name;
 		this.pro_email = pro_email;
 		this.pro_tel = pro_tel;
+		this.pro_imgFile = pro_imgFile;
 		this.pro_imgPath = pro_imgPath;
 		this.pro_aboutMe = pro_aboutMe;
 	}
+
+
 
 	public int getPro_no() {
 		return pro_no;
@@ -126,6 +131,14 @@ public class ProfileVO {
 
 	public void setPro_tel(String pro_tel) {
 		this.pro_tel = pro_tel;
+	}
+
+	public MultipartFile getPro_imgFile() {
+		return pro_imgFile;
+	}
+
+	public void setPro_imgFile(MultipartFile pro_imgFile) {
+		this.pro_imgFile = pro_imgFile;
 	}
 
 	public String getPro_imgPath() {

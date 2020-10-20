@@ -24,22 +24,61 @@ public interface ProfileService {
 	public ProfileVO getProfile(int u_no);
 	
 	//기존의 학력 사항 정보를 가지고 옴
-	public ArrayList<EducationVO> getEducation(int u_no);
+	public ArrayList<EducationVO> getEducation(int e_no);
 	
 	//기존의 경력 사항 정보를 가지고 옴
-	public ArrayList<CareerVO> getCareer(int u_no);
+	public ArrayList<CareerVO> getCareer(int car_no);
 	
 	//기존의 활동 및 수상내역 정보를 가지고 온다.
-	public ArrayList<ActAwardVO> getActAward(int u_no);
+	public ArrayList<ActAwardVO> getActAward(int act_no);
 	
 	//기존의 자격증 및 기타내역 정보를 가지고 온다.
-	public ArrayList<CertiOtherVO> getCertiOther(int u_no);
+	public ArrayList<CertiOtherVO> getCertiOther(int cer_no);
 	
 	//기존의 포트폴리오 정보를 가지고 온다.
-	public ArrayList<PortfolioVO> getPortfolio(int u_no);
+	public ArrayList<PortfolioVO> getPortfolio(int por_no);
 	
-	//이력서에 정보 입력시 DB에 데이터를 보내줌 (ajax 고려)
-	public void updateResume(int u_no);
+	//이력서에서 프로필 정보 수정시 업데이트 
+	public void updateProfile(ProfileVO profileVO);
+	
+	//이력서 입력 : 학력사항
+	public void insertEducation(EducationVO educationVO);
+	
+	//이력서 입력 : 경력사항
+	public void insertCareer(CareerVO careerVO);
+	
+	//이력서 입력 : 활동 및 수상내역
+	public void insertActAward(ActAwardVO actAwardVO);
+	
+	//이력서 입력 : 자격증 및 기타
+	public void insertCertiOther(CertiOtherVO certiOtherVO);
+	
+	//이력서 입력 : 포트폴리오
+	public void insertPortfolio(PortfolioVO portfolioVO);
+	
+	//이력서 취합 정보 입력
+	public void insertResume(ResumeVO resumeVO);
+	
+	//이력서 수정 : 학력사항
+	public void updateEducation(EducationVO educationVO);
+	
+	//이력서 수정 : 경력사항
+	public void updateCareer(CareerVO careerVO);
+	
+	//이력서 수정 : 활동 및 수상내역
+	public void updateActAward(ActAwardVO actAwardVO);
+	
+	//이력서 수정 : 자격증 및 기타
+	public void updateCertiOther(CertiOtherVO certiOtherVO);
+	
+	//이력서 수정 : 포트폴리오
+	public void updatePortfolio(PortfolioVO portfolioVO);
+	
+	//이력서 취합 정보 수정
+	public void updateResume(ResumeVO resumeVO);
+	
+	//특정 이력서의 취합 정보를 불러옴
+	public ResumeVO getResumeInfo(int res_no);
 	
 	public void drafts(UserVO vo) throws Exception;
 	

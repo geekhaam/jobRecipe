@@ -117,6 +117,10 @@
 </script>
 </head>
 <body>
+	<div style="width:100%; text-align:center;color:#ff6900;font-style:italic;margin-top:4%;margin-bottom:4%;
+	font-weight:bold;font-size:38pt;">
+		Job Recipe
+	</div>
 	<div id="logreg-forms">
 		<form class="form-signin" action="signinCheck.do" method="post">
 			<h1 class="h3 mb-3 font-weight-normal" style="text-align: center">로그인</h1>
