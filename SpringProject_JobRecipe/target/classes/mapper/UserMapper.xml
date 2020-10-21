@@ -39,7 +39,7 @@
 	</select>
 	
 	<!-- 비밀번호 변경 관련 mapper -->
-    <update id = "pass_change">
+    <update id="pass_change">
     	update rec_users set u_pw=#{u_pw} where u_email = #{u_email}
     </update>
 	
@@ -50,7 +50,7 @@
 	<!-- 회원탈퇴 -->
 	<delete id="memberDelete">
 		DELETE FROM rec_users
-		WHERE u_email = #{u_email} and u_pw = #{u_pw}
+		WHERE u_no = #{u_no}
 	</delete>
 	
 	<update id = "newsCheck">

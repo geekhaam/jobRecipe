@@ -19,7 +19,6 @@
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.jobrecipe.profile.service.ProfileService"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-<fullyQualifiedTypeName name="com.jobrecipe.user.vo.UserVO"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
@@ -46,4 +45,5 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.jobrecipe.advertisement.vo.AdvertisementVO"/>
+<fullyQualifiedTypeName name="com.jobrecipe.user.vo.UserVO"/>
 </qualifiedTypeNameHistroy>

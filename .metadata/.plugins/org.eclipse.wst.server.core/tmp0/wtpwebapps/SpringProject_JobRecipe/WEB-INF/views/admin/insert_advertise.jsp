@@ -39,29 +39,26 @@ input {
 	</header>
 	
 	<section>
-		<div style="width: 100%;  min-height: 70vh; text-align: center;">
+		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
 		<!-- section 기본화면 셋팅 -->
-		
+			<div style="width: 60%; display: flex; flex-direction: column;margin-left:40%;margin-bottom: 5%;">
 			<form action="insertAdvertise.do" method="post" onsubmit="return admin_addAdvertise()">
-	<table>
-		<tr>
-			<th>채용 제목</th>
-			<td><input type="text" name="ad_title" required="required"></td>
-		</tr>
-		<tr>
-			<th>기업명</th>
-			<td><input type="text" name="ad_name" value="${c_name }" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<th>마감일</th>
-			<td><input type="date" name="ad_date" required="required"></td>
-		</tr>
-		<tr>
-			<th>직무</th>
-			<td>
-				<input type="text" id="checkJob" name="ad_job" required="required" placeholder="찾기" onclick="admin_checkJob()">
-				<input type="button" id="modalBtn" value="찾기" data-toggle="modal" data-target="#myModal">
- 
+			<div>
+				<span>채용 제목</span>
+				<input type="text" name="ad_title" required="required" style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+			</div>
+			<div>
+				<span>기업명</span>
+				<input type="text" name="ad_name" value="${c_name }" readonly="readonly"style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+			</div>
+			<div>
+				<span>마감일</span>
+				<input type="date" name="ad_date" required="required"style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+			</div>
+			<div>
+				<span>직무</span>
+				<input type="text" id="checkJob" name="ad_job" required="required" placeholder="찾기" onclick="admin_checkJob()"style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+				<input type="button" id="modalBtn" value="찾기" data-toggle="modal" data-target="#myModal" style="font-size: 12pt;font-weight: 600;background-color:#ff6900;width: 5%;color:white;border:0;border-radius:10px;padding: 1%;">	 
 			    <div class="modal fade" id="myModal" role="dialog">
 			    	<div class="modal-dialog">
 			    		<div class="modal-content"> 
@@ -88,75 +85,68 @@ input {
 			    		</div>
 			    	</div>		
 				</div>
-			</td>
-		</tr>
-		<tr>
-			<th>경력</th>
-			<td>
+			</div>
+			<div>
+				<span>경력</span>
 				<label><input type="checkbox" name="ad_carrBae" value="신입">신입</label>
 				<label><input type="checkbox" name="ad_carrBae" value="경력">경력</label>
 				<label><input type="checkbox" name="ad_carrBae" value="경력무관">경력무관</label>
-			</td>
-		</tr>
-		<tr>
-			<th>고용형태</th>
-			<td>
+			</div>
+			<div>
 				<div class="adminEmpDiv">
+				<span>고용형태</span>
 					<input type="radio" class="emp" id="emp1" name="ad_emp" value="정규직"><label for="emp1">정규직</label>
-					<input type="radio" class="emp" id="emp2" name="ad_emp" value="계약직"><label for="emp2">계약직</label>
+					<input type="radio" class="emp" id="emp2" name="ad_emp" value="계약직"><label for="emp2"">계약직</label>
 					<input type="radio" class="emp" id="emp3" name="ad_emp" value="인턴"><label for="emp3">인턴</label>			
-				</div>			
-			</td>
-		</tr>
-		<tr>
-			<th>스킬</th>
-			<td><input type="text" name="ad_skill"></td>
-		</tr>
-		<tr>
-			<th>주요업무</th>
-			<td><input type="text" name="ad_upmu"></td>
-		</tr>
-		<tr>
-			<th>자격요건</th>
-			<td>
+				</div>
+			</div>
+			<div>
+				<span>스킬</span>
+				<input type="text" name="ad_skill"style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+			</div>
+			<div>
+				<span>주요업무</span>
+				<input type="text" name="ad_upmu"style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+			</div>
+			<div>
 				<div id="lienDiv">
-					<input type="text" id="lien1" name="lien1"><input type="button" id="lienBtn" value="추가" onclick="admin_addLien()"> <br>
+				<span>자격요건</span>
+					<input type="text" id="lien1" name="lien1" style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+					<input type="button" id="lienBtn" value="추가" onclick="admin_addLien()" style="font-size: 12pt;font-weight: 600;background-color:#ff6900;width: 5%;color:white;border:0;border-radius:10px;padding: 1%;">
+					<br>
 				</div>
-			</td>
-		</tr>
-		<tr>
-			<th>우대사항</th>
-			<td>
+			</div>
+			<div>
 				<div id="dealDiv">
-					<input type="text" name="deal1"><input type="button" id="dealBtn" value="추가" onclick="admin_addDeal()"> <br>
+				<span>우대사항</span>
+					<input type="text" name="deal1"style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+					<input type="button" id="dealBtn" value="추가" onclick="admin_addDeal()" style="font-size: 12pt;font-weight: 600;background-color:#ff6900;width: 5%;color:white;border:0;border-radius:10px;padding: 1%;"> <br>
 				</div>
-			</td>
-		</tr>
-		<tr>
-			<th>채용절차</th>
-			<td><input type="text" name="ad_pro"></td>
-		</tr>
-		<tr>
-			<th>복리후생</th>
-			<td>
+			</div>
+			<div>
+				<span>채용절차</span>
+				<input type="text" name="ad_pro"style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+			</div>
+			<div>
 				<div id="cpDiv">
-					<input type="text" name="cp1"><input type="button" id="cpBtn" value="추가" onclick="admin_addCp()"> <br>
+				<span>복리후생</span>
+					<input type="text" name="cp1" style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+					<input type="button" id="cpBtn" value="추가" onclick="admin_addCp()" style="font-size: 12pt;font-weight: 600;background-color:#ff6900;width: 5%;color:white;border:0;border-radius:10px;padding: 1%;"> <br>
 				</div>
-			</td>
-		</tr>
-		<tr>
-			<th>기타</th>
-			<td>
+			</div>
+			<div>
 				<div id="ectDiv">
-					<input type="text" name="ect1"><input type="button" id="ectBtn" value="추가" onclick="admin_addEct()"> <br>
+				<span>기타</span>
+					<input type="text" name="ect1" style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; margin-bottom: 1%;">
+					<input type="button" id="ectBtn" value="추가" onclick="admin_addEct()" style="font-size: 12pt;font-weight: 600;background-color:#ff6900;width: 5%;color:white;border:0;border-radius:10px;padding: 1%;"> <br>
 				</div>
-			</td>
-		</tr>
-	</table>
-
-	<input type="submit" value="추가">
-	</form>
-		</div>	
+			</div>
+			<div style="margin-top: 3%;">
+				<input type="submit" value="공고 추가" style="font-size: 12pt;font-weight: 600;background-color:#ff6900;width: 12%;color:white;border:0;border-radius:10px;padding: 1%;">		
+			</div>
+		</form>
+		</div>
+	</div>	
 	</section>
 	
 	<footer>

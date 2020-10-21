@@ -63,18 +63,18 @@ $(document).ready(function(){
 		<div id="myPageMenu">
 			<div class="mypagemenu_wrap">
 				<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
-					
-					<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+							
+					<div onclick="location.href='settings.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 						계정
 					</div>
-					<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+					<div onclick="location.href='resumes.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 						프로필
 					</div>
-					<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+					<div onclick="location.href='reviews.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
-						활동내역
+						내 리뷰
 					</div>
 					
 				</div>
@@ -144,27 +144,18 @@ $(document).ready(function(){
 		<!--분할화면 오른쪽  -->
 		<div
 			style="margin-bottom: 3%; margin-top: 6%; align-items: center; display: flex; flex-direction: column;">
-			<img style="border-radius: 30px; width: 90%;"
+			<img style="border-radius: 30px; width: 80%;"
 				src="/resources/images/ad1.gif" />
-			<div
-				style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-				Airline</div>
 		</div>
 		<div
 			style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-			<img style="border-radius: 30px; width: 90%;"
+			<img style="border-radius: 30px; width: 80%;"
 				src="/resources/images/ad2.gif" />
-			<div
-				style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-				Company</div>
 		</div>
 		<div
 			style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-			<img style="border-radius: 30px; width: 90%;"
+			<img style="border-radius: 30px; width: 80%;"
 				src="/resources/images/ad3.gif" />
-			<div
-				style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-					hire</div>
 			</div>
 
 		</div>

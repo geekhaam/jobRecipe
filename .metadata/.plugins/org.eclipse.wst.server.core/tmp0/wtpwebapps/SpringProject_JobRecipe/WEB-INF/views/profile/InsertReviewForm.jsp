@@ -394,16 +394,13 @@ input, textarea {
 			<div style="width: 25%; align-items:center;display:flex; flex-direction: column;">
 			<!--분할화면 오른쪽  -->
 				<div style="margin-bottom:3%;margin-top:6%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad1.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad1.gif"/>
 				</div>
 				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad2.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad2.gif"/>
 				</div>
 				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad3.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad3.gif"/>
 				</div>
 			</div>
 		</div>

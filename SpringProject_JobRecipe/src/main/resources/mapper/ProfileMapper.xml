@@ -260,4 +260,5 @@
  	<select id="searchc" resultType="String">
  	select c_name from rec_company where c_name = #{rev_name}
  	</select>
+
 </mapper>

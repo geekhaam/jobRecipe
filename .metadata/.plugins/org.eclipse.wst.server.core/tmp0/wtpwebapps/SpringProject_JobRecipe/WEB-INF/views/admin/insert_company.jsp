@@ -84,7 +84,7 @@
 								</div>
 								<!-- 공고 입력으로 이동하는 부분 데이터 가져감 hidden -->
 								<div style="text-align: end;">
-								<form action="insertAdvertiseForm.do" method="post">
+								<form action="admin/insertAdvertiseForm.do" method="post">
 									<input type="hidden" name="c_name" value="${vo.c_name }">
 									<input type="submit" value="공고 입력" class="search-inputButton" style="width: 47%; padding:2%;">
 								</form>

@@ -138,7 +138,7 @@ input {
 											<div style="font-weight:bold;font-size:12pt;margin-right:2%;padding-top: 2%;">
 												현재 비밀번호
 											</div>
-											<input type="password" name="user_current_password"placeholder="비밀번호(8자리 이상)"
+											<input type="password" name="cur_pw"placeholder="비밀번호(8자리 이상)"
 											title="비밀번호는 8자 이상이어야 합니다."  style="border:1px solid #ff6900;border-radius:10px;padding:1%;"/>
 										</div>
 										
@@ -157,8 +157,7 @@ input {
 										<!-- <div style="display: flex; flex-direction: row;flex-wrap: nowrap;margin-bottom:7%;">
 										</div> -->
 										<div style="text-align:end;">
-											<input type="submit" style="background-color:#ff6900;color:white;padding:1%;
-												margin-right:25%;" value="비밀번호변경">
+											<input type="submit" style="background-color: #ff6900; color: white;border: 0; border-radius: 10px;" value="비밀번호변경">
 										</div>
 									</div>
 									
@@ -177,27 +176,18 @@ input {
 				<!--분할화면 오른쪽  -->
 				<div
 					style="margin-bottom: 3%; margin-top: 6%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad1.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Airline</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad2.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Company</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad3.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						hire</div>
 				</div>
 
 			</div>

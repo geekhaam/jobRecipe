@@ -43,14 +43,7 @@ input {
 			<!-- 전체화면 -->
 
 			<div style="width: 15%; margin-left: 3%;">
-				<div id="myPageInfo" style="margin-bottom:5%;margin-top:15%;text-align:center;">
-					<span class="img_profile"></span>
-					<!-- 프로필 이미지 -->
-					<img style="height:17vh;" src="/resources/images/default_user.png">
-					<div class="my_info" style="font-weight:bold;">
-						<h1>${u_email}</h1>
-					</div>
-				</div>
+				
 			</div>
 
 			<div style="width: 60%; display: flex; flex-direction: column; margin-bottom: 5%;">
@@ -141,7 +134,7 @@ input {
 								
 								<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 								
-								<div style="width:100%;text-align: left;margin-top:5%;margin-left: 5%;color:#ff6900;">
+								<div style="width:100%;text-align: left;margin-top:20%;margin-left: 5%;color:#ff6900;">
 									<h2 style="font-size: 20pt;">이력서 선택</h2><br>
 								</div>
 								
@@ -160,10 +153,10 @@ input {
 												<input type="checkbox" name="res_no" value="${resumeVO.res_no}"> 
 											</div>
 											<input type="hidden" id="res_no" value="${resumeVO.res_no}">
-											<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 										</c:forEach>
 									</c:otherwise>
 								</c:choose>
+								<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 								<div id="btn_write" style="text-align: left;">
 									<button type="button" onclick="location.href='resumeForm.do'" style="background-color:#ff6900;color:white;border:0;border-radius:10px;padding: 1%;">
 									 	새로 작성하기

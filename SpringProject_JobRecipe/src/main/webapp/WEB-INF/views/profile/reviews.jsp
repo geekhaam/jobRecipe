@@ -70,53 +70,57 @@
 					<div class="jpcont_wrap">
 						<div class="layout_my_account myaccountcon">
 							<div class="section_group">
-								<div style="display: flex; flex-direction: row;flex-wrap: nowrap;">
-									<div onclick="location.href='./reviews.do'" style="cursor:pointer;padding:1%;
-										border:1px solid #fac5a1;background-color:#ff6900;color:white;border-radius:10px;margin-right:2%;">
-										리뷰 (${reviewCnt})
-									</div>
-								</div>
+								
 								<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
+								
+								<div style="margin-left: 10%">
+									<div>
+										<h2>내 기업리뷰</h2>
+										<h3>${reviewCnt}개의 리뷰를 작성하셨습니다.</h3>
+									</div>
+									<div style="display: flex; flex-direction: row;flex-wrap: nowrap;">
+										<c:choose>
+											<c:when test="${list.size() eq 0}">
+												<div>
+													작성된 리뷰가 없습니다.
+												</div>
+											</c:when>
+											<c:otherwise>
+												<c:forEach items="${list}" var="reviewVO">
+													<div>
+														<h3>기업명</h3>
+														<a href="getReview.do?rev_no=${reviewVO.rev_no}">${reviewVO.rev_name}</a>
+													</div>
+													<div style="margin-left: 10%">
+														<h3>고용형태</h3>
+														${reviewVO.rev_emp}
+													</div>
+													<div style="margin-left: 10%">
+														<h3>작성일</h3>
+														${reviewVO.rev_date}
+													</div>
+													<div style="margin-left: 10%">
+														<h3>관리</h3>
+														<a href="./updateReviewView.do?rev_no=${reviewVO.rev_no}">수정</a>
+														/<a href="./deleteReview.do?rev_no=${reviewVO.rev_no}">삭제</a>
+													</div>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+									</div>									
+								</div>
+								
+								<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
+								
+								<div style="text-align: right;">
+									<button onclick="insertReview();" style="background-color:#ff6900;color:white;border:0;border-radius:10px;padding:1%;">기업리뷰 작성</button>
+								</div>
 								
 							</div>
 						</div>
 					</div>					
 				</div>
 
-				<div style="margin-left: 37%">
-					<div>
-						<h2>내 기업리뷰</h2>
-						<h3>
-							<span>${reviewCnt}</span>개의 리뷰를 작성하셨습니다.
-						</h3>
-					</div>
-					<table>
-						<caption>내 기업리뷰</caption>
-						<thead>
-							<tr>
-								<th>기업명</th>
-								<th>고용형태</th>
-								<th>작성일</th>
-								<th>수정/삭제</th>
-							</tr>
-						</thead>
-						<c:forEach items="${list}" var="reviewVO">
-							<tbody>
-								<tr>
-									<td><a href="getReview.do?rev_no=${reviewVO.rev_no}">${reviewVO.rev_name}</a></td>
-									<td>${reviewVO.rev_emp}</td>
-									<td>${reviewVO.rev_date}</td>
-									<td><a href="./updateReviewView.do?rev_no=${reviewVO.rev_no}">수정</a>/<a
-										href="./deleteReview.do?rev_no=${reviewVO.rev_no}">삭제</a></td>
-								</tr>
-							</tbody>
-						</c:forEach>
-					</table>
-					
-					<div>
-						<button onclick="insertReview();">기업리뷰 작성</button>
-					</div>
-				</div>
 
 				
 			</div>
@@ -125,27 +129,18 @@
 				<!--분할화면 오른쪽  -->
 				<div
 					style="margin-bottom: 3%; margin-top: 6%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad1.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Airline</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad2.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Company</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad3.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						hire</div>
 				</div>
 
 			</div>

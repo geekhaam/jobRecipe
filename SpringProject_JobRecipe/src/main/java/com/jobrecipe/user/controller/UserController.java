@@ -290,18 +290,16 @@ public class UserController {
 	public String memberDelete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 		
 		UserVO user = (UserVO) session.getAttribute("login");
-		
 		String sessionPw = user.getU_pw();
-		
 		String voPw = vo.getU_pw();
 		
 		if(!(sessionPw.equals(voPw))) {
 			rttr.addFlashAttribute("msg",false);
 			return "/users/memberDelteView";
 		}
-		userService.memberDelete(vo);
+		userService.memberDelete(user);
 		session.invalidate(); 
-		return "main";
+		return "redirect:/hire/Search_Job.do";
 	}
 	
 }

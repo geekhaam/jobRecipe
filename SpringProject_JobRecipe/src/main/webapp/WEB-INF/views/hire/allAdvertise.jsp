@@ -33,7 +33,7 @@ input {
 		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
 		<!-- 전체화면 -->
 		
-			<div style="width: 15%;	 margin-left: 3%;">
+			<div style="width: 10%;	 margin-left: 3%;">
 				<!-- <div style="display:flex; flex-direction: column; border">
 					<img style="height:17vh;" src="/resources/images/default_user.png">
 					<div>이름</div>
@@ -44,7 +44,7 @@ input {
 				</div> -->
 			</div>
 			
-			<div style="width: 60%;display:flex; flex-direction: column;margin-bottom:5%; justify-contents">
+			<div style="width: 65%;display:flex; flex-direction: column;margin-bottom:5%; justify-contents">
 				<div style="width:100%;text-align:center;margin-top:5%;margin-bottom:3%;color:#ff6900;">
 					<h1>채용공고</h1>
 				</div>
@@ -79,12 +79,15 @@ input {
 					<hr style="width: 80%; margin-bottom: 1%; border: solid 1px #fac5a1">
 
 					<c:forEach var="imsi" items="${list}">
+					<fmt:parseDate var="date" value="${imsi.ad_date }" pattern="yyyy-MM-dd" />
+					<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="nowDate" />
+					<fmt:parseNumber value="${date.time / (1000*60*60*24)}" integerOnly="true" var="endDate" />
 						<div
 							style="margin-left: 12%; margin-right: 10%; display: flex; flex-direction: row; align-items: center; cursor: pointer;"
 							onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
 
-							<div style="width: 35%; font-size: 15pt;">${imsi.ad_title }</div>
-							<div style="width: 10%; font-size: 13pt;">${imsi.companyVO.c_name }</div>
+							<div style="width: 30%; font-size: 15pt;">${imsi.ad_title }</div>
+							<div style="width: 15%; font-size: 13pt;">${imsi.companyVO.c_name }</div>
 							<div style="width: 30%; display: flex; flex-direction: column;">
 								<div
 									style="font-size: 10pt; font-weight: bold; margin-bottom: 5%;">

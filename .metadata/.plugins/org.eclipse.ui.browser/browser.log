@@ -219,3 +219,53 @@
 10월 20, 2020 20:11:34.75 [16440:21896:1020/201134.750:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
 10월 20, 2020 20:16:07.15 [1020/201607.152:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
 10월 20, 2020 20:35:21.63 [16440:21896:1020/203521.631:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+
+10월 21, 2020 16:12:28.89 NEW SESSION
+10월 21, 2020 16:12:28.89 [12596:12008:1021/161228.896:ERROR:device_event_log_impl.cc(208)] [16:12:28.897] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 16:15:12.05 [12596:12008:1021/161512.056:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:18:55.31 [12596:12008:1021/161855.310:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:18:56.51 [12596:12008:1021/161856.517:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:18:59.97 [12596:12008:1021/161859.973:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:19:03.41 [12596:12008:1021/161903.419:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:20:23.37 [12596:12008:1021/162023.373:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:20:27.66 [12596:12008:1021/162027.660:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:20:34.13 [12596:12008:1021/162034.137:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:20:35.66 [12596:12008:1021/162035.663:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:20:59.52 [12596:12008:1021/162059.526:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:21:02.33 [12596:12008:1021/162102.335:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:22:25.01 [1021/162225.017:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+10월 21, 2020 16:22:49.66 [12596:12008:1021/162249.659:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:23:06.01 [12596:12008:1021/162306.018:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:23:08.62 [12596:12008:1021/162308.625:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:23:09.50 [12596:12008:1021/162309.508:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:23:10.45 [12596:12008:1021/162310.455:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:23:11.41 [12596:12008:1021/162311.412:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:23:12.62 [12596:12008:1021/162312.627:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:23:15.86 [12596:12008:1021/162315.869:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:32:07.89 [12596:12008:1021/163207.890:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:33:42.85 [12596:12008:1021/163342.853:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:34:11.58 [12596:12008:1021/163411.581:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:34:25.80 [12596:12008:1021/163425.802:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:41:58.50 [12596:12008:1021/164158.505:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:49:17.44 [12596:12008:1021/164917.444:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 16:54:52.69 [12596:12008:1021/165452.692:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:10:24.05 [9052:23388:1021/171024.050:ERROR:device_event_log_impl.cc(208)] [17:10:24.050] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 17:11:58.56 [9052:23388:1021/171158.565:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:20:17.43 [1021/172017.435:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+10월 21, 2020 17:36:04.86 [9052:23388:1021/173604.865:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:38:57.06 [9052:23388:1021/173857.059:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:45:03.46 [9052:23388:1021/174503.461:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:45:09.81 [9052:23388:1021/174509.809:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:50:55.02 [9052:23388:1021/175055.028:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:52:52.18 [9052:23388:1021/175252.188:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 17:53:22.48 [9052:23388:1021/175322.485:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 18:04:23.43 [9052:23388:1021/180423.430:ERROR:CONSOLE(1)] "No document", source: devtools://devtools/bundled/sdk/sdk.js (1)
+10월 21, 2020 18:27:42.61 [24560:12352:1021/182742.618:ERROR:device_event_log_impl.cc(208)] [18:27:42.617] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 18:37:34.02 [1021/183734.024:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+10월 21, 2020 18:39:02.95 [20692:11960:1021/183902.958:ERROR:device_event_log_impl.cc(208)] [18:39:02.958] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 18:41:45.45 [13576:24016:1021/184145.450:ERROR:device_event_log_impl.cc(208)] [18:41:45.450] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 18:51:37.97 [1021/185137.977:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+10월 21, 2020 18:54:56.76 [21056:10296:1021/185456.762:ERROR:device_event_log_impl.cc(208)] [18:54:56.762] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 18:59:03.16 [22808:1204:1021/185903.161:ERROR:device_event_log_impl.cc(208)] [18:59:03.161] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 19:05:55.86 [7692:18684:1021/190555.869:ERROR:device_event_log_impl.cc(208)] [19:05:55.869] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+10월 21, 2020 19:15:49.20 [1021/191549.200:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)

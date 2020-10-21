@@ -19,12 +19,27 @@ input {
 	font-size: initial;
 }
 </style>
+<script type="text/javascript">
+	var today = new Date();   
+	
+	var year = today.getFullYear(); // 년도
+	var month = today.getMonth() + 1;  // 월
+	var date = today.getDate();  // 날짜
 
+
+
+	function newsCheck() {
+		if(confirm(year+"년 "+month+"월 "+date+"일 이메일 수신 여부를 변경하였습니다. 동의하십니까?")) {
+			location.href="redirect:/newsletter.do"
+		} else {
+			location.href="redirect:/newsletter.do"
+		}
+	};
+</script>
 
 </head>
 <body>
-
-<header>
+	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>
 	<section>
@@ -102,10 +117,9 @@ input {
 													<p class="txt">잡플래닛이 찾은 맞춤 채용 및 유용한 정보 알림</p>
 
 													<label class="btn_check round btn_check_action check_chk">
-														수신동의 <input type="checkbox" name="newsck" value="1">
-														동의안함 <input type="checkbox" name="newsck" value="0">
-														<input type="submit" style="background-color:#ff6900;color:white;padding:1%;
-															margin-right:25%;border-radius:10px;" value="전송" /> 
+														수신동의 <input type="radio" name="newsck" value="1">
+														동의안함 <input type="radio" name="newsck" value="0">
+														<input type="submit" onclick="newsCheck();" style="margin-left: 10%;background-color: #ff6900; color: white;border: 0; border-radius: 10px;" value="전송" /> 
 														
 														<span class="check_icon round"></span> <span class="check_txt"></span>
 													</label>
@@ -134,27 +148,18 @@ input {
 				<!--분할화면 오른쪽  -->
 				<div
 					style="margin-bottom: 3%; margin-top: 6%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad1.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Airline</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad2.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Company</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad3.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						hire</div>
 				</div>
 
 			</div>

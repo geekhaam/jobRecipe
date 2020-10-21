@@ -14,7 +14,7 @@
 			} else {
 				$.ajax({
 					type: "post",
-					url: "selectCompany.do",
+					url: "admin/selectCompany.do",
 					data: {c_name : name},
 					dataType: "html",
 					success: function(result) {
@@ -42,7 +42,7 @@
 			} else {
 				$.ajax({
 					type: "post",
-					url: "insertCompany.do",
+					url: "admin/insertCompany.do",
 					data: {
 						c_name : name,
 						c_loc : loc,
@@ -118,28 +118,44 @@
 		}
 		
 		function admin_addLien() { //자격요건 행 추가
-			$("#lienDiv").append('<input type="text" name="lien'+adminLienCount+'"> <br>');
+			$("#lienDiv").append('<input type="text" id="lien'+adminLienCount+'" name="lien'+adminLienCount+'"> <br>');
+			$("#lien"+adminLienCount).css("width", "15%");
+			$("#lien"+adminLienCount).css("border", "1px solid #ff6900");
+			$("#lien"+adminLienCount).css("border-radius", "10px");
+			$("#lien"+adminLienCount).css("margin-bottom", "1%");
 			adminLienCount++;
 			if(adminLienCount==6)
 				$("#lienBtn").hide();
 		}
 		
 		function admin_addDeal() { //우대사항 행 추가
-			$("#dealDiv").append('<input type="text" name="deal'+adminDealCount+'"> <br>');
+			$("#dealDiv").append('<input type="text" id="deal'+adminDealCount+'"name="deal'+adminDealCount+'"> <br>');
+			$("#deal"+adminDealCount).css("width", "15%");
+			$("#deal"+adminDealCount).css("border", "1px solid #ff6900");
+			$("#deal"+adminDealCount).css("border-radius", "10px");
+			$("#deal"+adminDealCount).css("margin-bottom", "1%");
 			adminDealCount++;
 			if(adminDealCount==6)
 				$("#dealBtn").hide();
 		}
 		
 		function admin_addCp() { //복리후생 행 추가
-			$("#cpDiv").append('<input type="text" name="cp'+adminCpCount+'"> <br>');
+			$("#cpDiv").append('<input type="text" id="cp'+adminCpCount+'" name="cp'+adminCpCount+'"> <br>');
+			$("#cp"+adminCpCount).css("width", "15%");
+			$("#cp"+adminCpCount).css("border", "1px solid #ff6900");
+			$("#cp"+adminCpCount).css("border-radius", "10px");
+			$("#cp"+adminCpCount).css("margin-bottom", "1%");
 			adminCpCount++;
 			if(adminCpCount==6)
 				$("#cpBtn").hide();
 		}
 		
 		function admin_addEct() { //기타 행 추가
-			$("#ectDiv").append('<input type="text" name="ect'+adminEctCount+'"> <br>');
+			$("#ectDiv").append('<input type="text" id="ect'+adminEctCount+'" name="ect'+adminEctCount+'"> <br>');
+			$("#ect"+adminEctCount).css("width", "15%");
+			$("#ect"+adminEctCount).css("border", "1px solid #ff6900");
+			$("#ect"+adminEctCount).css("border-radius", "10px");
+			$("#ect"+adminEctCount).css("margin-bottom", "1%");
 			adminEctCount++;
 			if(adminEctCount==6)
 				$("#ectBtn").hide();

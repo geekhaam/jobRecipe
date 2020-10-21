@@ -51,6 +51,12 @@ input, textarea {
 	var review_wish = 0;
 	
 	$(document).ready(function() {
+		$(".review_star span").each(function(i, e) { //평균 평점
+			if($(this).attr("id") === $("#rev_star").val()) {
+				$(this).addClass('on').prevAll('span').addClass('on');
+			}
+		})
+		
 		$('.review_star span').click(function() { //평점
 			$(this).parent().children('span').removeClass('on');
 			$(this).addClass('on').prevAll('span').addClass('on');
@@ -139,7 +145,7 @@ input, textarea {
 		<div style="width: 100%; display: flex; flex-wrap: nowrap; min-height: 70vh;">
 		<!-- 전체화면 -->
 		
-			<div style="width: 15%; margin-left: 3%;">
+			<div style="width: 15%; margin-left: 3%; margin-top: 6%	">
 				<div id="myPageMenu">
 					<div class="mypagemenu_wrap">
 						<div style="display: flex; flex-direction: column; flex-wrap: nowrap; text-align: center">
@@ -306,9 +312,7 @@ input, textarea {
 								</div>
 								<textarea name="rev_title" id="rev_title"
 										required="required" cols="40" rows="2" style="resize: none;width:45%;"
-										placeholder="최소 30자 이상 기재해 주세요.">
-									${reviewVO.rev_title}
-								</textarea>
+										placeholder="최소 30자 이상 기재해 주세요.">${reviewVO.rev_title}</textarea>
 								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
 									최소 30자
 								</div>
@@ -324,9 +328,7 @@ input, textarea {
 								</div>
 								<textarea name="rev_advan" id="rev_advan"
 										required="required" cols="40" rows="5" style="resize: none;width:45%;"
-										placeholder="최소 30자 이상 기재해 주세요.">
-									${reviewVO.rev_advan}
-								</textarea>
+										placeholder="최소 30자 이상 기재해 주세요.">${reviewVO.rev_advan}</textarea>
 								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
 									최소 30자
 								</div>
@@ -342,9 +344,7 @@ input, textarea {
 								</div>
 								<textarea name="rev_weak" id="rev_weak"
 										required="required" cols="40" rows="2" style="resize: none;width:45%;"
-										placeholder="최소 30자 이상 기재해 주세요.">
-									${reviewVO.rev_weak}
-								</textarea>
+										placeholder="최소 30자 이상 기재해 주세요.">${reviewVO.rev_weak}</textarea>
 								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
 									최소 30자
 								</div>
@@ -359,9 +359,7 @@ input, textarea {
 								</div>
 								<textarea name="rev_wish" id="rev_wish"
 										required="required" cols="40" rows="2" style="resize: none;width:45%;"
-										placeholder="최소 30자 이상 기재해 주세요.">
-									${reviewVO.rev_wish}	
-								</textarea>
+										placeholder="최소 30자 이상 기재해 주세요.">${reviewVO.rev_wish}</textarea>
 								<div style="width:15%;font-size:12pt;padding-top:3%;margin-left:3%">
 									최소 30자
 								</div>
@@ -383,16 +381,13 @@ input, textarea {
 			<div style="width: 25%; align-items:center;display:flex; flex-direction: column;">
 			<!--분할화면 오른쪽  -->
 				<div style="margin-bottom:3%;margin-top:6%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad1.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad1.gif"/>
 				</div>
 				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad2.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad2.gif"/>
 				</div>
 				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad3.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad3.gif"/>
 				</div>
 				
 			</div>

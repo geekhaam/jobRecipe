@@ -99,7 +99,6 @@
 													<button onclick="deleteCheck()" style="background-color:#ff6900;color:white;border:0;border-radius:10px;padding:1%;margin-right: 20px;">삭제</button>
 												</div>
 												<input type="hidden" id="res_no" value="${resumeVO.res_no}">
-												<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 										</c:forEach>
 									</c:otherwise>
 								</c:choose>
@@ -123,27 +122,18 @@
 				<!--분할화면 오른쪽  -->
 				<div
 					style="margin-bottom: 3%; margin-top: 6%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad1.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Airline</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad2.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						Company</div>
 				</div>
 				<div
 					style="margin-bottom: 3%; align-items: center; display: flex; flex-direction: column;">
-					<img style="border-radius: 30px; width: 90%;"
+					<img style="border-radius: 30px; width: 80%;"
 						src="/resources/images/ad3.gif" />
-					<div
-						style="margin-top: 2%; font-size: 20pt; font-weight: bold; font-style: italic;">Kaja
-						hire</div>
 				</div>
 
 			</div>

@@ -234,8 +234,8 @@ input, textarea {
 										</div>
 									</div>
 									<label class="resume_addPhoto" for="resume_addPhoto_id">
-										<input type="file" id="upload" name="pro_imgFile" style="width: 80%;" onclick="changeImg();">
-										<span id='preview'>
+										<input type="file" id="upload" name="pro_imgFile" style="width: 60%;" onclick="changeImg();">
+										<span id='preview' style="text-align: right;">
 											이미지를 선택해주세요.
 									    </span>
 									</label>
