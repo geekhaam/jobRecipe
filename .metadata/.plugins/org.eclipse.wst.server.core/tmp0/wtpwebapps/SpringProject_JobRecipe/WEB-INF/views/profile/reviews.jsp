@@ -8,9 +8,18 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <style>
-ul {
-	list-style: none;
-}
+</style>
+<style type="text/css">
+	/* Noto Sans KR 폰트 추가 */
+	@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+	body {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	input {
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: initial;
+	}
 </style>
 
 </head>
@@ -33,20 +42,18 @@ ul {
 				<div id="myPageMenu">
 					<div class="mypagemenu_wrap">
 						<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
-							
-							<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='settings.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								계정
 							</div>
-							<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='resumes.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								프로필
 							</div>
-							<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='reviews.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
-								활동내역
+								내 리뷰
 							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -55,7 +62,7 @@ ul {
 
 			<div style="width: 60%; display: flex; flex-direction: column; margin-bottom: 5%;">
 				<div style="width:100%;text-align:center;margin-top:5%;margin-bottom:3%;color:#ff6900;">
-					<h1 style="font-size:22pt;">내 활동내역</h1><br>
+					<h1 style="font-size:22pt;">내 리뷰</h1><br>
 					
 					
 				</div>

@@ -10,6 +10,21 @@
 <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.js'/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css'/>">
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input, textarea {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
+
 <style>
 	.star1 {
 	    background: url('/resources/images/star_on.png') no-repeat 0 0;
@@ -161,17 +176,17 @@
 					<div class="mypagemenu_wrap">
 						<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
 							
-							<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='settings.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								계정
 							</div>
-							<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='resumes.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								프로필
 							</div>
-							<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='reviews.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
-								활동내역
+								내 리뷰
 							</div>
 							
 						</div>

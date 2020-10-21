@@ -10,6 +10,20 @@
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
 <script type="text/javascript">
 	$(function() {
 		//전체선택 체크박스 클릭 
@@ -84,18 +98,16 @@
 </script>
 </head>
 <body>
-	<div style="width:100%; text-align:center;color:#ff6900;font-style:italic;margin-top:4%;margin-bottom:4%;
-	font-weight:bold;font-size:38pt;">
+	<div onclick="location.href='/hire/Search_Job.do'" style="width:100%; text-align:center;color:#ff6900;font-style:italic;margin-top:4%;margin-bottom:3%; font-weight:bold;font-size:38pt;">
 		Job Recipe
 	</div>
-	<div style="width:40%;display:flex; flex-direction: column;margin-bottom:5%; margin-right:auto; 
-		margin-left:auto;text-align:center;border:1px solid #fafafa;background-color:#fafafa;">
+	<h1 style="text-align:center; font-size:22pt; font-weight: 600; color:#ff6900;margin-top:3%;margin-bottom:2%;">회원가입</h1>
+	<div style="width:40%;display:flex; flex-direction: column;margin-bottom:5%; margin-right:auto; margin-left:auto;text-align:center;border:1px solid #fafafa;background-color:#fafafa;">
 	<form action="signupMember.do" method="post">
 		<div class="signup_warp">
-			<h1 style="font-size:20pt;color:#fac5a1;margin-top:3%;margin-bottom:2%;">회원가입</h1>
 			<hr style="border:1px solid #e8e8e8">
 			<!-- 이용 약관 체크 -->
-			<div class="users_terms">
+			<div class="users_terms" style="margin-bottom: 5%;">
 				<div class="terms_top" style="display:flex; flex-direction: row;justify-content: center;
 					flex-wrap: nowrap;margin-bottom:4%;">
 					<h2 style="font-size:16pt;color:green;">전체동의</h2>
@@ -117,12 +129,6 @@
 							<input type="checkbox" id="tou_service" name="u_tou_service" value="0" onclick="users_changeCkboxVal('tou_service');">
 							<!-- <span class="check_icon"></span> -->
 						</label>
-					</div>
-					<div class="terms_con1"> <!-- 개인정보 회원 이용약관 동의 내용 -->
-					
-					</div>
-					<div class="terms_title2"> <!-- 개인정보 수집 및 이용 제목 -->
-						<h2>개인정보 수집 및 이용</h2>
 					</div>
 					<div class="sub_check" style="display:flex; flex-direction: row;justify-content: center;
 					flex-wrap: nowrap;margin-bottom:3%;">
@@ -176,15 +182,17 @@
 			<div class="users_loginInfo" style="display:flex; flex-direction: column;justify-content: center;
 					flex-wrap: nowrap;">
 				<input type="text" class="form-control" id="u_email" name="u_email" placeholder="이메일"
-					style="width:90%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
+					style="text-align: center; width:50%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
 					margin-top:1%;margin-bottom:1%;font-size:17pt;">
 				<div class="check_font" id="email_check" style="width:90%;margin-left:auto;margin-right:auto;
 					margin-top:1%;margin-bottom:1%;font-size:17pt;"></div>
 				
-				<input type="password" id="u_pw" name="u_pw" placeholder="비밀번호"style="width:90%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
+				<input type="password" id="u_pw" name="u_pw" placeholder="비밀번호"
+				style="text-align: center; width:50%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
 					margin-top:1%;margin-bottom:1%;font-size:17pt;">
 				
-				<input type="password" id="u_pwCheck" name="u_pwCheck" placeholder="비밀번호 확인"style="width:90%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
+				<input type="password" id="u_pwCheck" name="u_pwCheck" placeholder="비밀번호 확인"
+				style="text-align: center; width:50%;border:1px solid #fac5a1;border-radius:15px;margin-left:auto;margin-right:auto;
 					margin-top:1%;margin-bottom:1%;font-size:17pt;">
 				<div class="check_font" id="pw_check"style="width:90%;margin-left:auto;margin-right:auto;
 					margin-top:1%;margin-bottom:3%;font-size:17pt;"></div>

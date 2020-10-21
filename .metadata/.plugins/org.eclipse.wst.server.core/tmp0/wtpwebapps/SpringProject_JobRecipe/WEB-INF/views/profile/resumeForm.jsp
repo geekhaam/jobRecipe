@@ -22,8 +22,60 @@ textarea.flexible {
 		$("textarea.flexible").on('keydown keyup', function() {
 		  $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
 		});
+		var upload = document.querySelector('#upload');
+	    var preview = document.querySelector('#preview');
+	 
+	    upload.addEventListener('change',function (e) {
+	        var get_file = e.target.files;
+
+	        var image = document.createElement('img');
+	        image.id = 'prev_img';
+	        /* FileReader 객체 생성 */
+	        var reader = new FileReader();
+	 
+	        /* reader 시작시 함수 구현 */
+	        reader.onload = (function (aImg) {
+	            console.log(1);
+	 
+	            return function (e) {
+	                console.log(3);
+	                /* base64 인코딩 된 스트링 데이터 */
+	                aImg.src = e.target.result
+	            }
+	        })(image)
+	 
+	        if(get_file){
+	            /* 
+	                get_file[0] 을 읽어서 read 행위가 종료되면 loadend 이벤트가 트리거 되고 
+	                onload 에 설정했던 return 으로 넘어간다.
+	                이와 함게 base64 인코딩 된 스트링 데이터가 result 속성에 담겨진다.
+	            */
+	            reader.readAsDataURL(get_file[0]);
+	            console.log(2);
+	        }
+	 		$("#preview").empty();
+	        preview.appendChild(image);
+	        $("#prev_img").css("height", "20vh");
+	    });
+	    
 	});
+	
+	
 </script>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input, textarea {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
 </head>
 <body>
 	<header>
@@ -35,18 +87,19 @@ textarea.flexible {
 			<div style="width: 15%; margin-left: 3%;">
 				<div id="myPageMenu">
 					<div class="mypagemenu_wrap">
-						<div
-							style="display: flex; flex-direction: column; flex-wrap: nowrap; text-align: center">
-
-							<div onclick="location.href='settings.do'"
-								style="cursor: pointer; margin-bottom: 3%; border: 1px solid #fac5a1; color: #ff6900; border-radius: 10px;">
-								계정</div>
-							<div onclick="location.href='resumes.do'"
-								style="cursor: pointer; margin-bottom: 3%; border: 1px solid #fac5a1; color: #ff6900; border-radius: 10px;">
-								프로필</div>
-							<div onclick="location.href='reviews.do'"
-								style="cursor: pointer; margin-bottom: 3%; border: 1px solid #fac5a1; color: #ff6900; border-radius: 10px;">
-								활동내역</div>
+						<div style="display: flex; flex-direction: column; flex-wrap: nowrap; text-align: center">
+							<div onclick="location.href='settings.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
+								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+								계정
+							</div>
+							<div onclick="location.href='resumes.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
+								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+								프로필
+							</div>
+							<div onclick="location.href='reviews.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
+								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
+								내 리뷰
+							</div>
 						</div>
 					</div>
 				</div>
@@ -56,14 +109,13 @@ textarea.flexible {
 				<form action="insertResume.do" method="post" enctype="multipart/form-data">
 					<div id="rsm_contents">
 						<!-- 기본 정보 섹션 -->
-						<div class="section_wrap">
+						<div class="section_wrap" style="padding:3%;margin-bottom:5%;margin-right:auto; margin-left:auto;border:1px solid #fafafa;background-color:#fafafa;">
 							<!-- 각 입력 내용 섹션 분류용 래퍼 -->
-							<div class="resume_title">
-								<input type="text" placeholder="이력서의 제목을 입력해주세요." name="res_title" value="${res_title}"
-									style="width: 50%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 3%;">
-							</div>
-							<h2 style="font-size: 14pt; font-weight: 900; margin-bottom: 5%;">기본정보 (필수)</h2>
+							<h2 style="font-size: 16pt; font-weight: 900; margin-bottom: 5%;">기본정보</h2>
 							<input type="hidden" name="pro_no" value="${profileVO.pro_no}">
+							<div class="resume_title">
+								<input type="text" placeholder="이력서의 제목을 입력해주세요." name="res_title" value="${res_title}" style="width: 50%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 3%;">
+							</div>
 							<div class="gender_radio rsm_half_cell">
 								<!-- rsm_half_cell : 가로 기준 섹션 셀의 반을 차지 -->
 								<div class="gender_header">
@@ -110,13 +162,11 @@ textarea.flexible {
 								<div class="occu_header">
 									<h3 style="font-size: 13pt; font-weight: 600; margin-bottom: 3%; margin-top: 3%;">현재(관심)직종</h3>
 								</div>
-								<div class="occu_select">
+								<div class="select">
 									<select id="occu_content" name="pro_occu" style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 3%;">
 										<option value="none">선택해주세요.</option>
 										<option value="IT/인터넷">IT/인터넷</option>
 									</select>
-								</div>
-								<div class="subOccu_select">
 									<select id="subOccu_content" name="pro_subOccu"	style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 3%;">
 										<option value="none">선택해주세요.</option>
 										<option value="JAVA">JAVA</option>
@@ -170,26 +220,24 @@ textarea.flexible {
 											<!-- set1 옆에 프로필 이미지가 라벨 형식으로 붙음 -->
 											<input type="text" class="input_name" name="pro_name"
 												placeholder="이름"
-												style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 3%;">
+												style="width: 15%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 1%;">
 										</div>
 										<div class="set2">
 											<input type="text" class="input_email" name="pro_email"
 												placeholder="이메일"
-												style="width: 30%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 3%;">
+												style="width: 30%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 1%;">
 										</div>
 										<div class="set2">
 											<input type="text" class="input_tel" name="pro_tel"
 												placeholder="전화번호"
-												style="width: 20%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 3%;">
+												style="width: 20%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 1%;">
 										</div>
 									</div>
 									<label class="resume_addPhoto" for="resume_addPhoto_id">
-										<input type="file" id="resumse_addPhoto_id" name="pro_imgFile"
-										style="width: 15%;"> <span class="resume_addPhoto_txt">사진
-											등록</span> <span class="resume_addPhoto_img"> <img
-											style="height: 17vh;"
-											src="/resources/images/default_user.png"> <!-- 등록 안 했을시 기본 이미지 path -->
-									</span>
+										<input type="file" id="upload" name="pro_imgFile" style="width: 80%;" onclick="changeImg();">
+										<span id='preview'>
+											이미지를 선택해주세요.
+									    </span>
 									</label>
 								</div>
 								<div class="profile2_header">
@@ -208,11 +256,10 @@ textarea.flexible {
 						</div>
 
 						<!-- 학력, 경력, 활동 수상 내역, 포트폴리오 등등 입력 섹션 -->
-						<div class="section_wrap">
+						<div class="section_wrap" style="padding:3%;margin-bottom:5%;margin-right:auto; margin-left:auto;border:1px solid #fafafa;background-color:#fafafa;">
 							<!-- 학력사항 -->
 							<div class="education_header">
-								<h3
-									style="font-size: 13pt; font-weight: 600; margin-bottom: 3%; margin-top: 3%;">학력사항</h3>
+								<h3 style="font-size: 13pt; font-weight: 600; margin-bottom: 3%; margin-top: 3%;">학력사항</h3>
 							</div>
 							<div class="flexible_resume">
 								<div class="left_resume_flexible">
@@ -227,11 +274,10 @@ textarea.flexible {
 											style="width: 20%; border: 1px solid #ff6900; border-radius: 10px; padding: 1%; margin-bottom: 1%;">
 										<!-- </div> -->
 									</div>
-									<div class="group_check">
+									<div class="group_check" style="margin-bottom: 1%;">
 										<label class="btn_check"> <!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
-											<input name="e_attendcheck" type="checkbox" onclick=""
-											value="0" style=""> <!-- <span class="check_icon"></span> -->
-											<span class="check_txt" style="margin-bottom: 1%;">재학중</span>
+											<input id="e_attendcheck" name="e_attendcheck" type="checkbox" onclick="users_changeCkboxVal('e_attendcheck');" value="0" style=""> <!-- <span class="check_icon"></span> -->
+											<span class="check_txt">재학중</span>
 										</label>
 									</div>
 								</div>
@@ -273,8 +319,8 @@ textarea.flexible {
 										<!-- </div> -->
 									</div>
 									<div class="group_check" style="margin-bottom: 1%;">
-										<label class="btn_check"> <input name="car_inoffice"
-											type="checkbox" onclick="" value="0"> <!-- <span class="check_icon"></span> -->
+										<label class="btn_check">
+											<input id="car_inoffice" name="car_inoffice" type="checkbox" onclick="users_changeCkboxVal('car_inoffice');" value="0"> <!-- <span class="check_icon"></span> -->
 											<span class="check_txt" style="margin-bottom: 1%;">재직중</span>
 										</label>
 									</div>
@@ -325,8 +371,7 @@ textarea.flexible {
 									</div>
 									<div class="group_check" style="margin-bottom: 1%;">
 										<label class="btn_check"> <!-- 체크박스 클릭시 value 변경해주는 javascript 로직 필요 / 아래도 동일 -->
-											<input name="act_awardCheck" type="checkbox" onclick=""
-											value="0"> <!-- <span class="check_icon"></span> -->
+											<input id="act_awardCheck" name="act_awardCheck" type="checkbox" onclick="users_changeCkboxVal('act_awardCheck');" value="0"> <!-- <span class="check_icon"></span> -->
 											<span class="check_txt">수상</span>
 										</label>
 									</div>
@@ -366,9 +411,7 @@ textarea.flexible {
 
 							<!-- 포트폴리오 파일 첨부 -->
 							<div class="portfolios_header">
-								<h3
-									style="font-size: 13pt; font-weight: 600; margin-bottom: 3%; margin-top: 3%;">포트폴리오
-									파일 첨부</h3>
+								<h3 style="font-size: 13pt; font-weight: 600; margin-bottom: 3%; margin-top: 3%;">포트폴리오 파일 첨부</h3>
 							</div>
 							<div class="portfolio_body">
 								<label class="label_upload_resume"> <input type="file"

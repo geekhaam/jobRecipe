@@ -50,6 +50,7 @@ public class AdvertisementController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 	    
+		model.addAttribute("scri", scri.getKeyword());
 		model.addAttribute("title", scri);
 	    model.addAttribute("list", list);
 	    

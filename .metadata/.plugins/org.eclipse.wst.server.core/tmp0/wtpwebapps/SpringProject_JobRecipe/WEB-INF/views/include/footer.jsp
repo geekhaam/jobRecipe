@@ -4,8 +4,22 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>FOOTER</title>
 </head>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
 <body>
 	
 	

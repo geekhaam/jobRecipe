@@ -10,6 +10,20 @@
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
 </head>
 <body>
 	
@@ -35,7 +49,7 @@
 			<div style="width: 60%;display:flex; flex-direction: column;margin-bottom:5%; ">
 				<div style="font-size: 20pt;display:flex; flex-direction: row; padding-left:7%; 
 					justify-content: space-between; font-weight: bold;color:#ff6900; margin-bottom:3%;">
-					<div style="margin-left: 30%;">마감 임박 구인</div>
+					<div style="margin-left: 35%;">마감 임박 구인</div>
 					<div onclick="location.href='/hire/allAdvertise.do'" style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
 						border:1px solid; border-radius:10px;padding:1%;">
 						+ 구인더보기
@@ -48,7 +62,7 @@
 						align-items: center;cursor:pointer;color:#333333;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
 
 						<div style="width:35%;font-size: 15pt;">${imsi.ad_title }</div>
-						<div style="width:10%;font-size: 15pt;">${imsi.companyVO.c_name }</div>
+						<div style="width:10%;font-size: 13pt;">${imsi.companyVO.c_name }</div>
 						<div style="width:30%;display:flex; flex-direction: column;">
 							<div style="font-size:10pt;font-weight:bold;margin-bottom:5%;">
 								
@@ -92,7 +106,7 @@
 				<div style="font-size: 20pt;display:flex; flex-direction: row; padding-left:7%; 
 					justify-content: space-between; font-weight: bold;color:#ff6900; margin-bottom:3%;
 					margin-top:7%;">
-					<div style="margin-left: 30%;">마감 임박 구인</div>
+					<div style="margin-left: 33%;">가장 많이 찾는 공고</div>
 					<div onclick="location.href='/hire/allAdvertise.do'" style="cursor:pointer;font-size: 7pt;margin-right:7%;margin-top: 2%;
 						border:1px solid; border-radius:10px;padding:1%;">
 						+ 구인더보기
@@ -105,7 +119,7 @@
 						align-items: center; cursor:pointer;color:#333333;" onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
 
 						<div style="width:35%;font-size: 15pt;">${imsi.ad_title }</div>
-						<div style="width:10%;font-size: 15pt;">${imsi.companyVO.c_name }</div>
+						<div style="width:10%;font-size: 13pt;">${imsi.companyVO.c_name }</div>
 						<div style="width:30%;display:flex; flex-direction: column;">
 							<div style="font-size:10pt;font-weight:bold;margin-bottom:5%;">
 								
@@ -151,18 +165,17 @@
 			<div style="width: 25%; align-items:center;display:flex; flex-direction: column;">
 			<!--분할화면 오른쪽  -->
 				<div style="margin-bottom:3%;margin-top:6%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad1.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad1.gif"/>
+					<!-- <div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div> -->
 				</div>
 				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad2.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad2.gif"/>
+					<!-- <div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div> -->
 				</div>
 				<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-					<img style="border-radius: 30px;width:90%;" src="/resources/images/ad3.gif"/>
-					<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div>
+					<img style="border-radius: 30px;width:80%;" src="/resources/images/ad3.gif"/>
+					<!-- <div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div> -->
 				</div>
-				
 			</div>
 		</div>
 	</section>

@@ -16,6 +16,20 @@
 <link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
 <script>
 	$(document).ready(function() {
 		$("#companyTable li").off("click").on("click", function() { //리스트에서 공고 클릭
@@ -377,16 +391,16 @@
 			border:1px solid #fac5a1;border-radius:15px;">
 			<!--분할화면 오른쪽  -->
 			<div style="margin-bottom:3%;margin-top:6%; align-items:center;display:flex; flex-direction: column;">
-				<img style="border-radius: 30px;width:90%;" src="/resources/images/ad1.gif"/>
-				<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div>
+				<img style="border-radius: 30px;width:80%;" src="/resources/images/ad1.gif"/>
+				<!-- <div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Airline</div> -->
 			</div>
 			<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-				<img style="border-radius: 30px;width:90%;" src="/resources/images/ad2.gif"/>
-				<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div>
+				<img style="border-radius: 30px;width:80%;" src="/resources/images/ad2.gif"/>
+				<!-- <div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja Company</div> -->
 			</div>
 			<div style="margin-bottom:3%; align-items:center;display:flex; flex-direction: column;">
-				<img style="border-radius: 30px;width:90%;" src="/resources/images/ad3.gif"/>
-				<div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div>
+				<img style="border-radius: 30px;width:80%;" src="/resources/images/ad3.gif"/>
+				<!-- <div style="margin-top:2%; font-size:20pt; font-weight:bold;font-style: italic;">Kaja hire</div> -->
 			</div>
 				
 		</div>

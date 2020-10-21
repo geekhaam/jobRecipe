@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>HEADER</title>
 
 <!-- <script type="text/javascript">
 	function test(){
@@ -17,6 +17,20 @@
 	}	
 </script>
  -->
+ 
+ <style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+ 
 </head>
 <body>
 	<div style="display:flex; flex-direction: row; justify-content: space-between; flex-wrap: nowrap;
@@ -28,7 +42,7 @@
 				Job Recipe
 			</div>
 			<div style="cursor:pointer;font-size: 12pt;margin-right:10px;margin-top:3%; padding-top:7%;
-				margin-left: 10px;text-align: center;color:white" onclick="location.href='/hire/allAdvertise.do'">
+				margin-left: 30px;text-align: center;color:white" onclick="location.href='/hire/allAdvertise.do'">
 				채용
 			</div>
 		</div>

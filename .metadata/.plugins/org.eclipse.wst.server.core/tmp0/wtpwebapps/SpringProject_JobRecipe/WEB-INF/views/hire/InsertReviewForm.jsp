@@ -10,6 +10,21 @@
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/bootstrap.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.css'/>">
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input, textarea {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
+
 <style>
 	.star1 {
 	    background: url('/resources/images/star_on.png') no-repeat 0 0;

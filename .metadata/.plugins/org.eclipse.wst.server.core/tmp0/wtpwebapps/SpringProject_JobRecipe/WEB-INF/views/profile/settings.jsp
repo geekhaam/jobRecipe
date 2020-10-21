@@ -6,12 +6,24 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 
 <style>
 ul {
 	list-style: none;
+}
+</style>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
 }
 </style>
 
@@ -37,17 +49,17 @@ ul {
 					<div class="mypagemenu_wrap">
 						<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
 							
-							<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='settings.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								계정
 							</div>
-							<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='resumes.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								프로필
 							</div>
-							<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='reviews.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
-								활동내역
+								내 리뷰
 							</div>
 							
 						</div>
@@ -66,32 +78,21 @@ ul {
 						<div class="layout_my_account myaccountcon">
 							<div class="section_group">
 								<div style="display: flex; flex-direction: row;flex-wrap: nowrap;">
-									<div onclick="location.href='./settings.do'" style="cursor:pointer;padding:1%;
-										border:1px solid #fac5a1;background-color:#ff6900;color:white;border-radius:10px;margin-right:2%;">
-										계정 설정
+									<div onclick="location.href='./newsletter.do'" style="cursor:pointer;padding:1%;
+										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
+										이메일 수신 설정
 									</div>
 									<div onclick="location.href='./change_password.do'" style="cursor:pointer;padding:1%;
 										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
 										비밀번호 변경
-									</div>
-									<div onclick="location.href='./newsletter.do'" style="cursor:pointer;padding:1%;
-										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
-										이메일 수신 설정
 									</div>
 									<div onclick="location.href='./memberDelete.do'" style="cursor:pointer;padding:1%;
 										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
 										회원 탈퇴
 									</div>
 								</div>
-								<hr>
+								<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 								<div class="my_information_group">
-									<dl class="email">
-										<dt>이메일</dt>
-										<dd>
-											등록된 모든 이메일로 로그인할 수 있습니다.<br> 기본 이메일로 설정하여 잡플래닛의 유용한 정보와
-											소식을 받아보세요.<br>
-										</dd>
-									</dl>
 									<!--email_list.scss.erb-->
 									<ul class="email_list">
 										<li class="" id="email-3325885">

@@ -8,7 +8,20 @@
 <title>회사 추가</title>
 	<link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 	<script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
-	<script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>	
+	<script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+	<style type="text/css">
+	/* Noto Sans KR 폰트 추가 */
+	@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+	body {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	input {
+		font-family: 'Noto Sans KR', sans-serif;
+		font-size: initial;
+	}
+	</style>
+		
 </head>
 <body>
 

@@ -23,7 +23,6 @@ font-weight: normal;
 </style>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link type="text/css" href="<c:url value="/resources/css/jobCSS.css" />" rel="stylesheet">
 </head>
 <body style="margin:0;">
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>	
@@ -44,6 +43,19 @@ $(function(){
 	});
 
 </script>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
 
 <header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
@@ -66,17 +78,17 @@ $(function(){
 					<div class="mypagemenu_wrap">
 						<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
 							
-							<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='settings.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								계정
 							</div>
-							<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='resumes.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 								프로필
 							</div>
-							<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+							<div onclick="location.href='reviews.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 								border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
-								활동내역
+								내 리뷰
 							</div>
 							
 						</div>
@@ -97,24 +109,20 @@ $(function(){
 						<div class="layout_my_account myaccountcon">
 							<div class="section_group">
 								<div style="display: flex; flex-direction: row;flex-wrap: nowrap;">
-									<div onclick="location.href='./settings.do'" style="cursor:pointer;padding:1%;
-										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
-										계정 설정
-									</div>
-									<div onclick="location.href='./change_password.do'" style="cursor:pointer;padding:1%;
-										border:1px solid #fac5a1;background-color:#ff6900;color:white;border-radius:10px;margin-right:2%;">
-										비밀번호 변경
-									</div>
 									<div onclick="location.href='./newsletter.do'" style="cursor:pointer;padding:1%;
 										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
 										이메일 수신 설정
+									</div>
+									<div onclick="location.href='./change_password.do'" style="cursor:pointer;padding:1%;
+										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
+										비밀번호 변경
 									</div>
 									<div onclick="location.href='./memberDelete.do'" style="cursor:pointer;padding:1%;
 										border:1px solid #fac5a1;color:#ff6900;border-radius:10px;margin-right:2%;">
 										회원 탈퇴
 									</div>
 								</div>
-								<hr>
+								<hr style="margin-bottom:1%; border:solid 1px #fac5a1">
 								<form action="change_password.do" method="post">
 									<div style="display: flex; flex-direction: column;width:90%;margin-left:auto;
 										margin-right:auto;margin-top:5%;margin-bottom:10%;">

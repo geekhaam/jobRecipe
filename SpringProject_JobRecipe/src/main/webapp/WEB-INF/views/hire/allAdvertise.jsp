@@ -9,6 +9,19 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="<c:url value="/resources/js/jobJS.js"/>"></script>
 <script src="<c:url value='/resources/js/jquery-3.1.1.js'/>"></script>
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
 </head>
 <body style="margin:0;">
 <jsp:useBean id="now" class="java.util.Date" />
@@ -71,7 +84,7 @@
 							onclick="location.href='aAllInfo.do?ad_no=${imsi.ad_no }'">
 
 							<div style="width: 35%; font-size: 15pt;">${imsi.ad_title }</div>
-							<div style="width: 10%; font-size: 15pt;">${imsi.companyVO.c_name }</div>
+							<div style="width: 10%; font-size: 13pt;">${imsi.companyVO.c_name }</div>
 							<div style="width: 30%; display: flex; flex-direction: column;">
 								<div
 									style="font-size: 10pt; font-weight: bold; margin-bottom: 5%;">
@@ -108,16 +121,15 @@
 						<hr style="width: 80%; margin-bottom: 1%; border: solid 1px #fac5a1">
 					</c:forEach>
 					<div style="text-align:center;margin-top:2%;">
-					<tr>
-						<td colspan="6"><c:if test="${pageMaker.prev}">
+						<c:if test="${pageMaker.prev}">
 								<a href="allAdvertise.do${pageMaker.makeQuery(pageMaker.startPage - 1)}">이전</a>
-							</c:if> <c:forEach begin="${pageMaker.startPage}"
-								end="${pageMaker.endPage}" var="idx">
-								<a href="allAdvertise.do${pageMaker.makeQuery(idx)}">${idx}</a>
-							</c:forEach> <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<a href="allAdvertise.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a>
-							</c:if></td>
-					</tr>
+						</c:if>
+						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+							<a href="allAdvertise.do${pageMaker.makeQuery(idx)}">${idx}</a>
+						</c:forEach>
+						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+							<a href="allAdvertise.do${pageMaker.makeQuery(pageMaker.endPage + 1)}">다음</a>
+						</c:if>
 					</div>
 				</c:if>
 					

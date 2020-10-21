@@ -77,8 +77,21 @@
 			}
 	  	})
 	});
-	
 </script>
+
+<style type="text/css">
+/* Noto Sans KR 폰트 추가 */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+input {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: initial;
+}
+</style>
+
 </head>
 <body>
 	<header>
@@ -99,17 +112,17 @@
 			<div class="mypagemenu_wrap">
 				<div style="display: flex;flex-direction: column; flex-wrap: nowrap;text-align:center">
 					
-					<div onclick="location.href='settings.do'" style="cursor:pointer;margin-bottom:3%;
+					<div onclick="location.href='settings.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 						계정
 					</div>
-					<div onclick="location.href='resumes.do'" style="cursor:pointer;margin-bottom:3%;
+					<div onclick="location.href='resumes.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
 						프로필
 					</div>
-					<div onclick="location.href='reviews.do'" style="cursor:pointer;margin-bottom:3%;
+					<div onclick="location.href='reviews.do'" style="padding:1%;font-size:18pt;cursor:pointer;margin-bottom:3%;
 						border:1px solid #fac5a1;color:#ff6900;border-radius:10px;">
-						활동내역
+						내 리뷰
 					</div>
 					
 				</div>

@@ -53,16 +53,16 @@ public class ProfileController {
 	 */
 	
 	//프로필 이미지 저장 경로
-	private static final String IMG_UPLOAD_PATH = "D:\\Java_Web_PM_Class_JB\\project\\jrcp_workspace10-20\\img_upload";
+	private static final String IMG_UPLOAD_PATH = "C:\\Users\\geekh\\Desktop\\jrcp_workspace\\img_upload";
 	//포트폴리오 저장 경로
-	private static final String PORT_UPLOAD_PATH = "D:\\Java_Web_PM_Class_JB\\project\\jrcp_workspace10-20\\portfolio_upload";
+	private static final String PORT_UPLOAD_PATH = "C:\\Users\\geekh\\Desktop\\jrcp_workspace\\portfolio_upload";
 	
 	/*
 	 * 마이페이지 링크
 	 */
 	@RequestMapping(value = "settings.do")
 	public String setting(UserVO vo1) {
-		return "profile/settings";
+		return "profile/newsletter";
 	}
 	
 	/*
